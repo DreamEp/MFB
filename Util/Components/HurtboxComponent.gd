@@ -10,13 +10,3 @@ func _on_body_entered(body):
 		attack.attack_position = hitbox.global_position
 		attack.stun_time = hitbox.stun_time
 		hitbox.damage(attack)
-
-func _on_area_entered(area):
-	if area is HitboxComponent:
-		var hitbox : HitboxComponent = area
-		var attack = Attack.new()
-		attack.attack_damage = hitbox.attack_damage
-		attack.knockback_force = hitbox.knockback_force
-		attack.attack_position = hitbox.global_position
-		attack.stun_time = hitbox.stun_time
-		hitbox.damage(attack)

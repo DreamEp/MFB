@@ -23,6 +23,10 @@ window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
 
+[editor]
+
+movie_writer/movie_file="S:/Taff/Perso/Godot_v4.2.2-stable_win64.exe/Projects/MFB/moovie/moovie.avi"
+
 [input]
 
 up={
@@ -54,6 +58,9 @@ left_click={
 [layer_names]
 
 2d_physics/layer_1="world"
-2d_physics/layer_2="player"
-2d_physics/layer_3="enemy"
-2d_physics/layer_4="loot"
+2d_physics/layer_2="environment"
+2d_physics/layer_3="player"
+2d_physics/layer_4="player_attacks"
+2d_physics/layer_5="enemy"
+2d_physics/layer_6="enemy_attacks"
+2d_physics/layer_7="loot"

@@ -9,8 +9,16 @@ extends Node2D
 
 func _physics_process(_delta):
 	if Input.is_action_just_pressed("left_click"):
-		animatedSprite2DPlayer.play("attack")
-		var spawned_axe := axe_scene.instantiate()
-		get_tree().root.add_child(spawned_axe)
+		spawnAxe()
+		
+			
+func spawnAxe():
+	animatedSprite2DPlayer.play("attack")
+	var spawned_axe := axe_scene.instantiate()
+	self.add_child(spawned_axe)
+	if is_instance_valid(enemy):
 		spawned_axe.global_position = player.global_position
 		spawned_axe.rotation = enemy.global_position.angle()
+	else:
+		spawned_axe.global_position = player.global_position
+		spawned_axe.target = get_global_mouse_position()

@@ -193,8 +193,8 @@ size = Vector2(4, 7.75)
 radius = 9.05539
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
-collision_layer = 4
-collision_mask = 3
+collision_layer = 16
+collision_mask = 13
 script = ExtResource("1_ahxew")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
@@ -207,14 +207,15 @@ frame_progress = 0.080873
 [node name="CollisionEnemy" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6c3ef")
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_olcmw")]
-
 [node name="EnemyMovement" type="Node" parent="."]
 script = ExtResource("4_ctsao")
 
-[node name="HitboxComponent" parent="." instance=ExtResource("3_fg14w")]
-collision_layer = 4
-collision_mask = 0
+[node name="HealthComponent" parent="." instance=ExtResource("2_olcmw")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_fg14w")]
+collision_layer = 16
+collision_mask = 13
+health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(4, 0)

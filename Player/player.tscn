@@ -174,8 +174,8 @@ size = Vector2(6, 11)
 size = Vector2(12, 16)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
-collision_layer = 2
-collision_mask = 13
+collision_layer = 4
+collision_mask = 115
 motion_mode = 1
 script = ExtResource("1_1nmtv")
 
@@ -183,8 +183,6 @@ script = ExtResource("1_1nmtv")
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_n0fk4")
 animation = &"attack"
-frame = 5
-frame_progress = 1.0
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
@@ -199,8 +197,8 @@ script = ExtResource("5_o175c")
 MAX_HEALTH = 80.0
 
 [node name="HitboxComponent" parent="." instance=ExtResource("5_hs5nc")]
-collision_layer = 2
-collision_mask = 0
+collision_layer = 4
+collision_mask = 115
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, -1)

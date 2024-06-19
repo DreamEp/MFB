@@ -16,14 +16,3 @@ class_name Enemy
 func _ready():
 	pass
 
-#func damage(attack: Attack):
-	#health -= attack.attack_damage
-	#if health <= 0:
-		#enemySprite2D.play("death")
-		#queue_free()
-	#else:
-		#enemySprite2D.play("hurt")
-		#
-	#attack.print_dmg()	
-		#
-	#velocity = (global_position - attack.attack_position).normalized() * attack.knockback_force
