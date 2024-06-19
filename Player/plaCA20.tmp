@@ -1,0 +1,99 @@
+[gd_scene load_steps=16 format=3 uid="uid://b48nchocyocqp"]
+
+[ext_resource type="Script" path="res://Player/player.gd" id="1_1nmtv"]
+[ext_resource type="Texture2D" uid="uid://byd3vggd67ke6" path="res://Art/Soldier-Walk.png" id="1_el0db"]
+[ext_resource type="Texture2D" uid="uid://781v5ubd4fkb" path="res://Art/Soldier-Idle.png" id="3_voet2"]
+[ext_resource type="PackedScene" uid="uid://b0ocfd88fjt3j" path="res://Util/Components/health_component.tscn" id="4_hpyvg"]
+[ext_resource type="PackedScene" uid="uid://cf6xqn3g7e5e2" path="res://Player/weapon.tscn" id="4_q5yqg"]
+[ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="5_hs5nc"]
+[ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="5_o175c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8tk1q"]
+atlas = ExtResource("3_voet2")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1gtoi"]
+atlas = ExtResource("3_voet2")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tq1bb"]
+atlas = ExtResource("3_voet2")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mu3av"]
+atlas = ExtResource("3_voet2")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p02ql"]
+atlas = ExtResource("3_voet2")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2iuad"]
+atlas = ExtResource("3_voet2")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n0fk4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8tk1q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1gtoi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tq1bb")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mu3av")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p02ql")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2iuad")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_lw0o3"]
+size = Vector2(12, 16)
+
+[node name="Player" type="CharacterBody2D" groups=["player"]]
+script = ExtResource("1_1nmtv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+texture = ExtResource("1_el0db")
+hframes = 8
+frame = 7
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_n0fk4")
+animation = &"idle"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="PlayerMovement" type="Node" parent="."]
+script = ExtResource("5_o175c")
+
+[node name="WalkTimer" type="Timer" parent="PlayerMovement"]
+unique_name_in_owner = true
+wait_time = 0.2
+one_shot = true
+
+[node name="HealthComponent" parent="." instance=ExtResource("4_hpyvg")]
+
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_hs5nc")]
+collision_layer = 2
+collision_mask = 0
+health_component = NodePath("../HealthComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_lw0o3")
+
+[node name="Weapon" parent="." instance=ExtResource("4_q5yqg")]

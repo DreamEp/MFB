@@ -1,16 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cf6xqn3g7e5e2"]
 
-[ext_resource type="Script" path="res://Player/Weapon.gd" id="1_mxq3i"]
+[ext_resource type="Script" path="res://Player/Weapons.gd" id="1_4b3vm"]
 
 [node name="Weapon" type="Node2D"]
-script = ExtResource("1_mxq3i")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
-[node name="Hitbox" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Hitbox"]
-
-[node name="AttackTimer" type="Timer" parent="."]
-
-[connection signal="area_entered" from="Hitbox" to="." method="_on_hitbox_area_entered"]
+script = ExtResource("1_4b3vm")

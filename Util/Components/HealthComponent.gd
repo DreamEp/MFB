@@ -4,11 +4,10 @@ class_name HealthComponent
 @export var MAX_HEALTH := 20.0
 var health : float
 
-# Called when the node enters the scene tree for the first time.
+
 func _ready():
 	health = MAX_HEALTH
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
 	

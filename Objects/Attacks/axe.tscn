@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://b5fd0njlivmkl"]
+
+[ext_resource type="Texture2D" uid="uid://bgdsi7bejuct2" path="res://Art/Player/Attacks/axe.png" id="1_2ttsf"]
+[ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="1_3070s"]
+[ext_resource type="Script" path="res://Objects/Attacks/axe.gd" id="1_p0hi4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idh52"]
+size = Vector2(16, 16)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o73kp"]
+size = Vector2(16, 16)
+
+[node name="Axe" type="CharacterBody2D"]
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_p0hi4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_2ttsf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_idh52")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("1_3070s")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+shape = SubResource("RectangleShape2D_o73kp")
+
+[connection signal="area_entered" from="HitboxComponent" to="." method="_on_hitbox_component_area_entered"]

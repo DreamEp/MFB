@@ -6,13 +6,12 @@ extends Node
 # of the enemy, we move the code to a separate component
 ##########################################################
 
-@onready var player : Player = get_tree().get_first_node_in_group("player")
-@onready var enemy : Enemy = get_owner()
-@onready var sprite2DEnemy : Sprite2D = get_parent().get_node("Sprite2D")
-@onready var walkAnimation : AnimationPlayer = get_parent().get_node("AnimationPlayer")
+@onready var player: Player = get_tree().get_first_node_in_group("player")
+@onready var enemy: Enemy = get_owner()
+@onready var animatedSprite2DEnemy: AnimatedSprite2D = $"../AnimatedSprite2D"
 
 func _ready():
-	walkAnimation.play("walk")
+	animatedSprite2DEnemy.play("walk")
 	
 func _physics_process(_delta):
 	#knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
@@ -25,6 +24,6 @@ func _physics_process(_delta):
 	
 	#There we get a gap so it don't flip permanently
 	if direction.x > 0.1:
-		sprite2DEnemy.flip_h = false
+		animatedSprite2DEnemy.flip_h = false
 	elif direction.x < 0.1:
-		sprite2DEnemy.flip_h = true
+		animatedSprite2DEnemy.flip_h = true
