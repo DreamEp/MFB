@@ -22,14 +22,14 @@ func unload_scene():
 func load_scene(scene_name : String):
 	unload_scene()
 	menu.visible = false
-	var scene_path := "res://Scenes/" + scene_name
+	var scene_path := "res://Scenes/%s.tscn" % scene_name
 	var scene_resource := load(scene_path)
 	if(scene_resource):
 		scene_instance = scene_resource.instantiate()
 		main_2d.add_child(scene_instance)
 
 func _on_play_pressed():
-	load_scene("world.tscn")
+	load_scene("world")
 
 func _on_quit_pressed():
 	get_tree().quit()
