@@ -120,7 +120,7 @@ animations = [{
 }],
 "loop": true,
 "name": &"attack",
-"speed": 6.0
+"speed": 4.0
 }, {
 "frames": [{
 "duration": 1.0,
@@ -152,7 +152,7 @@ animations = [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_tbbfb")
 }],
-"loop": true,
+"loop": false,
 "name": &"hurt",
 "speed": 5.0
 }, {
@@ -189,20 +189,18 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6c3ef"]
 size = Vector2(4, 7.75)
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_oprx6"]
-radius = 9.05539
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qljum"]
+size = Vector2(46, 27)
 
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 16
-collision_mask = 13
+collision_mask = 29
 script = ExtResource("1_ahxew")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_jefqq")
 animation = &"hurt"
-frame = 2
-frame_progress = 0.080873
 
 [node name="CollisionEnemy" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6c3ef")
@@ -218,5 +216,9 @@ collision_mask = 13
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(4, 0)
-shape = SubResource("CircleShape2D_oprx6")
+position = Vector2(0, -2.5)
+shape = SubResource("RectangleShape2D_qljum")
+
+[connection signal="animation_finished" from="AnimatedSprite2D" to="." method="_on_animated_sprite_2d_animation_finished"]
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
+[connection signal="body_exited" from="HitboxComponent" to="." method="_on_hitbox_component_body_exited"]

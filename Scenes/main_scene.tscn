@@ -11,12 +11,17 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pwtwf")
 
-[node name="HUD" type="Control" parent="."]
+[node name="Main2DScene" type="Node2D" parent="."]
+
+[node name="HUD&Menus" type="CanvasLayer" parent="."]
+
+[node name="HUD" type="Control" parent="HUD&Menus"]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Timer" type="Label" parent="HUD"]
+[node name="Timer" type="Label" parent="HUD&Menus/HUD"]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 20.0
@@ -26,17 +31,17 @@ text = "20:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthBar" type="TextureProgressBar" parent="HUD"]
+[node name="HealthBar" type="TextureProgressBar" parent="HUD&Menus/HUD"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="ExperienceBar" type="TextureProgressBar" parent="HUD"]
+[node name="ExperienceBar" type="TextureProgressBar" parent="HUD&Menus/HUD"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Level" type="Label" parent="HUD/ExperienceBar"]
+[node name="Level" type="Label" parent="HUD&Menus/HUD/ExperienceBar"]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 301.0
@@ -44,22 +49,23 @@ offset_right = 352.0
 offset_bottom = 324.0
 text = "Level : 1"
 
-[node name="CollectedWeapons" type="GridContainer" parent="HUD"]
+[node name="CollectedWeapons" type="GridContainer" parent="HUD&Menus/HUD"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="CollectedUpgrades" type="GridContainer" parent="HUD"]
+[node name="CollectedUpgrades" type="GridContainer" parent="HUD&Menus/HUD"]
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Menu" type="Control" parent="."]
+[node name="Menu" type="Control" parent="HUD&Menus"]
+layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="NameTitle" type="Label" parent="Menu"]
+[node name="NameTitle" type="Label" parent="HUD&Menus/Menu"]
 layout_mode = 0
 offset_left = 240.0
 offset_top = 60.0
@@ -69,7 +75,7 @@ text = "My Banger Game"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="Play" type="Button" parent="Menu"]
+[node name="Play" type="Button" parent="HUD&Menus/Menu"]
 layout_mode = 0
 offset_left = 230.0
 offset_top = 240.0
@@ -78,7 +84,7 @@ offset_bottom = 280.0
 text = "Play
 "
 
-[node name="Quit" type="Button" parent="Menu"]
+[node name="Quit" type="Button" parent="HUD&Menus/Menu"]
 layout_mode = 0
 offset_left = 350.0
 offset_top = 240.0
@@ -87,7 +93,5 @@ offset_bottom = 280.0
 text = "Quit
 "
 
-[node name="Main2DScene" type="Node2D" parent="."]
-
-[connection signal="pressed" from="Menu/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="Menu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="HUD&Menus/Menu/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="HUD&Menus/Menu/Quit" to="." method="_on_quit_pressed"]

@@ -15,6 +15,13 @@ func damage(attack: Attack):
 	health -= attack.attack_damage
 	if health <= 0:
 		if get_parent() is Enemy:
+			animatedSprite2D.stop()
 			animatedSprite2D.play("death")
 			print("death")
-		get_parent().queue_free()
+		elif get_parent() is Player:
+			animatedSprite2D.play("death")
+			print("death")
+		#get_parent().queue_free()
+	else:
+		animatedSprite2D.stop()
+		animatedSprite2D.play("hurt")

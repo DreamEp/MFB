@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://discwafg5b6lt"]
+
+[ext_resource type="Script" path="res://Objects/ExperienceGem.gd" id="1_aav6m"]
+[ext_resource type="Texture2D" uid="uid://bxg3awbkaiure" path="res://Art/Objects/gem_g.png" id="2_ehjx1"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64kth"]
+size = Vector2(8, 7)
+
+[node name="ExperienceGem" type="Area2D" groups=["experience"]]
+collision_layer = 64
+collision_mask = 4
+script = ExtResource("1_aav6m")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_ehjx1")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_64kth")
+
+[node name="snd_collected" type="AudioStreamPlayer2D" parent="."]

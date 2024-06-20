@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://36lv5b1iv1pu"]
+
+[ext_resource type="Script" path="res://Player/interraction.gd" id="1_6k6xg"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0b383"]
+radius = 20.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7ja8g"]
+radius = 11.1803
+
+[node name="Interraction" type="Node2D"]
+script = ExtResource("1_6k6xg")
+
+[node name="GrabArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GrabArea"]
+shape = SubResource("CircleShape2D_0b383")
+
+[node name="InterractArea" type="Area2D" parent="."]
+collision_layer = 4
+collision_mask = 64
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InterractArea"]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_7ja8g")
+
+[connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
+[connection signal="area_entered" from="InterractArea" to="." method="_on_interract_area_area_entered"]

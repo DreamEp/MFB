@@ -9,28 +9,27 @@ class_name Axe
 
 var current_pierce_count := 0
 var target
+@onready var sprite: Sprite2D = $Sprite2D
 @onready var enemy: Enemy = get_tree().get_first_node_in_group("enemy")
 
-#func _ready():
-	#if hurtbox:
-		#hurtbox.hit_enemy.connect(on_enemy_hit)
-
-
 func _physics_process(delta: float) -> void:
+	var tween = sprite.create_tween().set_loops()
+	tween.tween_property(sprite, "rotation", TAU, 1).as_relative()
+	var direction: Vector2 = Vector2(1,0) 
 	if is_instance_valid(enemy):
-		var direction = global_position.direction_to(enemy.global_position)
-		velocity = direction * speed * delta
-		move_and_collide(velocity)
+		direction = global_position.direction_to(enemy.global_position)	
+	elif not target:
+		pass
+		#queue_free()
 	else:
-		var direction = global_position.direction_to(target)
-		velocity = direction * speed * delta
-		move_and_collide(velocity)
+		direction = global_position.direction_to(target)
+	velocity = direction * speed * delta
+	move_and_collide(velocity)
 		#This follow my mouse
 		#var target = get_global_mouse_position()
 		#var direction = global_position.direction_to(target)
 		#velocity = direction * speed * delta
 		#move_and_collide(velocity)
-
 
 func on_enemy_hit():
 	current_pierce_count += 1

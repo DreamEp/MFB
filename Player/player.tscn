@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b48nchocyocqp"]
+[gd_scene load_steps=33 format=3 uid="uid://b48nchocyocqp"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nmtv"]
 [ext_resource type="Texture2D" uid="uid://db7yidhlbkpgi" path="res://Art/Player/Soldier-Attack01.png" id="2_taxx2"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://cf6xqn3g7e5e2" path="res://Player/weapon.tscn" id="4_q5yqg"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="5_hs5nc"]
 [ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="5_o175c"]
+[ext_resource type="PackedScene" uid="uid://36lv5b1iv1pu" path="res://Player/interraction.tscn" id="9_myqhg"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_ii5vk"]
 atlas = ExtResource("2_taxx2")
@@ -171,7 +172,7 @@ animations = [{
 size = Vector2(6, 11)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lw0o3"]
-size = Vector2(12, 16)
+size = Vector2(16, 18)
 
 [node name="Player" type="CharacterBody2D" groups=["player"]]
 collision_layer = 4
@@ -201,7 +202,9 @@ collision_layer = 4
 collision_mask = 115
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, -1)
+position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_lw0o3")
 
 [node name="Weapon" parent="." instance=ExtResource("4_q5yqg")]
+
+[node name="Interraction" parent="." instance=ExtResource("9_myqhg")]
