@@ -2,23 +2,26 @@ extends Node2D
 
 @export var spawns : Array[SpawnInfo] = []
 @onready var player = get_tree().get_first_node_in_group("player") #On récuppère le player
-#@onready var labelTimer = player.labelTimer
-var time = 0
-#@export var pass_time = 0
+@onready var gameTimer: Label = get_tree().get_first_node_in_group("hud").get_node("GameTimer")
+var time = 0.1
+@export var pass_time = 0
 
-#func _physics_process(delta):
-	#pass_time += delta
-	#change_time()
+func _physics_process(delta):
+	pass_time += delta
+	change_time()
+	
+func _ready():
+	_on_timer_timeout()
 	
 func _on_timer_timeout():
 	time += 1
 	var enemy_spawns = spawns
 	for i in enemy_spawns:
-		if time >= i.time_start and time <= i.time_end: 
+		if time >= i.time_start and time <= i.time_end + 1: 
 			if i.spawn_delay_counter <= i.enemy_spawn_delay: 
 				i.spawn_delay_counter += 1
 			else:
-				i.spawn_delay_counter = 0 
+				i.spawn_delay_counter = 0.1 
 				var new_enemy = i.enemy_type 
 				var counter = 0
 				while counter < i.enemy_num: 
@@ -28,7 +31,7 @@ func _on_timer_timeout():
 					counter += 1 
 
 func get_random_position():
-	var vpr = get_viewport_rect().size * randf_range(1.1, 1.2)
+	var vpr = get_viewport_rect().size * randf_range(1.05, 1.15)
 	var top_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y - vpr.y/2)
 	var top_right = Vector2(player.global_position.x + vpr.x/2, player.global_position.y - vpr.y/2)
 	var bottom_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y + vpr.y/2)
@@ -58,12 +61,12 @@ func get_random_position():
 	return Vector2(x_spawn, y_spawn)
 
 
-#func change_time():
-	#time = int(pass_time)
-	#var m = int(time / 60.0)
-	#var s = time % 60
-	#if m < 10:
-		#m = str(0, m)
-	#if s < 10:
-		#s = str(0, s)
-	#labelTimer.text = str(m, ":", s)
+func change_time():
+	time = int(pass_time)
+	var m = int(time / 60.0)
+	var s = time % 60
+	if m < 10:
+		m = str(0, m)
+	if s < 10:
+		s = str(0, s)
+	gameTimer.text = str(m, ":", s)

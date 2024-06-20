@@ -1,7 +1,6 @@
-[gd_scene load_steps=10 format=3 uid="uid://0q77ksscaho5"]
+[gd_scene load_steps=9 format=3 uid="uid://0q77ksscaho5"]
 
 [ext_resource type="PackedScene" uid="uid://b48nchocyocqp" path="res://Player/player.tscn" id="1_13lbo"]
-[ext_resource type="Script" path="res://Scenes/world.gd" id="1_gg3fu"]
 [ext_resource type="PackedScene" uid="uid://bkwl467oahx1d" path="res://Enemies/enemy.tscn" id="2_5su7r"]
 [ext_resource type="Texture2D" uid="uid://dn4p38y76xv3i" path="res://Art/tilemap_packed.png" id="3_sgcg1"]
 [ext_resource type="PackedScene" uid="uid://cxcen78y8bhox" path="res://Util/enemy_spawner.tscn" id="4_24gqt"]
@@ -415,13 +414,12 @@ sources/0 = SubResource("TileSetAtlasSource_8iigx")
 [sub_resource type="Resource" id="Resource_k0kof"]
 script = ExtResource("5_i3ma0")
 time_start = 0
-time_end = 0
+time_end = 10
 enemy_type = ExtResource("2_5su7r")
-enemy_num = 0
+enemy_num = 1
 enemy_spawn_delay = 0
 
 [node name="World" type="Node2D"]
-script = ExtResource("1_gg3fu")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_dfrsd")

@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://4ai0mntatr2d"]
+[gd_scene load_steps=3 format=3 uid="uid://4ai0mntatr2d"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene.gd" id="1_pwtwf"]
+[ext_resource type="Texture2D" uid="uid://b34pi2ay3k8rq" path="res://Art/UI/health.png" id="3_k0hkf"]
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -15,13 +16,13 @@ script = ExtResource("1_pwtwf")
 
 [node name="HUD&Menus" type="CanvasLayer" parent="."]
 
-[node name="HUD" type="Control" parent="HUD&Menus"]
+[node name="HUD" type="Control" parent="HUD&Menus" groups=["hud"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Timer" type="Label" parent="HUD&Menus/HUD"]
+[node name="GameTimer" type="Label" parent="HUD&Menus/HUD"]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 20.0
@@ -33,20 +34,39 @@ vertical_alignment = 1
 
 [node name="HealthBar" type="TextureProgressBar" parent="HUD&Menus/HUD"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 304.0
+offset_top = 190.0
+offset_right = 336.0
+offset_bottom = 198.0
+texture_under = ExtResource("3_k0hkf")
+texture_progress = ExtResource("3_k0hkf")
+tint_under = Color(0.329412, 0.180392, 0.192157, 0.419608)
 
-[node name="ExperienceBar" type="TextureProgressBar" parent="HUD&Menus/HUD"]
+[node name="HealthLabel" type="Label" parent="HUD&Menus/HUD/HealthBar"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_right = 32.0
+offset_bottom = 8.0
+theme_override_font_sizes/font_size = 5
+text = "1 / 10"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="Level" type="Label" parent="HUD&Menus/HUD/ExperienceBar"]
+[node name="ExperienceBar" type="ProgressBar" parent="HUD&Menus/HUD"]
+self_modulate = Color(0.108513, 0.487729, 0.442931, 1)
 layout_mode = 0
-offset_left = 290.0
-offset_top = 301.0
-offset_right = 352.0
-offset_bottom = 324.0
+offset_left = 20.0
+offset_top = 356.0
+offset_right = 620.0
+offset_bottom = 360.0
+value = 20.0
+show_percentage = false
+
+[node name="LevelLabel" type="Label" parent="HUD&Menus/HUD/ExperienceBar"]
+layout_mode = 0
+offset_left = 270.0
+offset_top = -49.0
+offset_right = 332.0
+offset_bottom = -26.0
 text = "Level : 1"
 
 [node name="CollectedWeapons" type="GridContainer" parent="HUD&Menus/HUD"]
@@ -59,7 +79,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Menu" type="Control" parent="HUD&Menus"]
+[node name="Menu" type="Control" parent="HUD&Menus" groups=["menu"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0

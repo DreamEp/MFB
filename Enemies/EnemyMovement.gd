@@ -8,10 +8,14 @@ extends Node
 
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var enemy: Enemy = get_owner()
-@onready var animatedSprite2DEnemy: AnimatedSprite2D = $"../AnimatedSprite2D"
+@onready var enemySprite2D: Sprite2D = $"../Sprite2D"
+@onready var animPlayer: AnimationPlayer = $"../AnimationPlayer"
+
+
+var in_range := false
 
 func _ready():
-	animatedSprite2DEnemy.play("walk")
+	pass
 	
 func _physics_process(_delta):
 	#knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
@@ -24,6 +28,19 @@ func _physics_process(_delta):
 	
 	#There we get a gap so it don't flip permanently
 	if direction.x > 0.1:
-		animatedSprite2DEnemy.flip_h = false
+		enemySprite2D.flip_h = false
 	elif direction.x < 0.1:
-		animatedSprite2DEnemy.flip_h = true
+		enemySprite2D.flip_h = true
+	
+	if in_range:
+		animPlayer.queue("attack")
+	else:
+		animPlayer.queue("walk")
+
+func _on_hitbox_component_body_entered(body):
+	if body is Player:
+		in_range = true
+
+func _on_hitbox_component_body_exited(body):
+	if body is Player:
+		in_range = false
