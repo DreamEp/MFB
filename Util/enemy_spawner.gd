@@ -1,11 +1,53 @@
 extends Node2D
 
 @export var spawns : Array[SpawnInfo] = []
-@onready var player = get_tree().get_first_node_in_group("player") #On récuppère le player
+@onready var player: Player = get_tree().get_first_node_in_group("player") #On récuppère le player
 @onready var gameTimer: Label = get_tree().get_first_node_in_group("hud").get_node("GameTimer")
+@onready var tileMap: TileMap = $"../TileMap"
+
 var time = 0.1
 @export var pass_time = 0
 
+func retrieve_spawnable_tile():
+	var vpr = get_viewport_rect().size * randf_range(1.05, 1.40)
+	var top_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y - vpr.y/2)
+	var top_right = Vector2(player.global_position.x + vpr.x/2, player.global_position.y - vpr.y/2)
+	var bottom_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y + vpr.y/2)
+	var bottom_right = Vector2(player.global_position.x + vpr.x/2, player.global_position.y + vpr.y/2)
+	
+	var pos_side = ["up", "down", "right", "left"].pick_random() 
+	var spawn_pos1 = Vector2.ZERO
+	var spawn_pos2 = Vector2.ZERO
+	
+	match pos_side:
+		"up":
+			spawn_pos1 = top_left
+			spawn_pos2 = top_right
+		"down":
+			spawn_pos1 = bottom_left
+			spawn_pos2 = bottom_right
+		"right":
+			spawn_pos1 = top_right
+			spawn_pos2 = bottom_right
+		"left":
+			spawn_pos1 = top_left
+			spawn_pos2 = bottom_left
+	
+	var x_spawn = randf_range(spawn_pos1.x, spawn_pos2.x)
+	var y_spawn = randf_range(spawn_pos1.y, spawn_pos2.y)
+	
+	# Ensure the returned vector is also within the specified range
+	var start_x = max(-24*16, player.global_position.x - vpr.x/2)
+	var end_x = min(23*16, player.global_position.x + vpr.x/2)
+	var start_y = max(-15*16, player.global_position.y - vpr.y/2)
+	var end_y = min(17*16, player.global_position.y + vpr.y/2)
+	
+	x_spawn = max(min(x_spawn, end_x), start_x)
+	y_spawn = max(min(y_spawn, end_y), start_y)
+	
+	return Vector2(x_spawn, y_spawn)
+
+				
 func _physics_process(delta):
 	pass_time += delta
 	change_time()
@@ -26,12 +68,12 @@ func _on_timer_timeout():
 				var counter = 0
 				while counter < i.enemy_num: 
 					var enemy_spawn = new_enemy.instantiate() 
-					enemy_spawn.global_position = get_random_position() 
+					enemy_spawn.global_position = retrieve_spawnable_tile() #get_random_position() 
 					add_child(enemy_spawn) 
 					counter += 1 
 
 func get_random_position():
-	var vpr = get_viewport_rect().size * randf_range(1.05, 1.15)
+	var vpr = get_viewport_rect().size * randf_range(1.05, 1.40)
 	var top_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y - vpr.y/2)
 	var top_right = Vector2(player.global_position.x + vpr.x/2, player.global_position.y - vpr.y/2)
 	var bottom_left = Vector2(player.global_position.x - vpr.x/2, player.global_position.y + vpr.y/2)
