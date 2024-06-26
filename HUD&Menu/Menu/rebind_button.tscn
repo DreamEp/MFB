@@ -1,0 +1,47 @@
+[gd_scene load_steps=3 format=3 uid="uid://d2cenkd4ydle"]
+
+[ext_resource type="Script" path="res://HUD&Menu/Menu/rebind_button.gd" id="1_c1pgw"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_os351"]
+
+[node name="RebindButton" type="Control" groups=["rebind_button"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_c1pgw")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_left = 20.0
+offset_top = -15.5
+offset_right = 398.0
+offset_bottom = 9.5
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(120, 15)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "Action"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/separation = 10
+theme_override_styles/separator = SubResource("StyleBoxEmpty_os351")
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(82, 20)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+toggle_mode = true
+text = "Action Key"
+
+[connection signal="toggled" from="HBoxContainer/Button" to="." method="_on_button_toggled"]

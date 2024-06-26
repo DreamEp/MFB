@@ -33,12 +33,27 @@ class_name Player
 @onready var expLabel: Label = expBar.get_node("LevelLabel")
 @onready var healthComponent: HealthComponent = $HealthComponent
 
+var aim_position : Vector2
+@onready var fire_position = $Weapons/FiringPosition
+
 func _ready():
+	print(healthBar.name)
 	set_healthbar(healthComponent.MAX_HEALTH, healthComponent.MAX_HEALTH)
 	set_expbar(player_experience, 5.0)
 	
-func _physics_process(_delta):
+func _process(_delta):
+	aim_position = get_global_mouse_position()
 	set_healthbar(healthComponent.health, healthComponent.MAX_HEALTH)
+
+	var radius = 10
+	var mouse_direction = get_global_mouse_position() - fire_position.global_position
+	var angle = mouse_direction.angle_to(Vector2(1, 0))
+	fire_position.position =  Vector2(
+		cos(angle) * radius,
+		-sin(angle) * radius
+	)
+	fire_position.rotation = mouse_direction.angle()
+
 	
 func set_healthbar(set_value: float = 0, set_max_value: float = 100):
 	healthBar.max_value = set_max_value

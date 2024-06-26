@@ -1,8 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://b48nchocyocqp"]
+[gd_scene load_steps=18 format=3 uid="uid://b48nchocyocqp"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nmtv"]
 [ext_resource type="Texture2D" uid="uid://d3ts4wde53vfh" path="res://Art/Player/Soldier.png" id="2_nsfec"]
 [ext_resource type="PackedScene" uid="uid://b0ocfd88fjt3j" path="res://Util/Components/health_component.tscn" id="4_hpyvg"]
+[ext_resource type="Texture2D" uid="uid://bswtnc1fi15a2" path="res://Art/bow.png" id="5_1w16u"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="5_hs5nc"]
 [ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="5_o175c"]
 [ext_resource type="PackedScene" uid="uid://36lv5b1iv1pu" path="res://Player/interraction.tscn" id="9_myqhg"]
@@ -165,6 +166,26 @@ libraries = {
 "": SubResource("AnimationLibrary_p2wor")
 }
 
+[node name="Weapons" type="Node2D" parent="." node_paths=PackedStringArray("firing_position")]
+script = ExtResource("9_ufcmi")
+firing_position = NodePath("FiringPosition")
+arrow_count = 6
+arc = 10.0
+bow_rate = 1.0
+
+[node name="FiringPosition" type="Marker2D" parent="Weapons"]
+self_modulate = Color(0.464769, 0.463742, 0.907029, 1)
+position = Vector2(7, 1)
+
+[node name="Bow" type="Sprite2D" parent="Weapons/FiringPosition"]
+texture_filter = 1
+position = Vector2(1, -1)
+rotation = -2.35619
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_1w16u")
+
+[node name="Interraction" parent="." instance=ExtResource("9_myqhg")]
+
 [node name="HealthComponent" parent="." instance=ExtResource("4_hpyvg")]
 MAX_HEALTH = 80.0
 
@@ -176,8 +197,3 @@ health_component = NodePath("../HealthComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0, -2)
 shape = SubResource("RectangleShape2D_lw0o3")
-
-[node name="Interraction" parent="." instance=ExtResource("9_myqhg")]
-
-[node name="Weapons" type="Node2D" parent="."]
-script = ExtResource("9_ufcmi")

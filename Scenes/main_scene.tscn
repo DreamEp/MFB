@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://4ai0mntatr2d"]
+[gd_scene load_steps=4 format=3 uid="uid://4ai0mntatr2d"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene.gd" id="1_pwtwf"]
+[ext_resource type="PackedScene" uid="uid://c0ejinkqyooqo" path="res://HUD&Menu/Menu/main_menu.tscn" id="3_efc4l"]
 [ext_resource type="Texture2D" uid="uid://b34pi2ay3k8rq" path="res://Art/UI/health.png" id="3_k0hkf"]
 
 [node name="MainScene" type="Control"]
@@ -11,8 +12,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_pwtwf")
-
-[node name="Main2DScene" type="Node2D" parent="."]
 
 [node name="HUD&Menus" type="CanvasLayer" parent="."]
 
@@ -79,39 +78,6 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Menu" type="Control" parent="HUD&Menus" groups=["menu"]]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="MainMenu" parent="HUD&Menus" instance=ExtResource("3_efc4l")]
 
-[node name="NameTitle" type="Label" parent="HUD&Menus/Menu"]
-layout_mode = 0
-offset_left = 240.0
-offset_top = 60.0
-offset_right = 400.0
-offset_bottom = 90.0
-text = "My Banger Game"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="Play" type="Button" parent="HUD&Menus/Menu"]
-layout_mode = 0
-offset_left = 230.0
-offset_top = 240.0
-offset_right = 290.0
-offset_bottom = 280.0
-text = "Play
-"
-
-[node name="Quit" type="Button" parent="HUD&Menus/Menu"]
-layout_mode = 0
-offset_left = 350.0
-offset_top = 240.0
-offset_right = 410.0
-offset_bottom = 280.0
-text = "Quit
-"
-
-[connection signal="pressed" from="HUD&Menus/Menu/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="HUD&Menus/Menu/Quit" to="." method="_on_quit_pressed"]
+[node name="Main2DScene" type="Node2D" parent="."]

@@ -1,0 +1,99 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0ejinkqyooqo"]
+
+[ext_resource type="Script" path="res://HUD&Menu/Menu/main_menu.gd" id="1_4kwf0"]
+[ext_resource type="Texture2D" uid="uid://dliagwd6h3tcs" path="res://Art/UI/background.jpeg" id="1_d01rf"]
+[ext_resource type="PackedScene" uid="uid://bkq52g5a1py3k" path="res://HUD&Menu/Menu/options_menu.tscn" id="3_a35cd"]
+
+[sub_resource type="SystemFont" id="SystemFont_rr06g"]
+font_names = PackedStringArray("Calisto MT")
+subpixel_positioning = 0
+
+[sub_resource type="SystemFont" id="SystemFont_1v4sn"]
+font_names = PackedStringArray("Calisto MT")
+subpixel_positioning = 0
+
+[node name="MainMenu" type="Control" groups=["menu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_4kwf0")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_d01rf")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Separator" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GameTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("SystemFont_rr06g")
+theme_override_font_sizes/font_size = 32
+text = "DESERT SURVIVOR
+"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="StartGame" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(60, 16)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_1v4sn")
+theme_override_font_sizes/font_size = 20
+text = "Start Game"
+
+[node name="Options" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_1v4sn")
+theme_override_font_sizes/font_size = 20
+text = "Options"
+
+[node name="QuitGame" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 32)
+layout_mode = 2
+theme_override_fonts/font = SubResource("SystemFont_1v4sn")
+theme_override_font_sizes/font_size = 20
+text = "Quit Game"
+
+[node name="OptionsMenu" parent="." instance=ExtResource("3_a35cd")]
+layout_mode = 1
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/QuitGame" to="." method="_on_quit_game_pressed"]

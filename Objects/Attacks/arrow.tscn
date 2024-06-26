@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://73bu6hx4xwif"]
+
+[ext_resource type="Script" path="res://Objects/Attacks/arrow.gd" id="1_71b0m"]
+[ext_resource type="Texture2D" uid="uid://f76b35l6qiir" path="res://Art/Player/Attacks/arrow.png" id="2_bsulv"]
+[ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="3_lg8wa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idh52"]
+size = Vector2(4, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o73kp"]
+size = Vector2(14.75, 5)
+
+[node name="Arrow" type="CharacterBody2D"]
+collision_layer = 8
+collision_mask = 3
+script = ExtResource("1_71b0m")
+speed = 5.0
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+rotation = 2.35619
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("2_bsulv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_idh52")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("3_lg8wa")]
+collision_layer = 8
+collision_mask = 51
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(0.375, 0)
+shape = SubResource("RectangleShape2D_o73kp")
+
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

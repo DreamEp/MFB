@@ -15,10 +15,19 @@ func _physics_process(_delta):
 	var x_move = Input.get_action_strength("right") - Input.get_action_strength("left")
 	var y_move = Input.get_action_strength("down") - Input.get_action_strength("up")
 	var move = Vector2(x_move, y_move)
-	if move.x < 0:
+	#if move.x < 0:
+		#playerSprite2D.flip_h = true
+		#if player.aim_position.x > 0:
+			#playerSprite2D.flip_h = false
+		#else:
+			#playerSprite2D.flip_h = true
+	#elif move.x > 0:
+		#playerSprite2D.flip_h = false
+	if player.aim_position.x < 0:
 		playerSprite2D.flip_h = true
-	elif move.x > 0:
+	else:
 		playerSprite2D.flip_h = false
+		
 	if move != Vector2.ZERO: 
 		animPlayer.queue("walk")
 	else:

@@ -1,0 +1,57 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkq52g5a1py3k"]
+
+[ext_resource type="Script" path="res://HUD&Menu/Menu/options_menu.gd" id="1_ujxo8"]
+[ext_resource type="PackedScene" uid="uid://cf1bgo1vnki3c" path="res://HUD&Menu/Menu/settings_tab_container.tscn" id="2_qhh8p"]
+
+[sub_resource type="SystemFont" id="SystemFont_aq686"]
+font_names = PackedStringArray("Calisto MT")
+subpixel_positioning = 0
+
+[node name="OptionsMenu" type="Control" groups=["menu"]]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ujxo8")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 6
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 6
+theme_override_constants/margin_bottom = 6
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = -10
+
+[node name="OptionsTitle" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 4
+theme_override_constants/outline_size = 6
+theme_override_fonts/font = SubResource("SystemFont_aq686")
+theme_override_font_sizes/font_size = 32
+text = "Options"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SettingsTabContainer" parent="MarginContainer/VBoxContainer" instance=ExtResource("2_qhh8p")]
+layout_mode = 2
+
+[node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 30)
+layout_mode = 2
+size_flags_vertical = 8
+text = "Exit
+"
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Exit" to="." method="_on_exit_pressed"]

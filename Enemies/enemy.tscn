@@ -162,6 +162,7 @@ size = Vector2(46, 27)
 [node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 16
 collision_mask = 29
+motion_mode = 1
 script = ExtResource("1_ahxew")
 movemement_speed = 20.0
 health = 40.0
