@@ -1,0 +1,35 @@
+[gd_scene load_steps=2 format=3 uid="uid://cocq5p4furtdv"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_iow0y"]
+
+[node name="Graphics" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 20.0
+offset_top = 20.0
+offset_right = 500.0
+offset_bottom = 40.0
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(120, 15)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12
+text = "BaseLabel"
+vertical_alignment = 1
+
+[node name="VSeparator" type="VSeparator" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+theme_override_styles/separator = SubResource("StyleBoxEmpty_iow0y")
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(175, 15)
+layout_mode = 2
+theme_override_font_sizes/font_size = 12

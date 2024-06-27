@@ -1,5 +1,5 @@
 extends Control
-class_name Rebindbutton
+class_name RebindButton
 
 @onready var label: Label = $HBoxContainer/Label
 @onready var button: Button = $HBoxContainer/Button

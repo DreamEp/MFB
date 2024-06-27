@@ -1,6 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://d2cenkd4ydle"]
+[gd_scene load_steps=3 format=3 uid="uid://5vuviw1xgjx0"]
 
-[ext_resource type="Script" path="res://HUD&Menu/Menu/rebind_button.gd" id="1_c1pgw"]
+[ext_resource type="Script" path="res://HUD&Menu/Menu/Options/rebind_button.gd" id="1_yprb4"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_os351"]
 
@@ -11,7 +11,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_c1pgw")
+script = ExtResource("1_yprb4")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
