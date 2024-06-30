@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://cf1bgo1vnki3c"]
+[gd_scene load_steps=6 format=3 uid="uid://cf1bgo1vnki3c"]
 
 [ext_resource type="PackedScene" uid="uid://bqcr1sn787xkn" path="res://HUD&Menu/Menu/Options/window_mode_button.tscn" id="1_1gpcu"]
 [ext_resource type="PackedScene" uid="uid://ci1k308cy4sm0" path="res://HUD&Menu/Menu/Options/resolution_button.tscn" id="2_4i1mq"]
 [ext_resource type="PackedScene" uid="uid://5vuviw1xgjx0" path="res://HUD&Menu/Menu/Options/rebind_button.tscn" id="3_skhkp"]
+[ext_resource type="PackedScene" uid="uid://cg8bq6n8k4oec" path="res://HUD&Menu/Menu/Options/audio_slider_settings.tscn" id="4_4jfjc"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdfq5"]
 
@@ -27,49 +28,10 @@ offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
 tab_alignment = 1
-current_tab = 1
-
-[node name="Sound" type="TabBar" parent="TabContainer"]
-visible = false
-layout_mode = 2
-
-[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_constants/margin_left = 24
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer"]
-layout_mode = 2
-theme_override_constants/separation = 16
-
-[node name="Label" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Toggle"
-
-[node name="Label2" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Toggle"
-
-[node name="Label3" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Toggle"
-
-[node name="Label4" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Toggle"
-
-[node name="Label5" type="Label" parent="TabContainer/Sound/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Toggle"
+current_tab = 2
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
@@ -144,6 +106,39 @@ action_name = "down"
 layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_cdfq5")
+
+[node name="Sound" type="TabBar" parent="TabContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 24
+theme_override_constants/margin_top = 24
+theme_override_constants/margin_right = 24
+theme_override_constants/margin_bottom = 24
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Sound/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Sound/MarginContainer/ScrollContainer"]
+layout_mode = 2
+theme_override_constants/separation = 32
+
+[node name="MasterSliderSettings" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_4jfjc")]
+layout_mode = 2
+
+[node name="MusicSliderSettings" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_4jfjc")]
+layout_mode = 2
+bus_name = "Music"
+
+[node name="SFXSliderSettings" parent="TabContainer/Sound/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("4_4jfjc")]
+layout_mode = 2
+bus_name = "SFX"
 
 [node name="Gameplay" type="TabBar" parent="TabContainer"]
 visible = false

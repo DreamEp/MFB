@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://c0ejinkqyooqo"]
+[gd_scene load_steps=7 format=3 uid="uid://c0ejinkqyooqo"]
 
 [ext_resource type="Script" path="res://HUD&Menu/Menu/main_menu.gd" id="1_4kwf0"]
 [ext_resource type="Texture2D" uid="uid://dliagwd6h3tcs" path="res://Art/UI/background.jpeg" id="1_d01rf"]
 [ext_resource type="PackedScene" uid="uid://bkq52g5a1py3k" path="res://HUD&Menu/Menu/options_menu.tscn" id="3_a35cd"]
+[ext_resource type="AudioStream" uid="uid://bagt8v42moj8h" path="res://Audio/MainMenuSong.mp3" id="4_ls1ck"]
 
 [sub_resource type="SystemFont" id="SystemFont_rr06g"]
 font_names = PackedStringArray("Calisto MT")
@@ -93,7 +94,14 @@ theme_override_font_sizes/font_size = 20
 text = "Quit Game"
 
 [node name="OptionsMenu" parent="." instance=ExtResource("3_a35cd")]
+visible = false
 layout_mode = 1
+
+[node name="MainMenuSong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_ls1ck")
+volume_db = -0.5
+autoplay = true
+bus = &"Music"
 
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/VBoxContainer/QuitGame" to="." method="_on_quit_game_pressed"]

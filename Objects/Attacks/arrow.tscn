@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://73bu6hx4xwif"]
+[gd_scene load_steps=7 format=3 uid="uid://73bu6hx4xwif"]
 
 [ext_resource type="Script" path="res://Objects/Attacks/arrow.gd" id="1_71b0m"]
 [ext_resource type="Texture2D" uid="uid://f76b35l6qiir" path="res://Art/Player/Attacks/arrow.png" id="2_bsulv"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="3_lg8wa"]
+[ext_resource type="AudioStream" uid="uid://bgus8xb6rjdki" path="res://Audio/ArrowSong.wav" id="4_gn5xl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idh52"]
 size = Vector2(4, 1)
@@ -32,5 +33,11 @@ collision_mask = 51
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
 position = Vector2(0.375, 0)
 shape = SubResource("RectangleShape2D_o73kp")
+
+[node name="ArrowAttackSong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_gn5xl")
+volume_db = -10.0
+pitch_scale = 1.5
+autoplay = true
 
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

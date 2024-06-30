@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b5fd0njlivmkl"]
+[gd_scene load_steps=7 format=3 uid="uid://b5fd0njlivmkl"]
 
 [ext_resource type="Texture2D" uid="uid://bgdsi7bejuct2" path="res://Art/Player/Attacks/axe.png" id="1_2ttsf"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="1_3070s"]
 [ext_resource type="Script" path="res://Objects/Attacks/axe.gd" id="1_p0hi4"]
+[ext_resource type="AudioStream" uid="uid://csehu4xir5t36" path="res://Audio/AxeSong.mp3" id="4_a5flx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_idh52"]
 size = Vector2(7, 9)
@@ -33,6 +34,10 @@ shape = SubResource("RectangleShape2D_o73kp")
 [node name="MaxTimer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
+
+[node name="AxeAttackSong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_a5flx")
+bus = &"SFX"
 
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
 [connection signal="timeout" from="MaxTimer" to="." method="_on_max_timer_timeout"]

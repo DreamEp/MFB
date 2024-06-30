@@ -10,9 +10,9 @@ var red_gem = preload("res://Art/Objects/gem_r.png")
 var target = null
 var speed = -0.5 
 
-@onready var sprite = $Sprite2D
-@onready var collision = $CollisionShape2D
-@onready var sound = $snd_collected 
+@onready var sprite: Sprite2D = $Sprite2D
+@onready var collision: CollisionShape2D = $CollisionShape2D
+@onready var audioStreamPlayer: AudioStreamPlayer2D = $PickupGemSong
 
 func _ready():
 	if experience < 5:
@@ -29,9 +29,11 @@ func _physics_process(delta):
 		speed += 2 * delta 
 
 func collect():
-	sound.play() 
-	sound.connect("finished", Callable(self, "_on_snd_collected_finished"))
-	collision.call_deferred("set","disabled",true)
+	audioStreamPlayer.play() 
+	#audioStreamPlayer.connect("finished", Callable(self, "_on_snd_collected_finished"))
+	audioStreamPlayer.finished.connect(_on_snd_collected_finished)
+	#collision.call_deferred("set","disabled",true)
+	collision.set_deferred("disabled", true)
 	sprite.visible = false
 	return experience
 

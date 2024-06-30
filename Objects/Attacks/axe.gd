@@ -12,6 +12,7 @@ var target
 @onready var sprite: Sprite2D = $Sprite2D
 @onready var enemy: Enemy = get_tree().get_first_node_in_group("enemy")
 @onready var player: Player = get_tree().get_first_node_in_group("player")
+@onready var audioStreamPlayer: AudioStreamPlayer2D = $AxeAttackSong
 
 func _physics_process(delta: float) -> void:
 	var tween = sprite.create_tween().set_loops()

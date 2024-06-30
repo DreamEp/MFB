@@ -12,9 +12,11 @@ var direction = Vector2.RIGHT
 
 @onready var enemy: Enemy = get_tree().get_first_node_in_group("enemy")
 @onready var player: Player = get_tree().get_first_node_in_group("player")
+@onready var audioStreamPlayer: AudioStreamPlayer2D = $ArrowAttackSong
 
 func _ready():
 	direction = Vector2.RIGHT.rotated(global_rotation)
+	audioStreamPlayer.play()
 	
 func _process(_delta):
 	velocity = direction * speed
@@ -38,4 +40,4 @@ func _on_hitbox_component_body_entered(body):
 		attack.attack_position = global_position
 		
 		hitbox.damage(attack)
-		on_enemy_hit()
+		on_enemy_hit()	
