@@ -68,15 +68,47 @@ offset_right = 332.0
 offset_bottom = -26.0
 text = "Level : 1"
 
+[node name="LevelUp" type="Panel" parent="HUD&Menus/HUD"]
+process_mode = 2
+visible = false
+layout_mode = 0
+offset_left = 220.0
+offset_top = 50.0
+offset_right = 420.0
+offset_bottom = 300.0
+
+[node name="LevelingUp" type="Label" parent="HUD&Menus/HUD/LevelUp"]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 50.0
+grow_horizontal = 2
+text = "Level Up !"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="UpgradeOption" type="VBoxContainer" parent="HUD&Menus/HUD/LevelUp"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 50.0
+offset_right = 190.0
+offset_bottom = 100.0
+
 [node name="CollectedWeapons" type="GridContainer" parent="HUD&Menus/HUD"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = 18.0
+offset_right = 208.0
+offset_bottom = 34.0
+columns = 10
 
 [node name="CollectedUpgrades" type="GridContainer" parent="HUD&Menus/HUD"]
 layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+offset_left = 8.0
+offset_top = 18.0
+offset_right = 208.0
+offset_bottom = 34.0
+columns = 10
 
 [node name="MainMenu" parent="HUD&Menus" instance=ExtResource("3_efc4l")]
 

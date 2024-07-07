@@ -167,6 +167,8 @@ script = ExtResource("1_ahxew")
 movemement_speed = 20.0
 health = 40.0
 enemy_damage = 5.0
+min_experience = 4
+max_experience = 10
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

@@ -1,0 +1,85 @@
+[gd_scene load_steps=4 format=3 uid="uid://chdogloptxlun"]
+
+[ext_resource type="Script" path="res://HUD&Menu/HUD/item_option.gd" id="1_twb4n"]
+[ext_resource type="Texture2D" uid="uid://xsv1qt7sqyaq" path="res://Art/Player/Upgrades/Tome.png" id="2_1nxm3"]
+
+[sub_resource type="SystemFont" id="SystemFont_s78ox"]
+font_names = PackedStringArray("Calisto MT")
+
+[node name="ItemOption" type="TextureButton"]
+custom_minimum_size = Vector2(180, 50)
+offset_right = 180.0
+offset_bottom = 50.0
+pivot_offset = Vector2(90, 25)
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_twb4n")
+
+[node name="BackgroundColor" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.750617, 0.634354, 0.533921, 1)
+
+[node name="BackgroundItemColor" type="ColorRect" parent="BackgroundColor"]
+layout_mode = 0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = 27.0
+offset_bottom = 27.0
+color = Color(0, 0, 0, 1)
+
+[node name="ItemIcon" type="TextureRect" parent="BackgroundColor/BackgroundItemColor"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 8.0
+offset_bottom = 8.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.75, 0.75)
+texture = ExtResource("2_1nxm3")
+
+[node name="LabelItemName" type="Label" parent="BackgroundColor"]
+layout_mode = 0
+offset_left = 39.0
+offset_top = 3.0
+offset_right = 79.0
+offset_bottom = 26.0
+theme_override_fonts/font = SubResource("SystemFont_s78ox")
+theme_override_font_sizes/font_size = 12
+text = "Name
+"
+horizontal_alignment = 1
+
+[node name="LabelItemDescription" type="Label" parent="BackgroundColor"]
+layout_mode = 0
+offset_left = 4.0
+offset_top = 27.0
+offset_right = 166.0
+offset_bottom = 48.0
+theme_override_fonts/font = SubResource("SystemFont_s78ox")
+theme_override_font_sizes/font_size = 8
+text = "Description of item"
+autowrap_mode = 2
+
+[node name="LabelItemLevel" type="Label" parent="BackgroundColor"]
+layout_mode = 0
+offset_left = 130.0
+offset_top = 3.0
+offset_right = 170.0
+offset_bottom = 13.0
+theme_override_fonts/font = SubResource("SystemFont_s78ox")
+theme_override_font_sizes/font_size = 8
+text = "Level: 1
+"
+horizontal_alignment = 1
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

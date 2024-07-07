@@ -94,7 +94,6 @@ theme_override_font_sizes/font_size = 20
 text = "Quit Game"
 
 [node name="OptionsMenu" parent="." instance=ExtResource("3_a35cd")]
-visible = false
 layout_mode = 1
 
 [node name="MainMenuSong" type="AudioStreamPlayer" parent="."]

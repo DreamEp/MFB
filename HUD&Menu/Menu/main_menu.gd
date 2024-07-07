@@ -4,6 +4,16 @@ class_name MainMenu
 @onready var optionMenu: OptionMenu = $OptionsMenu
 @onready var mainMenuContainer: MarginContainer = $MarginContainer
 
+func _process(_delta):
+	pass
+	#if Input.get_action_strength("menu"):
+		#if optionMenu.visible == false:
+			#optionMenu.visible = true
+			#get_tree().paused = true
+		#else:
+			#optionMenu.visible = false
+			#get_tree().paused = false
+			
 func _ready():
 	pass
 

@@ -22,6 +22,7 @@ class_name Player
 @export var block: float = 0
 @export_group("Misc Values")
 @export var area_collectible: float = 2.0
+@export var additional_proctile: float = 0
 @export var player_experience: float
 @export var player_experience_level: float = 1.0
 @export var player_collected_experience: float = 0
@@ -63,4 +64,4 @@ func set_healthbar(set_value: float = 0, set_max_value: float = 100):
 func set_expbar(set_value: float = 0, set_max_value: float = 100):
 	expBar.max_value = set_max_value
 	expBar.value = set_value
-	expLabel.text = str(player_level) + " ------- " + str(set_value)+"/"+str(set_max_value)
+	expLabel.text = str(player_experience_level, " ------- " + str(set_value)+"/"+str(set_max_value))

@@ -11,20 +11,13 @@ class_name MainNode
 
 var scene_instance : Node2D
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	startButton.button_down.connect(on_button_down)
 	hud.visible = false
 	optionMenu.visible = false
 	
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	pass
-	#if Input.get_action_strength("menu"):
-		#if mainMenu.visible == false:
-			#mainMenu.visible = true
-		#else:
-			#mainMenu.visible = false
 
 func on_button_down():
 	load_scene("world")
@@ -43,4 +36,3 @@ func load_scene(scene_name : String):
 	if(scene_resource):
 		scene_instance = scene_resource.instantiate()
 		main_2d.add_child(scene_instance)
-
