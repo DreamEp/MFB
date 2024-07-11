@@ -16,10 +16,23 @@ func _ready() -> void:
 	connect("selected_upgrade", Callable(player, "upgrade_character"))
 	if item == null:
 		item = "food"
-	itemName.text = UpgradeDb.UPGRADES[item]["displayname"]
-	itemDescription.text = UpgradeDb.UPGRADES[item]["details"]
-	itemLevel.text = UpgradeDb.UPGRADES[item]["level"]
-	itemIcon.texture = load(UpgradeDb.UPGRADES[item]["icon"])
+	match item["rarity"]:
+		"uncommon":
+			backgroundColor.color = Color(0.8, 0.8, 0.8, 1)
+		"common":
+			backgroundColor.color = Color(0.6, 0.9, 0.6, 1)
+		"rare":
+			backgroundColor.color = Color(0.7, 0.7, 1, 1)
+		"epic":
+			backgroundColor.color = Color(0.8, 0.6, 0.9, 1)
+		"leg":
+			backgroundColor.color = Color(1, 0.7, 0.7, 1)
+		_:
+			pass
+	itemName.text = UpgradeDb.UPGRADES[item["item"]]["displayname"]
+	itemDescription.text = UpgradeDb.UPGRADES[item["item"]]["details"]
+	itemLevel.text = UpgradeDb.UPGRADES[item["item"]]["level"]
+	itemIcon.texture = load(UpgradeDb.UPGRADES[item["item"]]["icon"])
 	
 func _on_pressed()-> void:
 	selected_upgrade.emit(item)

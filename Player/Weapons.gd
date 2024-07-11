@@ -22,8 +22,8 @@ func _ready():
 	spriteBow.visible = false
 
 func _physics_process(_delta):
-	#bowAttack()
-	if Input.is_action_just_pressed("left_click"):
+	bowAttack()
+	#if Input.is_action_just_pressed("left_click"):
 		#if sign(player.aim_position.x) != sign(firing_position.position.x):
 			#firing_position.position.x *= -1
 			#
@@ -31,7 +31,7 @@ func _physics_process(_delta):
 		#
 		#animPlayer.clear_queue()
 		#animPlayer.queue("attack")
-		bowAttack()
+		#bowAttack()
 			
 func spawnAxe():
 	var spawned_axe := axe_scene.instantiate()

@@ -23,6 +23,7 @@ class_name Player
 @export_group("Misc Values")
 @export var area_collectible: float = 2.0
 @export var additional_proctile: float = 0
+@export var rarity_chance: float = 1.0
 @export var player_experience: float
 @export var player_experience_level: float = 1.0
 @export var player_collected_experience: float = 0

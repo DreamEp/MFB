@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://36lv5b1iv1pu"]
+[gd_scene load_steps=7 format=3 uid="uid://36lv5b1iv1pu"]
 
 [ext_resource type="Script" path="res://Player/interraction.gd" id="1_6k6xg"]
 [ext_resource type="AudioStream" uid="uid://c10emlc0j8xe8" path="res://Audio/LevelUp.ogg" id="2_41ocd"]
+[ext_resource type="Script" path="res://Player/leveling.gd" id="2_isv4d"]
+[ext_resource type="Script" path="res://Player/upgrade_player.gd" id="3_2exwn"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0b383"]
 radius = 20.0
@@ -27,7 +29,13 @@ collision_mask = 64
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_7ja8g")
 
-[node name="LevelUpSound" type="AudioStreamPlayer" parent="."]
+[node name="Leveling" type="Node2D" parent="."]
+script = ExtResource("2_isv4d")
+
+[node name="UpgradePlayer" type="Node2D" parent="Leveling"]
+script = ExtResource("3_2exwn")
+
+[node name="LevelUpSound" type="AudioStreamPlayer" parent="Leveling"]
 stream = ExtResource("2_41ocd")
 bus = &"SFX"
 

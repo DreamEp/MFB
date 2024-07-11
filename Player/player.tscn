@@ -144,6 +144,7 @@ collision_layer = 4
 collision_mask = 115
 motion_mode = 1
 script = ExtResource("1_1nmtv")
+rarity_chance = 155.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -171,7 +172,7 @@ script = ExtResource("9_ufcmi")
 firing_position = NodePath("FiringPosition")
 arrow_count = 6
 arc = 10.0
-bow_rate = 1.0
+bow_rate = 2.036
 
 [node name="FiringPosition" type="Marker2D" parent="Weapons"]
 self_modulate = Color(0.464769, 0.463742, 0.907029, 1)
