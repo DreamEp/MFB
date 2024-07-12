@@ -134,22 +134,22 @@ func get_random_player_upgrade():
 		return null
 	
 func get_random_player_attack():
-	var dblist = [] #La pull d'opptions d'upgrade
+	var dblist = [] 
 	for i in UpgradeDb.UPGRADES:
 		if UpgradeDb.UPGRADES[i]["type"] == "attack":
-			if i in collected_upgrades: #Si on a déjà trouvé l'upgrade
-				pass #On ne fait rien
-			elif i in upgrade_options: #Si l'upgrade est déjà ajouté en option
-				pass #On ne fait rien
-			elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0: #Si il y'a des prérequis pour l'upgrade:
-				var to_add = true #On créer une variable pour savoir si on ajoute ou non l'upgrade dans notre pull
-				for u in UpgradeDb.UPGRADES[i]["prerequisite"]: #On loop à travers les prérequis
-					if not u in collected_upgrades: #Si le prérequis n'est pas dans nos upgrade déjà récolté
-						to_add = false #On ne l'ajoute pas
+			if i in collected_upgrades:
+				pass 
+			elif i in upgrade_options:
+				pass 
+			elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0:
+				var to_add = true 
+				for u in UpgradeDb.UPGRADES[i]["prerequisite"]: 
+					if not u in collected_upgrades:
+						to_add = false 
 				if to_add: 
-					dblist.append(i) #Sinon on l'ajoute dans notre pull d'upgrade
+					dblist.append(i)
 			else:
-				dblist.append(i) #Si il n'y a pas de prérequis on l'ajoute directement
+				dblist.append(i) 
 		else: 
 			pass
 
@@ -180,9 +180,9 @@ func pick_random_upgrade(list_upgrades_chance):
 func upgrade_character(picked_upgrade):
 	var upgrade = UpgradeDb.UPGRADES[picked_upgrade["item"]]
 	var upgrade_name = picked_upgrade["item"]
-	var upgrade_display_name = upgrade["displayname"]
+	#var upgrade_display_name = upgrade["displayname"]
 	var upgrade_base_value = upgrade["value"]
-	var upgrade_rarity = picked_upgrade["rarity"]
+	#var upgrade_rarity = picked_upgrade["rarity"]
 	match upgrade_name:
 		"add_armor":
 			player.armor += upgrade_base_value
@@ -212,42 +212,42 @@ func upgrade_character(picked_upgrade):
 			healthComponent.health += upgrade_base_value
 			healthComponent.health = clamp(healthComponent.health, 0, healthComponent.MAX_HEALTH)
 	adjust_gui_collection(upgrade_name, upgrade)
-	var option_children = upgradeOption.get_children() #On recupere les différentes options du pannel
+	var option_children = upgradeOption.get_children() 
 	for i in option_children: 
-		i.queue_free() #On supprime chaque option du pannel
-	upgrade_options.clear() #On clear les options pour la prochaine fois
-	collected_upgrades.append(upgrade) #On ajoute l'option choisi dans notre pull d'option déjà collecté
-	levelUpPanel.visible = false #On rend invisible le pannel de monter de niveau
-	levelUpPanel.position = Vector2(800, 50) #On replace loin le pannel pour avoir de nouveau l'effet quand il pop
-	get_tree().paused = false #On met le jeux en marche à nouveau
-	leveling.calculate_experience(0) #Permet de gérer plusieurs level up d'un coup
+		i.queue_free()
+	upgrade_options.clear() 
+	collected_upgrades.append(upgrade) 
+	levelUpPanel.visible = false 
+	levelUpPanel.position = Vector2(800, 50) 
+	get_tree().paused = false 
+	leveling.calculate_experience(0) 
 
-#Permet d'avoir les améliorations et armes qu'on a déjà récupéré
+
 func adjust_gui_collection(key, upgrade):
-	var get_upgraded_displayname = upgrade["displayname"] #Permet de récupérer de la db le displayname de l'upgrade
-	var get_type = upgrade["type"] #Permet de recupérer le types de l'upgrade dans la db
-	if get_type != "item": #On ne veut pas afficher la food
+	var get_upgraded_displayname = upgrade["displayname"] 
+	var get_type = upgrade["type"] 
+	if get_type != "item": 
 		var get_collected_displaynames = []
 		for i in collected_upgrades:
-			get_collected_displaynames.append(i["displayname"]) #On récupère tous les noms déjà collecté
-		if not get_upgraded_displayname in get_collected_displaynames: #Si il n'a pas encore été collecté
+			get_collected_displaynames.append(i["displayname"]) 
+		if not get_upgraded_displayname in get_collected_displaynames:
 			var new_item = itemContainer.instantiate() 
 			new_item.upgrade = upgrade
-			match get_type: #On l'ajoute dans le pannel correspondant
+			match get_type: 
 				"attacks":
 					collectedWeapons.add_child(new_item)
 				"upgrade":
 					collectedUpgrades.add_child(new_item)
 		else:			
-			match get_type: #On met a jour son niveau dans le pannel correspondant
+			match get_type: 
 				"attacks":
 					var current_weapons = collectedWeapons.get_children()
 					for w in current_weapons: 
 						if w.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and w.has_method("update_level"):
-							w.update_level(key, upgrade)
+							w.update_level(key)
 				"upgrade":
 					var current_upgrades = collectedUpgrades.get_children()
 					for u in current_upgrades: 
 						if u.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and u.has_method("update_level"):
-							u.update_level(key, upgrade)
+							u.update_level(key)
 
