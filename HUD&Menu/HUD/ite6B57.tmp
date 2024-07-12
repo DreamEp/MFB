@@ -22,7 +22,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 1
 color = Color(0.750617, 0.634354, 0.533921, 1)
 
 [node name="BackgroundItemColor" type="ColorRect" parent="BackgroundColor"]
@@ -31,11 +30,9 @@ offset_left = 3.0
 offset_top = 3.0
 offset_right = 27.0
 offset_bottom = 27.0
-mouse_filter = 1
 color = Color(0, 0, 0, 1)
 
 [node name="ItemIcon" type="TextureRect" parent="BackgroundColor/BackgroundItemColor"]
-texture_filter = 1
 custom_minimum_size = Vector2(32, 32)
 layout_mode = 1
 anchors_preset = 15
@@ -54,7 +51,6 @@ offset_left = 39.0
 offset_top = 3.0
 offset_right = 79.0
 offset_bottom = 26.0
-mouse_filter = 1
 theme_override_fonts/font = SubResource("SystemFont_s78ox")
 theme_override_font_sizes/font_size = 12
 text = "Name
@@ -67,7 +63,6 @@ offset_left = 4.0
 offset_top = 27.0
 offset_right = 166.0
 offset_bottom = 48.0
-mouse_filter = 1
 theme_override_fonts/font = SubResource("SystemFont_s78ox")
 theme_override_font_sizes/font_size = 8
 text = "Description of item"
@@ -79,7 +74,6 @@ offset_left = 130.0
 offset_top = 3.0
 offset_right = 170.0
 offset_bottom = 13.0
-mouse_filter = 1
 theme_override_fonts/font = SubResource("SystemFont_s78ox")
 theme_override_font_sizes/font_size = 8
 text = "Level: 1

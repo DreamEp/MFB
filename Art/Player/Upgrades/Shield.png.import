@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cnt71umke6s3j"
-path="res://.godot/imported/LowBoots.png-6a468764cd369a5b2dba536e0b5cd6b7.ctex"
+uid="uid://dwytott4q5shr"
+path="res://.godot/imported/Shield.png-837932bc3d8e2b163814aceba0d0b83e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Player/Upgrades/LowBoots.png"
-dest_files=["res://.godot/imported/LowBoots.png-6a468764cd369a5b2dba536e0b5cd6b7.ctex"]
+source_file="res://Art/Player/Upgrades/Shield.png"
+dest_files=["res://.godot/imported/Shield.png-837932bc3d8e2b163814aceba0d0b83e.ctex"]
 
 [params]
 

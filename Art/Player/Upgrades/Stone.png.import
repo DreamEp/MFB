@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://08pj4mqse0ba"
-path="res://.godot/imported/Helmet.png-2c64531f1d73c8d52baf46b16a6969ac.ctex"
+uid="uid://bt3kdj7rskad8"
+path="res://.godot/imported/Stone.png-f7dcaf5ed10bf477950d37f5ae4277ae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Player/Upgrades/Helmet.png"
-dest_files=["res://.godot/imported/Helmet.png-2c64531f1d73c8d52baf46b16a6969ac.ctex"]
+source_file="res://Art/Player/Upgrades/Stone.png"
+dest_files=["res://.godot/imported/Stone.png-f7dcaf5ed10bf477950d37f5ae4277ae.ctex"]
 
 [params]
 

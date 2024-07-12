@@ -1,28 +1,39 @@
-[gd_scene load_steps=4 format=3 uid="uid://dg3hwr8s4lw0j"]
+[gd_scene load_steps=5 format=3 uid="uid://dg3hwr8s4lw0j"]
 
 [ext_resource type="Texture2D" uid="uid://crumsgcuxnuma" path="res://Art/UI/EmptyItem.png" id="1_6fqvt"]
 [ext_resource type="Script" path="res://HUD&Menu/HUD/ItemContainer.gd" id="1_r128k"]
+[ext_resource type="Texture2D" uid="uid://bheyhidbpumij" path="res://Art/Player/Upgrades/Boots.png" id="3_7bku4"]
 
 [sub_resource type="SystemFont" id="SystemFont_wgyuh"]
 font_names = PackedStringArray("Calisto MT")
 subpixel_positioning = 0
 
 [node name="ItemContainer" type="TextureRect"]
-offset_right = 12.0
-offset_bottom = 12.0
+offset_right = 16.0
+offset_bottom = 16.0
 texture = ExtResource("1_6fqvt")
 script = ExtResource("1_r128k")
 
 [node name="ItemTexture" type="TextureRect" parent="."]
-layout_mode = 0
+texture_filter = 1
+layout_mode = 1
+offset_left = 1.0
+offset_top = 1.0
 offset_right = 33.0
 offset_bottom = 33.0
+texture = ExtResource("3_7bku4")
 
 [node name="LabelItemNumber" type="Label" parent="."]
-layout_mode = 0
-offset_top = 8.0
-offset_right = 40.0
-offset_bottom = 31.0
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -10.0
+grow_horizontal = 2
+grow_vertical = 0
 theme_override_fonts/font = SubResource("SystemFont_wgyuh")
-theme_override_font_sizes/font_size = 8
-text = "Level: 1"
+theme_override_font_sizes/font_size = 6
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 2

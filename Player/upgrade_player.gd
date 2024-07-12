@@ -1,6 +1,6 @@
 extends Node2D
 
-@onready var leveling = get_owner()
+@onready var leveling = get_owner().get_node("Leveling")
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var healthComponent: HealthComponent = player.get_node("HealthComponent")
 @onready var levelUpPanel: Panel = get_tree().get_first_node_in_group("hud").get_node("LevelUp")
@@ -27,11 +27,11 @@ var rarity_chances: Dictionary = {
 func update_rarity_chances(base_rarity_chances):
 	var player_chance = player.rarity_chance
 	
-	var common_chance = rarity_chances["common"]
-	var uncommon_chance = rarity_chances["uncommon"]
-	var rare_chance = rarity_chances["rare"]
-	var epic_chance = rarity_chances["epic"]
-	var leg_chance = rarity_chances["leg"]
+	var common_chance = base_rarity_chances["common"]
+	var uncommon_chance = base_rarity_chances["uncommon"]
+	var rare_chance = base_rarity_chances["rare"]
+	var epic_chance = base_rarity_chances["epic"]
+	var leg_chance = base_rarity_chances["leg"]
 	if player_chance >= 1  && player_chance <= 100:
 		common_chance = 80
 		uncommon_chance += uncommon_chance * (player_chance / 100)
@@ -173,28 +173,45 @@ func pick_random_upgrade(list_upgrades_chance):
 	var random_number = randi() % 200
 	while random_number not in number_to_upgrade:
 		random_number = randi() % 200
-	print("Player chance = " + str(player.rarity_chance))
 	print(number_to_upgrade[random_number])
 	return number_to_upgrade[random_number]
 	
 	
-func upgrade_character(upgrade):
-	var upgrade_value = UpgradeDb.UPGRADES[upgrade]["value"]
-	match upgrade:
-		"armor":
-			player.armor += upgrade_value
-		"speed":
-			player.movement_speed += upgrade_value
-		"tome":
-			player.spell_area += upgrade_value
-		"scroll":
-			player.spell_coldown += upgrade_value
-		"ring":
-			player.additional_proctile += upgrade_value
+func upgrade_character(picked_upgrade):
+	var upgrade = UpgradeDb.UPGRADES[picked_upgrade["item"]]
+	var upgrade_name = picked_upgrade["item"]
+	var upgrade_display_name = upgrade["displayname"]
+	var upgrade_base_value = upgrade["value"]
+	var upgrade_rarity = picked_upgrade["rarity"]
+	match upgrade_name:
+		"add_armor":
+			player.armor += upgrade_base_value
+		"add_block":
+			player.block += upgrade_base_value
+		"add_collect_area":
+			player.collectible_area += player.collectible_area * upgrade_base_value
+		"add_mov_speed":
+			print("previous ms %s" % str(player.movement_speed))
+			player.movement_speed += player.movement_speed * upgrade_base_value
+			print("after up ms %s" % str(player.movement_speed))
+		"add_attack_dmg":
+			player.attack_damage += player.attack_damage * upgrade_base_value
+		"add_spell_dmg":
+			player.spell_damage += player.spell_damage * upgrade_base_value
+		"add_attack_speed":
+			player.attack_coldown += player.attack_coldown * upgrade_base_value
+		"add_area_spell":
+			player.spell_area += player.spell_area * upgrade_base_value
+		"add_cdr_spell":
+			player.spell_coldown += player.spell_coldown * upgrade_base_value
+		"add_spell_proj":
+			player.additional_spell_proctile += upgrade_base_value
+		"add_attacks_proj":
+			player.additional_proctile += upgrade_base_value
 		"food":
-			healthComponent.health += upgrade_value
+			healthComponent.health += upgrade_base_value
 			healthComponent.health = clamp(healthComponent.health, 0, healthComponent.MAX_HEALTH)
-	adjust_gui_collection(upgrade)
+	adjust_gui_collection(upgrade_name, upgrade)
 	var option_children = upgradeOption.get_children() #On recupere les différentes options du pannel
 	for i in option_children: 
 		i.queue_free() #On supprime chaque option du pannel
@@ -206,13 +223,13 @@ func upgrade_character(upgrade):
 	leveling.calculate_experience(0) #Permet de gérer plusieurs level up d'un coup
 
 #Permet d'avoir les améliorations et armes qu'on a déjà récupéré
-func adjust_gui_collection(upgrade):
-	var get_upgraded_displayname = UpgradeDb.UPGRADES[upgrade]["displayname"] #Permet de récupérer de la db le displayname de l'upgrade
-	var get_type = UpgradeDb.UPGRADES[upgrade]["type"] #Permet de recupérer le types de l'upgrade dans la db
+func adjust_gui_collection(key, upgrade):
+	var get_upgraded_displayname = upgrade["displayname"] #Permet de récupérer de la db le displayname de l'upgrade
+	var get_type = upgrade["type"] #Permet de recupérer le types de l'upgrade dans la db
 	if get_type != "item": #On ne veut pas afficher la food
 		var get_collected_displaynames = []
 		for i in collected_upgrades:
-			get_collected_displaynames.append(UpgradeDb.UPGRADES[i]["displayname"]) #On récupère tous les noms déjà collecté
+			get_collected_displaynames.append(i["displayname"]) #On récupère tous les noms déjà collecté
 		if not get_upgraded_displayname in get_collected_displaynames: #Si il n'a pas encore été collecté
 			var new_item = itemContainer.instantiate() 
 			new_item.upgrade = upgrade
@@ -226,11 +243,11 @@ func adjust_gui_collection(upgrade):
 				"attacks":
 					var current_weapons = collectedWeapons.get_children()
 					for w in current_weapons: 
-						if w.upgrade.substr(0, 3) == upgrade.substr(0, 3) and w.has_method("update_level"):
-							w.update_level(upgrade)
+						if w.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and w.has_method("update_level"):
+							w.update_level(key, upgrade)
 				"upgrade":
 					var current_upgrades = collectedUpgrades.get_children()
 					for u in current_upgrades: 
-						if u.upgrade.substr(0, 3) == upgrade.substr(0, 3) and u.has_method("update_level"):
-							u.update_level(upgrade)
+						if u.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and u.has_method("update_level"):
+							u.update_level(key, upgrade)
 

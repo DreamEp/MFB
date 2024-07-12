@@ -9,11 +9,15 @@ class_name  ItemOption
 
 var item = null
 @onready var player = get_tree().get_first_node_in_group("player")
+@onready var interraction = player.get_node("Interraction")
+@onready var leveling = interraction.get_node("Leveling")
+@onready var upgrad = leveling.get_node("UpgradePlayer")
 
 signal selected_upgrade(upgrade)
+var base_color
 
-func _ready() -> void:
-	connect("selected_upgrade", Callable(player, "upgrade_character"))
+func _ready():
+	connect("selected_upgrade", Callable(upgrad, "upgrade_character"))
 	if item == null:
 		item = "food"
 	match item["rarity"]:
@@ -29,24 +33,23 @@ func _ready() -> void:
 			backgroundColor.color = Color(1, 0.7, 0.7, 1)
 		_:
 			pass
+	base_color = backgroundColor.color
 	itemName.text = UpgradeDb.UPGRADES[item["item"]]["displayname"]
 	itemDescription.text = UpgradeDb.UPGRADES[item["item"]]["details"]
-	itemLevel.text = UpgradeDb.UPGRADES[item["item"]]["level"]
+	itemLevel.text = "Level : " + str(UpgradeDb.UPGRADES[item["item"]]["level"])
 	itemIcon.texture = load(UpgradeDb.UPGRADES[item["item"]]["icon"])
 	
-func _on_pressed()-> void:
+func _on_pressed():
 	selected_upgrade.emit(item)
 
 func _on_mouse_entered():
-	print("entered")
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1, 1) * 1.025, 0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.play()
-	backgroundColor.color = Color.WEB_GRAY
+	backgroundColor.color = base_color.lightened(0.15)
 
 func _on_mouse_exited():
-	print("exited")
 	var tween = create_tween()
 	tween.tween_property(self, "scale", Vector2(1, 1), 0.3).set_trans(Tween.TRANS_CUBIC).set_ease(Tween.EASE_OUT)
 	tween.play()
-	backgroundColor.color = Color.DARK_GRAY
+	backgroundColor.color = base_color

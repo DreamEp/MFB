@@ -40,7 +40,6 @@ func calculate_experience_cap():
 func levelup():
 	levelUpSound.play()
 	expLabel.text = str("Level : ",player.player_experience_level)
-	print(player.player_experience_level)
 	var tween = levelUpPanel.create_tween()
 	tween.tween_property(levelUpPanel, "position", Vector2(220, 50), 0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
 	tween.play()

@@ -15,8 +15,6 @@ func _process(_delta):
 func damage(attack: Attack):
 	if attack:
 		health -= attack.attack_damage
-		print("current dmg received %s" % attack.attack_damage)
-		print("health : %s" % health)
 		if health <= 0:
 			if get_parent() is Enemy:
 				enemy_death()
