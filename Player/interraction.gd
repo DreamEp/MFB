@@ -5,7 +5,6 @@ class_name Interraction
 
 @onready var leveling = $Leveling
 
-
 func _on_grab_area_area_entered(area):
 	if area is Experience:  
 		area.target = player

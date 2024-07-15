@@ -101,7 +101,7 @@ var UPGRADES = {
 		"details": "Increase area of collect",
 		"level": 1,
 		"rarity": "",
-		"value": 0.50,
+		"value": 0.2,
 		"prerequisite": [],
 		"type": "upgrade"
 	},
@@ -111,7 +111,7 @@ var UPGRADES = {
 		"details": "Increase movement speed",
 		"level": 1,
 		"rarity": "",
-		"value": 0.50,
+		"value": 0.2,
 		"prerequisite": [],
 		"type": "upgrade"
 	},

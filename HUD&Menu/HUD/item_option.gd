@@ -11,19 +11,19 @@ var item = null
 @onready var player = get_tree().get_first_node_in_group("player")
 @onready var interraction = player.get_node("Interraction")
 @onready var leveling = interraction.get_node("Leveling")
-@onready var upgrad = leveling.get_node("UpgradePlayer")
+@onready var upgrade = leveling.get_node("UpgradePlayer")
 
 signal selected_upgrade(upgrade)
 var base_color
 
 func _ready():
-	connect("selected_upgrade", Callable(upgrad, "upgrade_character"))
+	connect("selected_upgrade", Callable(upgrade, "upgrade_character"))
 	if item == null:
 		item = "food"
 	match item["rarity"]:
-		"uncommon":
-			backgroundColor.color = Color(0.8, 0.8, 0.8, 1)
 		"common":
+			backgroundColor.color = Color(0.8, 0.8, 0.8, 1)
+		"uncommon":
 			backgroundColor.color = Color(0.6, 0.9, 0.6, 1)
 		"rare":
 			backgroundColor.color = Color(0.7, 0.7, 1, 1)

@@ -23,7 +23,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-color = Color(0.750617, 0.634354, 0.533921, 1)
+color = Color(0.8, 0.8, 0.8, 1)
 
 [node name="BackgroundItemColor" type="ColorRect" parent="BackgroundColor"]
 layout_mode = 0

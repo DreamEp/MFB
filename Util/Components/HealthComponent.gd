@@ -16,36 +16,6 @@ func damage(attack: Attack):
 	if attack:
 		health -= attack.attack_damage
 		if health <= 0:
-			if get_parent() is Enemy:
-				enemy_death()
-			elif get_parent() is Player:
-				player_death()
+			get_parent().alive = false
 		else:
-			if get_parent() is Enemy:
-				enemy_hurt()
-			elif get_parent() is Player:
-				player_hurt()
-			
-func enemy_death():
-	animPlayer.clear_queue()
-	animPlayer.stop()
-	animPlayer.queue("death")
-	
-func player_death():
-	animPlayer.clear_queue()
-	animPlayer.stop()
-	animPlayer.queue("death")
-	
-func enemy_hurt():
-	animPlayer.clear_queue()
-	animPlayer.stop()
-	animPlayer.queue("hurt")
-	
-func player_hurt():
-	animPlayer.clear_queue()
-	animPlayer.stop()
-	animPlayer.queue("hurt")
-	
-func deleteNode():
-	var parent = get_parent()
-	parent.queue_free()
+			get_parent().hurt = true

@@ -35,9 +35,16 @@ class_name Player
 @onready var healthLabel: Label = healthBar.get_node("HealthLabel")
 @onready var expLabel: Label = expBar.get_node("LevelLabel")
 @onready var healthComponent: HealthComponent = $HealthComponent
-
-var aim_position : Vector2
 @onready var fire_position = $Weapons/FiringPosition
+
+var alive := true
+var idle := true
+var walk := false
+var attack := false
+var hurt := false
+var stunned := false
+var aim_position : Vector2
+
 
 func _ready():
 	print(healthBar.name)

@@ -11,20 +11,42 @@ class_name Enemy
 @export var min_experience: int = 0
 @export var max_experience: int = 5
 
-#@onready var enemySprite2D: AnimatedSprite2D = $AnimatedSprite2D
+@onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var enemySprite2D: Sprite2D = $Sprite2D
 
 var exp_gem: PackedScene = preload("res://Objects/experience_gem.tscn")
 @onready var experienceGem: Node2D = get_tree().get_first_node_in_group("experience")
 
+var alive := true
+var idle := true
+var walk := false
+var attacking := false
+var hurt := false
+var stunned := false
 
 func _ready():
-	#$HitboxComponent.disconnect("body_entered", Callable(self, "_on_hitbox_component_body_entered"))
 	pass
-
+	
 func _on_hitbox_component_body_entered(body):
 	if body is Player:
-		var hitbox: HitboxComponent = body.get_node("HitboxComponent")
+		attacking = true
+
+func _on_hitbox_component_body_exited(body):
+	if body is Player:
+		attacking = false
+
+func spawnExperience():
+	var new_gem = exp_gem.instantiate()
+	new_gem.global_position = global_position
+	new_gem.experience = randi_range(min_experience, max_experience)
+	experienceGem.call_deferred('add_child', new_gem)
+
+func on_player_hit():
+	pass
+	
+func damaging():
+	if attacking:
+		var hitbox: HitboxComponent = player.get_node("HitboxComponent")
 		
 		var attack = Attack.new()
 		attack.attack_damage = enemy_damage
@@ -34,16 +56,3 @@ func _on_hitbox_component_body_entered(body):
 		
 		hitbox.damage(attack)
 		on_player_hit()
-		
-func on_player_hit():
-	pass
-
-func spawnExperience():
-	var new_gem = exp_gem.instantiate()
-	new_gem.global_position = global_position
-	new_gem.experience = randi_range(min_experience, max_experience)
-	experienceGem.call_deferred('add_child', new_gem)
-	
-func attacking():
-	$HitboxComponent.connect("body_entered", Callable(self, "_on_hitbox_component_body_entered"))
-
