@@ -9,29 +9,27 @@ extends Node2D
 
 @export_group("Bow")
 @onready var arrow_scene: PackedScene = preload("res://Objects/Attacks/arrow.tscn")
-@export var arrow_count: int = 0
+@export var base_arrow_count: int = 0
 @export_range(0, 360) var arc: float = 0
-@export_range(0, 5) var bow_rate: float = 10
-var can_bow_attack = true
+@export_range(0, 5) var base_bow_rate: float = 10
+var can_bow_attack = false
 var auto_attack = false
 var auto_aim = false
 
 @onready var spriteBow = $FiringPosition/Bow
+@onready var settings_resource: DefaultSettingsResource = preload("res://Resources/Settings/DefaultSettings.tres")
 
 func _ready():
-	spriteBow.visible = false
+	await get_tree().create_timer(base_bow_rate).timeout
+	can_bow_attack = true
+	#spriteBow.visible = false
 
 func _physics_process(_delta):
-	bowAttack()
-	#if Input.is_action_just_pressed("left_click"):
-		#if sign(player.aim_position.x) != sign(firing_position.position.x):
-			#firing_position.position.x *= -1
-			#
-		#var mouse_direction := get_global_mouse_position() - firing_position.global_position
-		#
-		#animPlayer.clear_queue()
-		#animPlayer.queue("attack")
-		#bowAttack()
+	if(settings_resource.auto_aim_state):
+		bowAttack()
+	else:
+		if Input.is_action_just_pressed("left_click"):
+			bowAttack()
 			
 func spawnAxe():
 	var spawned_axe := axe_scene.instantiate()
@@ -45,6 +43,8 @@ func spawnAxe():
 		
 		
 func bowAttack():
+	var arrow_count = base_arrow_count + player.additional_spell_proctile + player.additional_attack_proctile
+	var bow_rate = base_bow_rate - (base_bow_rate * (player.attack_coldown/100))
 	spriteBow.visible = true
 	if can_bow_attack:
 		can_bow_attack = false

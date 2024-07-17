@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://0q77ksscaho5"]
+[gd_scene load_steps=11 format=3 uid="uid://0q77ksscaho5"]
 
 [ext_resource type="PackedScene" uid="uid://b48nchocyocqp" path="res://Player/player.tscn" id="1_13lbo"]
+[ext_resource type="Script" path="res://Scenes/world.gd" id="1_a5gyv"]
 [ext_resource type="PackedScene" uid="uid://bkwl467oahx1d" path="res://Enemies/enemy.tscn" id="2_5su7r"]
 [ext_resource type="Texture2D" uid="uid://dn4p38y76xv3i" path="res://Art/tilemap_packed.png" id="3_sgcg1"]
 [ext_resource type="PackedScene" uid="uid://cxcen78y8bhox" path="res://Util/enemy_spawner.tscn" id="4_24gqt"]
@@ -416,10 +417,19 @@ script = ExtResource("5_i3ma0")
 time_start = 0
 time_end = 10
 enemy_type = ExtResource("2_5su7r")
-enemy_num = 1
+enemy_num = 2
 enemy_spawn_delay = 0
 
+[sub_resource type="Resource" id="Resource_cjmbi"]
+script = ExtResource("5_i3ma0")
+time_start = 3
+time_end = 10
+enemy_type = ExtResource("2_5su7r")
+enemy_num = 10
+enemy_spawn_delay = 1
+
 [node name="World" type="Node2D"]
+script = ExtResource("1_a5gyv")
 
 [node name="TileMap" type="TileMap" parent="."]
 tile_set = SubResource("TileSet_dfrsd")
@@ -435,11 +445,11 @@ layer_2/tile_data = PackedInt32Array(-327665, 327680, 0, -262129, 327680, 1, -26
 
 [node name="Enemy" parent="." instance=ExtResource("2_5su7r")]
 position = Vector2(213, 70)
-min_experience = 10
-max_experience = 30
+min_experience = 50
+max_experience = 100
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_24gqt")]
-spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_k0kof")])
+spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_k0kof"), SubResource("Resource_cjmbi")])
 
 [node name="Loots" type="Node2D" parent="."]
 

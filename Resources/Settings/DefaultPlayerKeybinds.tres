@@ -1,0 +1,37 @@
+[gd_resource type="Resource" script_class="PlayerKeybindsResource" load_steps=7 format=3 uid="uid://dnch61o82xsjt"]
+
+[ext_resource type="Script" path="res://Resources/Settings/PlayerKeybindsResource.gd" id="1_tyhpj"]
+
+[sub_resource type="InputEventKey" id="InputEventKey_xhpix"]
+device = -1
+physical_keycode = 83
+unicode = 115
+
+[sub_resource type="InputEventKey" id="InputEventKey_l3sim"]
+device = -1
+physical_keycode = 65
+unicode = 113
+
+[sub_resource type="InputEventKey" id="InputEventKey_g7202"]
+device = -1
+keycode = 4194305
+physical_keycode = 4194305
+key_label = 4194305
+
+[sub_resource type="InputEventKey" id="InputEventKey_sdcxm"]
+device = -1
+physical_keycode = 68
+unicode = 100
+
+[sub_resource type="InputEventKey" id="InputEventKey_pgono"]
+device = -1
+physical_keycode = 87
+unicode = 122
+
+[resource]
+script = ExtResource("1_tyhpj")
+DEFAULT_UP_KEY = SubResource("InputEventKey_pgono")
+DEFAULT_DOWN_KEY = SubResource("InputEventKey_xhpix")
+DEFAULT_LEFT_KEY = SubResource("InputEventKey_l3sim")
+DEFAULT_RIGHT_KEY = SubResource("InputEventKey_sdcxm")
+DEFAULT_MENU_KEY = SubResource("InputEventKey_g7202")

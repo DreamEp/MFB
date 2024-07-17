@@ -218,7 +218,9 @@ func upgrade_character(picked_upgrade):
 		"add_spell_dmg":
 			player.spell_damage += player.spell_damage * upgrade_value
 		"add_attack_speed":
+			print("after up as %s" % str(player.attack_coldown))
 			player.attack_coldown += player.attack_coldown * upgrade_value
+			print("after up as %s" % str(player.attack_coldown))
 		"add_area_spell":
 			player.spell_area += player.spell_area * upgrade_value
 		"add_cdr_spell":
@@ -226,7 +228,7 @@ func upgrade_character(picked_upgrade):
 		"add_spell_proj":
 			player.additional_spell_proctile += upgrade_value
 		"add_attacks_proj":
-			player.additional_proctile += upgrade_value
+			player.additional_attack_proctile += upgrade_value
 		"food":
 			healthComponent.health += upgrade_value
 			healthComponent.health = clamp(healthComponent.health, 0, healthComponent.MAX_HEALTH)

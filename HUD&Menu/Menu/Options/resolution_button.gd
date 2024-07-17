@@ -10,10 +10,16 @@ const RESOLUTION_DICTIONARY: Dictionary = {
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	add_resolution_items()
+	load_data()
+
+func load_data():
+	_on_option_button_item_selected(SettingsDataContainer.get_resolution_index())
+	optionButton.select(SettingsDataContainer.get_resolution_index())
 
 func add_resolution_items():
 	for resolution_size_text in RESOLUTION_DICTIONARY:
 		optionButton.add_item(resolution_size_text)
 
 func _on_option_button_item_selected(index):
+	SettingsSignalBus.emit_on_resolution_selected(index)
 	DisplayServer.window_set_size(RESOLUTION_DICTIONARY.values()[index])

@@ -9,20 +9,24 @@ func _ready():
 	set_process_unhandled_key_input(false)
 	set_action_name()
 	set_text_for_keys()
+	load_keybinds()
+	
+func load_keybinds():
+	rebind_action_key(SettingsDataContainer.get_keybind(action_name))
 
 func set_action_name():
 	label.text = "Unassigned"
 	match action_name:
-		"menu":
-			label.text = "Menu"
 		"up":
 			label.text = "Move Up"
+		"down":
+			label.text = "Move Down"
 		"left":
 			label.text = "Move Left"
 		"right":
 			label.text = "Move Right"
-		"down":
-			label.text = "Move Down"
+		"menu":
+			label.text = "Menu"
 			
 func set_text_for_keys():
 	var action_events = InputMap.action_get_events(action_name)
@@ -56,6 +60,8 @@ func _unhandled_key_input(event):
 func rebind_action_key(event):
 	InputMap.action_erase_events(action_name)
 	InputMap.action_add_event(action_name, event)
+	
+	SettingsDataContainer.set_keybind(action_name, event)
 	
 	set_process_unhandled_key_input(false)
 	set_text_for_keys()

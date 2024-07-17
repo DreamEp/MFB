@@ -11,7 +11,6 @@ extends Node
 @onready var enemySprite2D: Sprite2D = $"../Sprite2D"
 @onready var animPlayer: AnimationPlayer = $"../AnimationPlayer"
 
-
 var initial_anim_player_speed = 1
 
 func _ready():
@@ -24,6 +23,7 @@ func _physics_process(_delta):
 		enemySprite2D.flip_h = false
 	elif (enemy.global_position.direction_to(player.global_position)).x < 0.1:
 		enemySprite2D.flip_h = true
+		
 		
 	if !enemy.alive:
 		animPlayer.play("death", -1, 1.2)

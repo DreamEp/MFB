@@ -1,9 +1,59 @@
-[gd_scene load_steps=6 format=3 uid="uid://cf1bgo1vnki3c"]
+[gd_scene load_steps=12 format=3 uid="uid://cf1bgo1vnki3c"]
 
 [ext_resource type="PackedScene" uid="uid://bqcr1sn787xkn" path="res://HUD&Menu/Menu/Options/window_mode_button.tscn" id="1_1gpcu"]
+[ext_resource type="Script" path="res://HUD&Menu/Menu/settings_tab_container.gd" id="1_ib5p3"]
 [ext_resource type="PackedScene" uid="uid://ci1k308cy4sm0" path="res://HUD&Menu/Menu/Options/resolution_button.tscn" id="2_4i1mq"]
 [ext_resource type="PackedScene" uid="uid://5vuviw1xgjx0" path="res://HUD&Menu/Menu/Options/rebind_button.tscn" id="3_skhkp"]
 [ext_resource type="PackedScene" uid="uid://cg8bq6n8k4oec" path="res://HUD&Menu/Menu/Options/audio_slider_settings.tscn" id="4_4jfjc"]
+[ext_resource type="PackedScene" uid="uid://dkt7yaicfj7dw" path="res://HUD&Menu/Menu/Options/toggle_button.tscn" id="5_8jd08"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydsjq"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.252028, 0.252028, 0.252028, 1)
+border_width_left = 2
+border_width_top = 4
+border_width_right = 2
+border_color = Color(0.780392, 0.545098, 0.152941, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmllx"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.230315, 0.230315, 0.230315, 1)
+border_width_left = 2
+border_width_top = 4
+border_width_right = 2
+border_color = Color(0.780392, 0.545098, 0.152941, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fntb2"]
+content_margin_left = 5.0
+content_margin_top = 5.0
+content_margin_right = 5.0
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+border_width_left = 2
+border_width_top = 4
+border_width_right = 2
+border_color = Color(0.780871, 0.54533, 0.15466, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7i7n"]
+bg_color = Color(0.176471, 0.176471, 0.176471, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.780392, 0.545098, 0.152941, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdfq5"]
 
@@ -15,6 +65,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_vertical = 3
+script = ExtResource("1_ib5p3")
 
 [node name="TabContainer" type="TabContainer" parent="."]
 layout_mode = 1
@@ -27,11 +78,13 @@ offset_right = -50.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/tab_selected = SubResource("StyleBoxFlat_ydsjq")
+theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_vmllx")
+theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_fntb2")
+theme_override_styles/panel = SubResource("StyleBoxFlat_q7i7n")
 tab_alignment = 1
-current_tab = 2
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
@@ -83,24 +136,24 @@ layout_mode = 2
 theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_cdfq5")
 
-[node name="RebindButton" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_skhkp")]
-layout_mode = 2
-
-[node name="RebindButton2" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_skhkp")]
+[node name="Up" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_skhkp")]
 layout_mode = 2
 action_name = "up"
 
-[node name="RebindButton3" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_skhkp")]
+[node name="Down" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_skhkp")]
+layout_mode = 2
+action_name = "down"
+
+[node name="Left" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_skhkp")]
 layout_mode = 2
 action_name = "left"
 
-[node name="RebindButton4" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_skhkp")]
+[node name="Right" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_skhkp")]
 layout_mode = 2
 action_name = "right"
 
-[node name="RebindButton5" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_skhkp")]
+[node name="Menu" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("3_skhkp")]
 layout_mode = 2
-action_name = "down"
 
 [node name="HSeparator2" type="HSeparator" parent="TabContainer/Controls/MarginContainer/ScrollContainer/VBoxContainer"]
 layout_mode = 2
@@ -108,6 +161,7 @@ theme_override_constants/separation = 10
 theme_override_styles/separator = SubResource("StyleBoxEmpty_cdfq5")
 
 [node name="Sound" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Sound"]
@@ -156,26 +210,11 @@ theme_override_constants/margin_top = 24
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay/MarginContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Gameplay/MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 16
 
-[node name="Label" type="Label" parent="TabContainer/Gameplay/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer"]
 layout_mode = 2
-text = "Toggle"
 
-[node name="Label2" type="Label" parent="TabContainer/Gameplay/MarginContainer/VBoxContainer"]
+[node name="ToggleButton" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_8jd08")]
 layout_mode = 2
-text = "Toggle"
-
-[node name="Label3" type="Label" parent="TabContainer/Gameplay/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Toggle"
-
-[node name="Label4" type="Label" parent="TabContainer/Gameplay/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Toggle"
-
-[node name="Label5" type="Label" parent="TabContainer/Gameplay/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Toggle"

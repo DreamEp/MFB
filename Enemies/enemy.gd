@@ -20,6 +20,7 @@ var exp_gem: PackedScene = preload("res://Objects/experience_gem.tscn")
 var alive := true
 var idle := true
 var walk := false
+var inrange := false
 var attacking := false
 var hurt := false
 var stunned := false
@@ -29,11 +30,12 @@ func _ready():
 	
 func _on_hitbox_component_body_entered(body):
 	if body is Player:
+		inrange = true
 		attacking = true
 
 func _on_hitbox_component_body_exited(body):
 	if body is Player:
-		attacking = false
+		inrange = false
 
 func spawnExperience():
 	var new_gem = exp_gem.instantiate()
@@ -45,7 +47,7 @@ func on_player_hit():
 	pass
 	
 func damaging():
-	if attacking:
+	if inrange:
 		var hitbox: HitboxComponent = player.get_node("HitboxComponent")
 		
 		var attack = Attack.new()
@@ -56,3 +58,4 @@ func damaging():
 		
 		hitbox.damage(attack)
 		on_player_hit()
+	attacking = false

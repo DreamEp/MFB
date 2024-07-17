@@ -174,9 +174,9 @@ libraries = {
 [node name="Weapons" type="Node2D" parent="." node_paths=PackedStringArray("firing_position")]
 script = ExtResource("9_ufcmi")
 firing_position = NodePath("FiringPosition")
-arrow_count = 6
+base_arrow_count = 3
 arc = 10.0
-bow_rate = 0.551
+base_bow_rate = 1.5
 
 [node name="FiringPosition" type="Marker2D" parent="Weapons"]
 self_modulate = Color(0.464769, 0.463742, 0.907029, 1)

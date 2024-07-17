@@ -176,7 +176,7 @@ texture_filter = 1
 texture = ExtResource("2_ybnwl")
 hframes = 8
 vframes = 6
-frame = 21
+frame = 20
 
 [node name="CollisionEnemy" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6c3ef")
