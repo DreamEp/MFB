@@ -1,26 +1,31 @@
+class_name ArrowShot
 extends CharacterBody2D
-class_name Arrow
 
-@export var speed: float = 10
+@export var base_arrow_count: int = 5
+@export_range(0, 360) var arc_range: float = 25
+@export_range(0, 5) var base_bow_rate: float = 3
+
+@export_group("Upgradable Stats")
+@export var speed: float = 150
 @export var attack_damage: float = 2
 @export var knockback_force: float = 0
 @export var max_pierce := 1
-
-
-var current_pierce_count := 0
-var direction = Vector2.RIGHT
 
 @onready var enemy: Enemy = get_tree().get_first_node_in_group("enemy")
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var audioStreamPlayer: AudioStreamPlayer2D = $ArrowAttackSong
 
+var can_bow_attack = false
+var current_pierce_count := 0
+var direction: Vector2
+
 func _ready():
-	direction = Vector2.RIGHT.rotated(global_rotation)
 	audioStreamPlayer.play()
 	
-func _process(_delta):
+func _physics_process(delta):
+	direction = Vector2.RIGHT.rotated(global_rotation)
 	velocity = direction * speed
-	var collision = move_and_collide(velocity)
+	var collision = move_and_collide(velocity * delta)
 	if collision:
 		if collision.get_collider().get_class() == "TileMap":
 			queue_free()

@@ -1,11 +1,12 @@
-[gd_scene load_steps=12 format=3 uid="uid://cf1bgo1vnki3c"]
+[gd_scene load_steps=13 format=3 uid="uid://cf1bgo1vnki3c"]
 
 [ext_resource type="PackedScene" uid="uid://bqcr1sn787xkn" path="res://HUD&Menu/Menu/Options/window_mode_button.tscn" id="1_1gpcu"]
 [ext_resource type="Script" path="res://HUD&Menu/Menu/settings_tab_container.gd" id="1_ib5p3"]
 [ext_resource type="PackedScene" uid="uid://ci1k308cy4sm0" path="res://HUD&Menu/Menu/Options/resolution_button.tscn" id="2_4i1mq"]
 [ext_resource type="PackedScene" uid="uid://5vuviw1xgjx0" path="res://HUD&Menu/Menu/Options/rebind_button.tscn" id="3_skhkp"]
 [ext_resource type="PackedScene" uid="uid://cg8bq6n8k4oec" path="res://HUD&Menu/Menu/Options/audio_slider_settings.tscn" id="4_4jfjc"]
-[ext_resource type="PackedScene" uid="uid://dkt7yaicfj7dw" path="res://HUD&Menu/Menu/Options/toggle_button.tscn" id="5_8jd08"]
+[ext_resource type="PackedScene" uid="uid://dkt7yaicfj7dw" path="res://HUD&Menu/Menu/Options/toggle_auto_aim_button.tscn" id="6_mel87"]
+[ext_resource type="PackedScene" uid="uid://b4f8fp48jq008" path="res://HUD&Menu/Menu/Options/toggle_auto_attacks_button.tscn" id="7_4hyqk"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydsjq"]
 content_margin_left = 5.0
@@ -83,8 +84,10 @@ theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_vmllx")
 theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_fntb2")
 theme_override_styles/panel = SubResource("StyleBoxFlat_q7i7n")
 tab_alignment = 1
+current_tab = 3
 
 [node name="Graphics" type="TabBar" parent="TabContainer"]
+visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Graphics"]
@@ -195,7 +198,6 @@ layout_mode = 2
 bus_name = "SFX"
 
 [node name="Gameplay" type="TabBar" parent="TabContainer"]
-visible = false
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Gameplay"]
@@ -216,5 +218,12 @@ layout_mode = 2
 [node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer"]
 layout_mode = 2
 
-[node name="ToggleButton" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("5_8jd08")]
+[node name="ToggleAutoAimButton" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("6_mel87")]
+layout_mode = 2
+
+[node name="HSeparator" type="HSeparator" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ToggleAutoAttacksButton" parent="TabContainer/Gameplay/MarginContainer/ScrollContainer/VBoxContainer" instance=ExtResource("7_4hyqk")]
 layout_mode = 2

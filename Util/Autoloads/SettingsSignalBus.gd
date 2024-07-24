@@ -6,6 +6,7 @@ signal on_master_volume_set(value: float)
 signal on_music_volume_set(value: float)
 signal on_sfx_volume_set(value: float)
 signal on_auto_aim_toggled(toggled: bool)
+signal on_auto_attacks_toggled(toggled: bool)
 
 signal set_settings_dictionary(settings_dict: Dictionary)
 signal load_settings_dictionary(settings_dict: Dictionary)
@@ -27,6 +28,9 @@ func emit_on_sfx_volume_set(value: float):
 
 func emit_on_auto_aim_toggled(toggled: bool):
 	on_auto_aim_toggled.emit(toggled)
+
+func emit_on_auto_attacks_toggled(toggled: bool):
+	on_auto_attacks_toggled.emit(toggled)
 
 func emit_set_settings_dictionary(settings_dict: Dictionary):
 	set_settings_dictionary.emit(settings_dict)

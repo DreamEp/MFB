@@ -1,17 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkt7yaicfj7dw"]
 
-[ext_resource type="Script" path="res://HUD&Menu/Menu/Options/toggle_auto_aim_button.gd" id="1_74loy"]
+[ext_resource type="Script" path="res://HUD&Menu/Menu/Options/toggle_auto_aim_button.gd" id="1_ll7t8"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jn07b"]
 
-[node name="ToggleButton" type="Control"]
+[node name="ToggleAutoAimButton" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_74loy")
+script = ExtResource("1_ll7t8")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 0
@@ -20,6 +20,7 @@ offset_bottom = 40.0
 theme_override_constants/separation = 32
 
 [node name="NameLabel" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(150, 0)
 layout_mode = 2
 text = "Auto aim"
 

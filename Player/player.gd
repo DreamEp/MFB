@@ -35,7 +35,6 @@ class_name Player
 @onready var healthLabel: Label = healthBar.get_node("HealthLabel")
 @onready var expLabel: Label = expBar.get_node("LevelLabel")
 @onready var healthComponent: HealthComponent = $HealthComponent
-@onready var fire_position = $Weapons/FiringPosition
 
 var alive := true
 var idle := true
@@ -43,8 +42,14 @@ var walk := false
 var attack := false
 var hurt := false
 var stunned := false
-var aim_position : Vector2
 
+var aim_position : Vector2 = Vector2(1, 0)
+
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		var half_viewport = get_viewport_rect().size / 2.0
+		aim_position = (event.position - half_viewport)
 
 func _ready():
 	print(healthBar.name)
@@ -52,19 +57,8 @@ func _ready():
 	set_expbar(player_experience, 5.0)
 	
 func _process(_delta):
-	aim_position = get_global_mouse_position()
 	set_healthbar(healthComponent.health, healthComponent.MAX_HEALTH)
 
-	var radius = 10
-	var mouse_direction = get_global_mouse_position() - fire_position.global_position
-	var angle = mouse_direction.angle_to(Vector2(1, 0))
-	fire_position.position =  Vector2(
-		cos(angle) * radius,
-		-sin(angle) * radius
-	)
-	fire_position.rotation = mouse_direction.angle()
-
-	
 func set_healthbar(set_value: float = 0, set_max_value: float = 100):
 	healthBar.max_value = set_max_value
 	healthBar.value = set_value 

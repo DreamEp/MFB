@@ -1,17 +1,20 @@
-[gd_scene load_steps=19 format=3 uid="uid://b48nchocyocqp"]
+[gd_scene load_steps=20 format=3 uid="uid://b48nchocyocqp"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nmtv"]
 [ext_resource type="Texture2D" uid="uid://d3ts4wde53vfh" path="res://Art/Player/Soldier.png" id="2_nsfec"]
 [ext_resource type="PackedScene" uid="uid://b0ocfd88fjt3j" path="res://Util/Components/health_component.tscn" id="4_hpyvg"]
 [ext_resource type="Script" path="res://Player/PlayerAnimation.gd" id="4_mi3k1"]
 [ext_resource type="Texture2D" uid="uid://bswtnc1fi15a2" path="res://Art/bow.png" id="5_1w16u"]
+[ext_resource type="Script" path="res://Player/PlayerAttacks.gd" id="5_72ra7"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="5_hs5nc"]
 [ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="5_o175c"]
 [ext_resource type="PackedScene" uid="uid://36lv5b1iv1pu" path="res://Player/interraction.tscn" id="9_myqhg"]
-[ext_resource type="Script" path="res://Player/Weapons.gd" id="9_ufcmi"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx8ix"]
 size = Vector2(6, 11)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_okonb"]
+radius = 382.021
 
 [sub_resource type="Animation" id="Animation_13uj0"]
 length = 0.001
@@ -156,7 +159,6 @@ frame = 9
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="CollisionPlayer" type="CollisionShape2D" parent="."]
-visible = false
 position = Vector2(0, -1.5)
 shape = SubResource("RectangleShape2D_jx8ix")
 
@@ -166,37 +168,40 @@ script = ExtResource("5_o175c")
 [node name="PlayerAnimation" type="Node" parent="."]
 script = ExtResource("4_mi3k1")
 
+[node name="PlayerAttacks" type="Area2D" parent="." node_paths=PackedStringArray("firing_position")]
+collision_layer = 12
+collision_mask = 18
+script = ExtResource("5_72ra7")
+firing_position = NodePath("AttacksPivot/Bow/ArrowFirePosition")
+
+[node name="DetectEnemyArea" type="CollisionShape2D" parent="PlayerAttacks"]
+shape = SubResource("CircleShape2D_okonb")
+
+[node name="AttacksPivot" type="Marker2D" parent="PlayerAttacks"]
+
+[node name="Bow" type="Sprite2D" parent="PlayerAttacks/AttacksPivot"]
+texture_filter = 1
+position = Vector2(13, 0)
+rotation = -2.35619
+scale = Vector2(0.7, 0.7)
+texture = ExtResource("5_1w16u")
+
+[node name="ArrowFirePosition" type="Marker2D" parent="PlayerAttacks/AttacksPivot/Bow"]
+position = Vector2(-7.07107, 7.07107)
+rotation = 2.35619
+scale = Vector2(0.7, 0.7)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_p2wor")
 }
 
-[node name="Weapons" type="Node2D" parent="." node_paths=PackedStringArray("firing_position")]
-script = ExtResource("9_ufcmi")
-firing_position = NodePath("FiringPosition")
-base_arrow_count = 3
-arc = 10.0
-base_bow_rate = 1.5
-
-[node name="FiringPosition" type="Marker2D" parent="Weapons"]
-self_modulate = Color(0.464769, 0.463742, 0.907029, 1)
-position = Vector2(7, 1)
-
-[node name="Bow" type="Sprite2D" parent="Weapons/FiringPosition"]
-texture_filter = 1
-position = Vector2(1, -1)
-rotation = -2.35619
-scale = Vector2(0.7, 0.7)
-texture = ExtResource("5_1w16u")
-
 [node name="Interraction" parent="." instance=ExtResource("9_myqhg")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_hpyvg")]
-visible = false
 MAX_HEALTH = 80.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_hs5nc")]
-visible = false
 collision_layer = 4
 collision_mask = 115
 health_component = NodePath("../HealthComponent")

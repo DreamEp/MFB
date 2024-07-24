@@ -7,7 +7,7 @@ device = -1
 physical_keycode = 83
 unicode = 115
 
-[sub_resource type="InputEventKey" id="InputEventKey_l3sim"]
+[sub_resource type="InputEventKey" id="InputEventKey_cpwof"]
 device = -1
 physical_keycode = 65
 unicode = 113
@@ -32,6 +32,6 @@ unicode = 122
 script = ExtResource("1_tyhpj")
 DEFAULT_UP_KEY = SubResource("InputEventKey_pgono")
 DEFAULT_DOWN_KEY = SubResource("InputEventKey_xhpix")
-DEFAULT_LEFT_KEY = SubResource("InputEventKey_l3sim")
+DEFAULT_LEFT_KEY = SubResource("InputEventKey_cpwof")
 DEFAULT_RIGHT_KEY = SubResource("InputEventKey_sdcxm")
 DEFAULT_MENU_KEY = SubResource("InputEventKey_g7202")

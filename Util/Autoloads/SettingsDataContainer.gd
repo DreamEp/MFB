@@ -17,6 +17,7 @@ func create_storage_dictionary() -> Dictionary:
 		settings_resource.NAME_MUSIC_VOLUME: settings_resource.music_volume,
 		settings_resource.NAME_SFX_VOLUME: settings_resource.sfx_volume,
 		settings_resource.NAME_AUTO_AIM_STATE: settings_resource.auto_aim_state,
+		settings_resource.NAME_AUTO_ATTACKS_STATE: settings_resource.auto_aim_state,
 		"keybinds": create_keybinds_dictionary()
 	}
 	return settings_container_dict
@@ -60,6 +61,11 @@ func get_auto_aim_toggled():
 	if loaded_data == {}:
 		return settings_resource.DEFAULT_AUTO_AIM_STATE	
 	return settings_resource.auto_aim_state
+
+func get_auto_attacks_toggled():
+	if loaded_data == {}:
+		return settings_resource.DEFAULT_AUTO_ATTACKS_STATE	
+	return settings_resource.auto_attacks_state
 	
 func get_keybind(action: String):
 	if !loaded_data.has("keybinds"):
@@ -104,6 +110,9 @@ func set_sfx_volume(value: float):
 	
 func set_auto_aim_toggled(toggled: bool):
 	settings_resource.auto_aim_state = toggled
+
+func set_auto_attacks_toggled(toggled: bool):
+	settings_resource.auto_attacks_state = toggled
 	
 func set_keybind(action: String, event):
 	match action:
@@ -145,6 +154,7 @@ func set_load_settings_dictionary(settings_dict: Dictionary):
 	set_music_volume(loaded_data.music_volume)
 	set_sfx_volume(loaded_data.sfx_volume)
 	set_auto_aim_toggled(loaded_data.auto_aim_state)
+	set_auto_attacks_toggled(loaded_data.auto_attacks_state)
 	on_keybinds_loaded(loaded_data.keybinds)
 	
 func handle_signals():
@@ -154,4 +164,5 @@ func handle_signals():
 	SettingsSignalBus.on_music_volume_set.connect(set_music_volume)
 	SettingsSignalBus.on_sfx_volume_set.connect(set_sfx_volume)
 	SettingsSignalBus.on_auto_aim_toggled.connect(set_auto_aim_toggled)
+	SettingsSignalBus.on_auto_attacks_toggled.connect(set_auto_attacks_toggled)
 	SettingsSignalBus.load_settings_dictionary.connect(set_load_settings_dictionary)
