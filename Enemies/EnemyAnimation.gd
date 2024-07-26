@@ -15,7 +15,6 @@ var initial_anim_player_speed = 1
 
 func _ready():
 	initial_anim_player_speed = animPlayer.get_playing_speed()
-	pass
 	
 func _physics_process(_delta):
 	#There we get a gap so it don't flip permanently

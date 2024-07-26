@@ -444,7 +444,7 @@ layer_2/tile_data = PackedInt32Array(-327665, 327680, 0, -262129, 327680, 1, -26
 [node name="Player" parent="." instance=ExtResource("1_13lbo")]
 
 [node name="Enemy" parent="." instance=ExtResource("2_5su7r")]
-position = Vector2(213, 70)
+position = Vector2(-38, -37)
 min_experience = 50
 max_experience = 100
 

@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://b5fd0njlivmkl"]
+
+[ext_resource type="Script" path="res://Player/Spells/AxeCircle/axe.gd" id="1_eon77"]
+[ext_resource type="Texture2D" uid="uid://bgdsi7bejuct2" path="res://Art/Player/Spells/axe.png" id="2_uk22h"]
+[ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="3_brodq"]
+[ext_resource type="AudioStream" uid="uid://csehu4xir5t36" path="res://Audio/AxeSong.mp3" id="4_yn2ue"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_idh52"]
+size = Vector2(4.01171, 7.99414)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o73kp"]
+size = Vector2(15.9766, 16.0234)
+
+[node name="Axe" type="CharacterBody2D"]
+texture_filter = 1
+rotation = 1.57226
+collision_layer = 8
+collision_mask = 0
+script = ExtResource("1_eon77")
+speed = 50.0
+axe_duration = 2
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = ExtResource("2_uk22h")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.00146369, -0.999999)
+shape = SubResource("RectangleShape2D_idh52")
+
+[node name="HitboxComponent" parent="." instance=ExtResource("3_brodq")]
+collision_layer = 8
+collision_mask = 51
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
+position = Vector2(-1.19209e-07, 0)
+shape = SubResource("RectangleShape2D_o73kp")
+
+[node name="MaxTimer" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="AxeAttackSong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("4_yn2ue")
+bus = &"SFX"
+
+[connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]
+[connection signal="timeout" from="MaxTimer" to="." method="_on_max_timer_timeout"]

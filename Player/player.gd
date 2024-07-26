@@ -15,6 +15,7 @@ class_name Player
 @export var spell_area: float = 2.0
 @export var spell_coldown: float = 2.0
 @export var spell_knockback: float = 2.0
+@export var spell_duration: float = 2.0
 @export_group("Defensive Values")
 @export var knockback_recovery: float = 3.0
 @export var armor: float = 2.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://b48nchocyocqp"]
+[gd_scene load_steps=23 format=3 uid="uid://b48nchocyocqp"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nmtv"]
 [ext_resource type="Texture2D" uid="uid://d3ts4wde53vfh" path="res://Art/Player/Soldier.png" id="2_nsfec"]
@@ -8,6 +8,9 @@
 [ext_resource type="Script" path="res://Player/PlayerAttacks.gd" id="5_72ra7"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="5_hs5nc"]
 [ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="5_o175c"]
+[ext_resource type="Script" path="res://Player/Attacks/ArrowShot/ArrowsShot.gd" id="6_ustk2"]
+[ext_resource type="Script" path="res://Player/Spells/AxeCircle/AxeCircle.gd" id="7_1nedx"]
+[ext_resource type="Script" path="res://Player/Spells/ThunderSpell/ThunderSpell.gd" id="8_6pk6l"]
 [ext_resource type="PackedScene" uid="uid://36lv5b1iv1pu" path="res://Player/interraction.tscn" id="9_myqhg"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx8ix"]
@@ -168,20 +171,35 @@ script = ExtResource("5_o175c")
 [node name="PlayerAnimation" type="Node" parent="."]
 script = ExtResource("4_mi3k1")
 
-[node name="PlayerAttacks" type="Area2D" parent="." node_paths=PackedStringArray("firing_position")]
+[node name="PlayerPosition" type="Marker2D" parent="."]
+
+[node name="PlayerAttacks" type="Area2D" parent="."]
 collision_layer = 12
 collision_mask = 18
 script = ExtResource("5_72ra7")
-firing_position = NodePath("AttacksPivot/Bow/ArrowFirePosition")
 
 [node name="DetectEnemyArea" type="CollisionShape2D" parent="PlayerAttacks"]
 shape = SubResource("CircleShape2D_okonb")
 
+[node name="ArrowsShot" type="Node2D" parent="PlayerAttacks" node_paths=PackedStringArray("firing_position")]
+script = ExtResource("6_ustk2")
+firing_position = NodePath("../AttacksPivot/Bow/ArrowFirePosition")
+
+[node name="AxeCircle" type="Node2D" parent="PlayerAttacks" node_paths=PackedStringArray("player_position")]
+script = ExtResource("7_1nedx")
+player_position = NodePath("../../PlayerPosition")
+axe_circle_count = 4
+axe_circle_rate = 8.0
+
+[node name="ThunderSpell" type="Node2D" parent="PlayerAttacks"]
+script = ExtResource("8_6pk6l")
+
 [node name="AttacksPivot" type="Marker2D" parent="PlayerAttacks"]
+position = Vector2(15, 0)
 
 [node name="Bow" type="Sprite2D" parent="PlayerAttacks/AttacksPivot"]
 texture_filter = 1
-position = Vector2(13, 0)
+position = Vector2(-1, -5.96046e-08)
 rotation = -2.35619
 scale = Vector2(0.7, 0.7)
 texture = ExtResource("5_1w16u")
