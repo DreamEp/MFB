@@ -15,6 +15,7 @@ extends Node2D
 
 var upgrade_options = []
 var collected_upgrades = []
+var collected_weapons_spells = []
 
 var rarity_chances: Dictionary = {
 	"common": 100,
@@ -125,15 +126,17 @@ func get_random_player_upgrade():
 func get_random_player_attack():
 	var dblist = [] 
 	for i in UpgradeDb.UPGRADES:
-		if UpgradeDb.UPGRADES[i]["type"] == "attack":
-			if i in collected_upgrades:
+		if UpgradeDb.UPGRADES[i]["type"] == "attack" or UpgradeDb.UPGRADES[i]["type"] == "spell":
+			var current_attack_spell = UpgradeDb.UPGRADES[i]
+			var name_to_check = str(current_attack_spell["displayname"]) + str(current_attack_spell["level"]) 
+			if name_to_check in collected_weapons_spells:
 				pass 
 			elif i in upgrade_options:
 				pass 
-			elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0:
+			elif current_attack_spell["prerequisite"].size() > 0:
 				var to_add = true 
-				for u in UpgradeDb.UPGRADES[i]["prerequisite"]: 
-					if not u in collected_upgrades:
+				for u in current_attack_spell["prerequisite"]: 
+					if not u in collected_weapons_spells:
 						to_add = false 
 				if to_add: 
 					dblist.append(i)
@@ -141,32 +144,53 @@ func get_random_player_attack():
 				dblist.append(i) 
 		else: 
 			pass
+			
+	if dblist.size() > 0: 
+		var rarity_chances_updated = update_rarity_chances(rarity_chances)
+		var weighted_dblist = []
+		for item in dblist:
+			var upgrade = UpgradeDb.UPGRADES[item]
+			var rarity = upgrade.get("rarity", "")
+			if rarity == "":  # If no specific rarity, add it with all rarities
+				for r in rarity_chances_updated.keys():
+					var chance = rarity_chances_updated[r]
+					weighted_dblist.append({"item": item, "rarity": r, "value": 0, "chance": chance})
+			else:  # If specific rarity, add it only with that rarity
+				var chance = rarity_chances.get(rarity, 1)
+				weighted_dblist.append({"item": item, "rarity": rarity, "value": 0, "chance": chance})
 
-func get_random_up():
-	var dblist = [] #La pull d'opptions d'upgrade
-	for i in UpgradeDb.UPGRADES:
-		if i in collected_upgrades: #Si on a déjà trouvé l'upgrade
-			pass #On ne fait rien
-		elif i in upgrade_options: #Si l'upgrade est déjà ajouté en option
-			pass #On ne fait rien
-		elif UpgradeDb.UPGRADES[i]["type"] == "item": #Si l'upgrade est de type food
-			pass #On ne fait rien
-		elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0: #Si il y'a des prérequis pour l'upgrade
-			var to_add = true #On créer une variable pour savoir si on ajoute ou non l'upgrade dans notre pull
-			for u in UpgradeDb.UPGRADES[i]["prerequisite"]: #On loop à travers les prérequis
-				if not u in collected_upgrades: #Si le prérequis n'est pas dans nos upgrade déjà récolté
-					to_add = false #On ne l'ajoute pas
-			if to_add: 
-				dblist.append(i) #Sinon on l'ajoute dans notre pull d'upgrade
-		else:
-			dblist.append(i) #Si il n'y a pas de prérequis on l'ajoute directement
-	if dblist.size() > 0: #Si la taille de notre pull d'upgrade est supérieur a 0
-		var randomitem = dblist.pick_random() #On prend un upgrade random de la liste
-		upgrade_options.append(randomitem) #On l'ajoute dans notre liste d'option
-		return randomitem #On retourne l'item random
+		var random_item = pick_random_upgrade(weighted_dblist)
+		print(dblist)
+		upgrade_options.append(random_item) 
+		return random_item
 	else:
 		return null
-	
+#
+#func get_random_up():
+	#var dblist = [] #La pull d'opptions d'upgrade
+	#for i in UpgradeDb.UPGRADES:
+		#if i in collected_upgrades: #Si on a déjà trouvé l'upgrade
+			#pass #On ne fait rien
+		#elif i in upgrade_options: #Si l'upgrade est déjà ajouté en option
+			#pass #On ne fait rien
+		#elif UpgradeDb.UPGRADES[i]["type"] == "item": #Si l'upgrade est de type food
+			#pass #On ne fait rien
+		#elif UpgradeDb.UPGRADES[i]["prerequisite"].size() > 0: #Si il y'a des prérequis pour l'upgrade
+			#var to_add = true #On créer une variable pour savoir si on ajoute ou non l'upgrade dans notre pull
+			#for u in UpgradeDb.UPGRADES[i]["prerequisite"]: #On loop à travers les prérequis
+				#if not u in collected_upgrades: #Si le prérequis n'est pas dans nos upgrade déjà récolté
+					#to_add = false #On ne l'ajoute pas
+			#if to_add: 
+				#dblist.append(i) #Sinon on l'ajoute dans notre pull d'upgrade
+		#else:
+			#dblist.append(i) #Si il n'y a pas de prérequis on l'ajoute directement
+	#if dblist.size() > 0: #Si la taille de notre pull d'upgrade est supérieur a 0
+		#var randomitem = dblist.pick_random() #On prend un upgrade random de la liste
+		#upgrade_options.append(randomitem) #On l'ajoute dans notre liste d'option
+		#return randomitem #On retourne l'item random
+	#else:
+		#return null
+	#
 
 func pick_random_upgrade(list_upgrades_chance):
 	var total_chance = 0
@@ -188,56 +212,65 @@ func pick_random_upgrade(list_upgrades_chance):
 	var random_number = randi() % 200
 	while random_number not in number_to_upgrade:
 		random_number = randi() % 200
+	var value_to_check = str(number_to_upgrade[random_number]["item"] + "_" + number_to_upgrade[random_number]["rarity"])
+	while value_to_check in leveling.list_of_upgrade:
+		random_number = randi() % 200
+		if random_number not in number_to_upgrade:
+			random_number = randi() % 200
+		value_to_check = str(number_to_upgrade[random_number]["item"] + "_" + number_to_upgrade[random_number]["rarity"])
+	
 	
 	print(number_to_upgrade[random_number])
 	return number_to_upgrade[random_number]
 	
 	
 func upgrade_character(picked_upgrade):
-	var upgrade = UpgradeDb.UPGRADES[picked_upgrade["item"]]
-	var upgrade_name = picked_upgrade["item"]
+	#var upgrade = UpgradeDb.UPGRADES[picked_upgrade["item"]]
+	var upgrade_name = picked_upgrade["displayname"]
 	#var upgrade_display_name = upgrade["displayname"]
-	var upgrade_value = picked_upgrade["value"]
+	var upgrade_value
+	if picked_upgrade["type"] == "upgrade":
+		upgrade_value = picked_upgrade["value"]
 	#var upgrade_rarity = picked_upgrade["rarity"]
 	match upgrade_name:
-		"add_armor":
+		"Armor":
 			player.armor += upgrade_value
-		"add_block":
+		"Shield":
 			player.block += upgrade_value
-		"add_collect_area":
+		"Pearl":
 			print("previous scale collectible %s" % str(player.collectible_area))
 			player.collectible_area += player.collectible_area * upgrade_value
 			print("after scale collectible %s" % str(player.collectible_area))
 			grabArea.apply_scale(Vector2(player.collectible_area, player.collectible_area))
-		"add_mov_speed":
+		"Boots":
 			print("previous ms %s" % str(player.movement_speed))
 			player.movement_speed += player.movement_speed * upgrade_value
 			print("after up ms %s" % str(player.movement_speed))
-		"add_attack_dmg":
+		"Sword":
 			player.attack_damage += player.attack_damage * upgrade_value
-		"add_spell_dmg":
+		"Magic Hat":
 			player.spell_damage += player.spell_damage * upgrade_value
-		"add_attack_speed":
+		"Gloves":
 			print("after up as %s" % str(player.attack_coldown))
 			player.attack_coldown += player.attack_coldown * upgrade_value
 			print("after up as %s" % str(player.attack_coldown))
-		"add_area_spell":
+		"Tome":
 			player.spell_area += player.spell_area * upgrade_value
-		"add_cdr_spell":
+		"Scroll":
 			player.spell_coldown += player.spell_coldown * upgrade_value
-		"add_spell_proj":
+		"Ring":
 			player.additional_spell_proctile += upgrade_value
-		"add_attacks_proj":
+		"Stone":
 			player.additional_attack_proctile += upgrade_value
-		"food":
+		"Food":
 			healthComponent.health += upgrade_value
 			healthComponent.health = clamp(healthComponent.health, 0, healthComponent.MAX_HEALTH)
-	adjust_gui_collection(upgrade_name, upgrade)
+	adjust_gui_collection(upgrade_name, picked_upgrade)
 	var option_children = upgradeOption.get_children() 
 	for i in option_children: 
 		i.queue_free()
 	upgrade_options.clear() 
-	collected_upgrades.append(upgrade) 
+	collected_weapons_spells.append(str(picked_upgrade["displayname"]) + str(picked_upgrade["level"])) 
 	levelUpPanel.visible = false 
 	levelUpPanel.position = Vector2(800, 50) 
 	get_tree().paused = false 
@@ -255,13 +288,20 @@ func adjust_gui_collection(key, upgrade):
 			var new_item = itemContainer.instantiate() 
 			new_item.upgrade = upgrade
 			match get_type: 
-				"attacks":
+				"attack":
+					collectedWeapons.add_child(new_item)
+				"spell":
 					collectedWeapons.add_child(new_item)
 				"upgrade":
 					collectedUpgrades.add_child(new_item)
 		else:			
 			match get_type: 
-				"attacks":
+				"attack":
+					var current_weapons = collectedWeapons.get_children()
+					for w in current_weapons: 
+						if w.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and w.has_method("update_level"):
+							w.update_level(key)
+				"spell":
 					var current_weapons = collectedWeapons.get_children()
 					for w in current_weapons: 
 						if w.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and w.has_method("update_level"):

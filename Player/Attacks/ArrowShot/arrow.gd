@@ -3,7 +3,7 @@ class_name Arrow
 
 @export_group("Upgradable Stats")
 @export var speed: float = 150
-@export var range: float = 150
+@export var shooting_range: float = 150
 @export var attack_damage: float = 2
 @export var knockback_force: float = 0
 @export var max_pierce := 1
@@ -27,7 +27,7 @@ func _physics_process(delta):
 	if collision:
 		if collision.get_collider().get_class() == "TileMap":
 			queue_free()
-	if travalled_distance > range:
+	if travalled_distance > shooting_range:
 		queue_free()
 
 func on_enemy_hit():

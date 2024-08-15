@@ -13,6 +13,8 @@ class_name Leveling
 
 @onready var itemOption = preload("res://HUD&Menu/HUD/item_option.tscn")
 
+var list_of_upgrade
+
 func calculate_experience(gem_exp):
 	var exp_required = calculate_experience_cap() 
 	player.player_collected_experience += gem_exp 
@@ -38,6 +40,7 @@ func calculate_experience_cap():
 	return exp_cap
 	
 func levelup():
+	list_of_upgrade = []
 	levelUpSound.play()
 	expLabel.text = str("Level : ",player.player_experience_level)
 	var tween = levelUpPanel.create_tween()
@@ -48,7 +51,8 @@ func levelup():
 	var optionsmax = 3 
 	while options < optionsmax:
 		var option_choice = itemOption.instantiate()
-		option_choice.item = upgradePlayer.get_random_player_upgrade()
+		option_choice.item = upgradePlayer.get_random_player_upgrade() #get_random_player_attack() #get_random_player_upgrade()
+		list_of_upgrade.append(str(option_choice.item["item"] + "_" + option_choice.item["rarity"]))
 		upgradeOption.add_child(option_choice)
 		options += 1
 	get_tree().paused = true

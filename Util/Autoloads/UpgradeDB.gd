@@ -2,78 +2,115 @@ extends Node
 
 const UPGRADES_PATH = "res://Art/Player/Upgrades/"
 const ATTACKS_PATH = "res://Art/Player/Attacks/"
+const SPELLS_PATH = "res://Art/Player/Spells/"
 var UPGRADES = {
 	"arrow1": {
-		"icon": ATTACKS_PATH + "arrow.png",
+		"icon": ATTACKS_PATH + "Arrow.png",
 		"displayname": "Arrow Attacks",
-		"details": "A spear of ice is thrown at a random enemy",
+		"details": "An arrow is thrown at a random enemy",
 		"level": 1,
 		"rarity": "common",
 		"prerequisite": [],
 		"type": "attack"
 	},
 	"arrow2": {
-		"icon": ATTACKS_PATH + "ice_spear.png",
+		"icon": ATTACKS_PATH + "Arrow.png",
 		"displayname": "Arrow Attacks",
-		"details": "An addition Ice Spear is thrown",
+		"details": "An addition Arrow is thrown",
 		"level": 2,
 		"rarity": "uncommon",
-		"prerequisite": ["arrow1"],
+		"prerequisite": ["Arrow Attacks1"],
 		"type": "attack"
 	},
 	"arrow3": {
-		"icon": ATTACKS_PATH + "ice_spear.png",
+		"icon": ATTACKS_PATH + "Arrow.png",
 		"displayname": "Arrow Attacks",
-		"details": "Ice Spears now pass through another enemy and do + 3 damage",
+		"details": "Arrow now pass through another enemy and do + 3 damage",
 		"level": 3,
 		"rarity": "rare",
-		"prerequisite": ["arrow2"],
+		"prerequisite": ["Arrow Attacks2"],
 		"type": "attack"
 	},
 	"arrow4": {
-		"icon": ATTACKS_PATH + "ice_spear.png",
+		"icon": ATTACKS_PATH + "Arrow.png",
 		"displayname": "Arrow Attacks",
-		"details": "An additional 2 Ice Spears are thrown",
+		"details": "An additional 2 arrows are thrown",
 		"level": 4,
 		"rarity": "epic",
-		"prerequisite": ["arrow3"],
+		"prerequisite": ["Arrow Attacks3"],
 		"type": "attack"
 	},
 	"axe1": {
-		"icon": ATTACKS_PATH + "axe.png",
-		"displayname": "axe",
+		"icon": SPELLS_PATH + "Axe.png",
+		"displayname": "Axe Rotation",
 		"details": "A magical axe will follow you attacking enemies in a straight line",
 		"level": 1,
 		"rarity": "common",
 		"prerequisite": [],
-		"type": "attack"
+		"type": "spell"
 	},
 	"axe2": {
-		"icon": ATTACKS_PATH + "axe.png",
-		"displayname": "axe",
+		"icon": SPELLS_PATH + "Axe.png",
+		"displayname": "Axe Rotation",
 		"details": "The axe will now attack an additional enemy per attack",
 		"level": 2,
 		"rarity": "uncommon",
-		"prerequisite": ["axe1"],
-		"type": "attack"
+		"prerequisite": ["Axe Rotation1"],
+		"type": "spell"
 	},
 	"axe3": {
-		"icon": ATTACKS_PATH + "axe.png",
-		"displayname": "axe",
+		"icon": SPELLS_PATH + "Axe.png",
+		"displayname": "Axe Rotation",
 		"details": "The axe will attack another additional enemy per attack",
 		"level": 3,
 		"rarity": "rare",
-		"prerequisite": ["axe2"],
-		"type": "attack"
+		"prerequisite": ["Axe Rotation2"],
+		"type": "spell"
 	},
 	"axe4": {
-		"icon": ATTACKS_PATH + "axe.png",
-		"displayname": "axe",
+		"icon": SPELLS_PATH + "Axe.png",
+		"displayname": "Axe Rotation",
 		"details": "The axe now does + 5 damage per attack and causes 20% additional knockback",
 		"level": 4,
 		"rarity": "epic",
-		"prerequisite": ["axe3"],
-		"type": "attack"
+		"prerequisite": ["Axe Rotation3"],
+		"type": "spell"
+	},
+	"thunder1": {
+		"icon": SPELLS_PATH + "Thunder.png",
+		"displayname": "Thunder bolt",
+		"details": "A magical thunder will follow you attacking enemies in a straight line",
+		"level": 1,
+		"rarity": "common",
+		"prerequisite": [],
+		"type": "spell"
+	},
+	"thunder2": {
+		"icon": SPELLS_PATH + "Thunder.png",
+		"displayname": "Thunder bolt",
+		"details": "The thunder will now attack an additional enemy per attack",
+		"level": 2,
+		"rarity": "uncommon",
+		"prerequisite": ["Thunder bolt1"],
+		"type": "spell"
+	},
+	"thunder3": {
+		"icon": SPELLS_PATH + "Thunder.png",
+		"displayname": "Thunder bolt",
+		"details": "The thunder will attack another additional enemy per attack",
+		"level": 3,
+		"rarity": "rare",
+		"prerequisite": ["Thunder bolt2"],
+		"type": "spell"
+	},
+	"thunder4": {
+		"icon": SPELLS_PATH + "Thunder.png",
+		"displayname": "Thunder bolt",
+		"details": "The thunder now does + 5 damage per attack and causes 20% additional knockback",
+		"level": 4,
+		"rarity": "epic",
+		"prerequisite": ["Thunder bolt3"],
+		"type": "spell"
 	},
 	"add_armor": {
 		"icon": UPGRADES_PATH + "Armor.png",

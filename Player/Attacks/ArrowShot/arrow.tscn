@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://kvgxpb4fxnwf"]
 
 [ext_resource type="Script" path="res://Player/Attacks/ArrowShot/arrow.gd" id="1_x83n7"]
-[ext_resource type="Texture2D" uid="uid://f76b35l6qiir" path="res://Art/Player/Attacks/arrow.png" id="2_yjdaw"]
+[ext_resource type="Texture2D" uid="uid://f76b35l6qiir" path="res://Art/Player/Attacks/Arrow.png" id="2_lfifu"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="3_5hthx"]
 [ext_resource type="AudioStream" uid="uid://bgus8xb6rjdki" path="res://Audio/ArrowSong.wav" id="4_11s5w"]
 
@@ -20,7 +20,7 @@ script = ExtResource("1_x83n7")
 texture_filter = 1
 rotation = 2.35619
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("2_yjdaw")
+texture = ExtResource("2_lfifu")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_8fcfs")

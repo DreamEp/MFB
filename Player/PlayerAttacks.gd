@@ -17,15 +17,18 @@ func _ready():
 
 func _physics_process(_delta):
 	var enemies_in_range = get_overlapping_bodies()
-	#axeCircle.spawnAxeCircle()
-	#thunderSpell.spawnThunderSpell(enemies_in_range)
+	axeCircle.spawnAxeCircle()
+	thunderSpell.spawnThunderSpell(enemies_in_range)
 	if(!settings_resource.auto_aim_state):
 		enemy_position = get_global_mouse_position()
 		look_at(enemy_position)
 	else:
 		if enemies_in_range.size() > 0:
-			var target_enemy = enemies_in_range.front()
-			enemy_position = target_enemy.global_position
+			var closest_enemy = enemies_in_range.front()
+			for current_enemy in enemies_in_range:
+				if(current_enemy.global_position.distance_to(player.global_position) < closest_enemy.global_position.distance_to(player.global_position)):
+					closest_enemy = current_enemy
+			enemy_position = closest_enemy.global_position
 			look_at(enemy_position)
 			
 	if(settings_resource.auto_attacks_state):

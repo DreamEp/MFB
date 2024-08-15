@@ -19,25 +19,30 @@ var base_color
 func _ready():
 	connect("selected_upgrade", Callable(upgrade, "upgrade_character"))
 	if item == null:
-		item = "food"
-	match item["rarity"]:
-		"common":
-			backgroundColor.color = Color(0.8, 0.8, 0.8, 1)
-		"uncommon":
-			backgroundColor.color = Color(0.6, 0.9, 0.6, 1)
-		"rare":
-			backgroundColor.color = Color(0.7, 0.7, 1, 1)
-		"epic":
-			backgroundColor.color = Color(0.8, 0.6, 0.9, 1)
-		"leg":
-			backgroundColor.color = Color(1, 0.7, 0.7, 1)
-		_:
-			pass
+		for i in UpgradeDb.UPGRADES:
+			if i == "food":
+				item = UpgradeDb.UPGRADES[i]
+	else:
+		match item["rarity"]:
+				"common":
+					backgroundColor.color = Color(0.8, 0.8, 0.8, 1)
+				"uncommon":
+					backgroundColor.color = Color(0.6, 0.9, 0.6, 1)
+				"rare":
+					backgroundColor.color = Color(0.7, 0.7, 1, 1)
+				"epic":
+					backgroundColor.color = Color(0.8, 0.6, 0.9, 1)
+				"leg":
+					backgroundColor.color = Color(1, 0.7, 0.7, 1)
+				_:
+					pass
+		item = UpgradeDb.UPGRADES[item["item"]]
+				
 	base_color = backgroundColor.color
-	itemName.text = UpgradeDb.UPGRADES[item["item"]]["displayname"]
-	itemDescription.text = UpgradeDb.UPGRADES[item["item"]]["details"]
-	itemLevel.text = "Level : " + str(UpgradeDb.UPGRADES[item["item"]]["level"])
-	itemIcon.texture = load(UpgradeDb.UPGRADES[item["item"]]["icon"])
+	itemName.text = item["displayname"]
+	itemDescription.text = item["details"]
+	itemLevel.text = "Level : " + str(item["level"])
+	itemIcon.texture = load(item["icon"])
 	
 func _on_pressed():
 	selected_upgrade.emit(item)

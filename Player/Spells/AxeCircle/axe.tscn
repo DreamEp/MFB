@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://b5fd0njlivmkl"]
 
 [ext_resource type="Script" path="res://Player/Spells/AxeCircle/axe.gd" id="1_eon77"]
-[ext_resource type="Texture2D" uid="uid://bgdsi7bejuct2" path="res://Art/Player/Spells/axe.png" id="2_uk22h"]
+[ext_resource type="Texture2D" uid="uid://bgdsi7bejuct2" path="res://Art/Player/Spells/Axe.png" id="2_4q22o"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="3_brodq"]
 [ext_resource type="AudioStream" uid="uid://csehu4xir5t36" path="res://Audio/AxeSong.mp3" id="4_yn2ue"]
 
@@ -22,7 +22,7 @@ axe_duration = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_uk22h")
+texture = ExtResource("2_4q22o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.00146369, -0.999999)

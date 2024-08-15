@@ -30,7 +30,7 @@ func spawnThunderSpell(enemies_in_range):
 	var current_enemy = 0
 	if can_spawn_thunder:
 		can_spawn_thunder = false
-		for i in thunder_count:
+		for i in closest_enemies:
 			var spawned_thunder = thunder_scene.instantiate()
 			spawned_thunder.position = closest_enemies[current_enemy]
 			current_enemy += 1
