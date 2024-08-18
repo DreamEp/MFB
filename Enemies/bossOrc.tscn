@@ -1,14 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://bkwl467oahx1d"]
+[gd_scene load_steps=15 format=3 uid="uid://dnxlaao65sic8"]
 
-[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_ahxew"]
-[ext_resource type="PackedScene" uid="uid://b0ocfd88fjt3j" path="res://Util/Components/health_component.tscn" id="2_olcmw"]
-[ext_resource type="Texture2D" uid="uid://du3fv1ggkopoh" path="res://Art/Enemies/Orc.png" id="2_ybnwl"]
-[ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="3_fg14w"]
-[ext_resource type="Script" path="res://Enemies/EnemyMovement.gd" id="4_ctsao"]
-[ext_resource type="Script" path="res://Enemies/EnemyAnimation.gd" id="4_d671h"]
+[ext_resource type="Script" path="res://Enemies/enemy.gd" id="1_i5r35"]
+[ext_resource type="Texture2D" uid="uid://du3fv1ggkopoh" path="res://Art/Enemies/Orc.png" id="2_hiwak"]
+[ext_resource type="Script" path="res://Enemies/EnemyMovement.gd" id="3_246hv"]
+[ext_resource type="Script" path="res://Enemies/EnemyAnimation.gd" id="4_ckhly"]
+[ext_resource type="PackedScene" uid="uid://b0ocfd88fjt3j" path="res://Util/Components/health_component.tscn" id="5_towaa"]
+[ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="6_36xet"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6c3ef"]
-size = Vector2(4, 7.75)
+size = Vector2(21, 38)
 
 [sub_resource type="Animation" id="Animation_5nssg"]
 length = 0.001
@@ -158,49 +158,53 @@ _data = {
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qljum"]
-size = Vector2(46, 27)
+size = Vector2(185, 92)
 
-[node name="Enemy" type="CharacterBody2D" groups=["enemy"]]
+[node name="BossOrc" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 16
 collision_mask = 29
 motion_mode = 1
-script = ExtResource("1_ahxew")
-movemement_speed = 20.0
-health = 40.0
-enemy_damage = 5.0
-min_experience = 4
-max_experience = 10
+script = ExtResource("1_i5r35")
+movemement_speed = 30.0
+health = 400.0
+enemy_damage = 50.0
+min_experience = 50
+max_experience = 100
+enemy_type = "boss"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0.980605, 0.511302, 0.22442, 1)
 texture_filter = 1
-texture = ExtResource("2_ybnwl")
+scale = Vector2(5, 5)
+texture = ExtResource("2_hiwak")
 hframes = 8
 vframes = 6
-frame = 16
+frame = 40
 
 [node name="CollisionEnemy" type="CollisionShape2D" parent="."]
+position = Vector2(3, 4)
 shape = SubResource("RectangleShape2D_6c3ef")
 
 [node name="EnemyMovement" type="Node" parent="."]
-script = ExtResource("4_ctsao")
+script = ExtResource("3_246hv")
 
 [node name="EnemyAnimation" type="Node" parent="."]
-script = ExtResource("4_d671h")
+script = ExtResource("4_ckhly")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_esvep")
 }
 
-[node name="HealthComponent" parent="." instance=ExtResource("2_olcmw")]
+[node name="HealthComponent" parent="." instance=ExtResource("5_towaa")]
 
-[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("3_fg14w")]
+[node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_36xet")]
 collision_layer = 16
 collision_mask = 13
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]
-position = Vector2(0, -2.5)
+position = Vector2(4.5, -1)
 shape = SubResource("RectangleShape2D_qljum")
 
 [connection signal="body_entered" from="HitboxComponent" to="." method="_on_hitbox_component_body_entered"]

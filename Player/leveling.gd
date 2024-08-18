@@ -56,3 +56,21 @@ func levelup():
 		upgradeOption.add_child(option_choice)
 		options += 1
 	get_tree().paused = true
+	
+func retrieveWeaponsChest():
+	list_of_upgrade = []
+	var tween = levelUpPanel.create_tween()
+	tween.tween_property(levelUpPanel, "position", Vector2(220, 50), 0.2).set_trans(Tween.TRANS_QUINT).set_ease(Tween.EASE_IN)
+	tween.play()
+	levelUpPanel.visible = true
+	var options = 0
+	var optionsmax = 3 
+	while options < optionsmax:
+		var option_choice = itemOption.instantiate()
+		var random_choice = upgradePlayer.get_random_player_attack()
+		if random_choice:
+			option_choice.item = random_choice #get_random_player_attack() #get_random_player_upgrade()
+			list_of_upgrade.append(str(option_choice.item["item"] + "_" + option_choice.item["rarity"]))
+		upgradeOption.add_child(option_choice)
+		options += 1
+	get_tree().paused = true	

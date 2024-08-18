@@ -16,6 +16,7 @@ extends Node2D
 var upgrade_options = []
 var collected_upgrades = []
 var collected_weapons_spells = []
+var collected_names = []
 
 var rarity_chances: Dictionary = {
 	"common": 100,
@@ -160,7 +161,7 @@ func get_random_player_attack():
 				weighted_dblist.append({"item": item, "rarity": rarity, "value": 0, "chance": chance})
 
 		var random_item = pick_random_upgrade(weighted_dblist)
-		print(dblist)
+		#print(dblist)
 		upgrade_options.append(random_item) 
 		return random_item
 	else:
@@ -208,20 +209,20 @@ func pick_random_upgrade(list_upgrades_chance):
 					break
 			assigned_numbers.append(number)
 			number_to_upgrade[number] = upgrade
-
-	var random_number = randi() % 200
-	while random_number not in number_to_upgrade:
-		random_number = randi() % 200
-	var value_to_check = str(number_to_upgrade[random_number]["item"] + "_" + number_to_upgrade[random_number]["rarity"])
-	while value_to_check in leveling.list_of_upgrade:
-		random_number = randi() % 200
-		if random_number not in number_to_upgrade:
+	if leveling.list_of_upgrade.size() < list_upgrades_chance.size():
+		var random_number = randi() % 200
+		while random_number not in number_to_upgrade:
 			random_number = randi() % 200
-		value_to_check = str(number_to_upgrade[random_number]["item"] + "_" + number_to_upgrade[random_number]["rarity"])
-	
-	
-	print(number_to_upgrade[random_number])
-	return number_to_upgrade[random_number]
+		var value_to_check = str(number_to_upgrade[random_number]["item"] + "_" + number_to_upgrade[random_number]["rarity"])
+		while value_to_check in leveling.list_of_upgrade:
+			random_number = randi() % 200
+			while random_number not in number_to_upgrade:
+				random_number = randi() % 200
+			value_to_check = str(number_to_upgrade[random_number]["item"] + "_" + number_to_upgrade[random_number]["rarity"])
+		#print(number_to_upgrade[random_number])
+		return number_to_upgrade[random_number]
+	else:
+		return null
 	
 	
 func upgrade_character(picked_upgrade):
@@ -229,7 +230,7 @@ func upgrade_character(picked_upgrade):
 	var upgrade_name = picked_upgrade["displayname"]
 	#var upgrade_display_name = upgrade["displayname"]
 	var upgrade_value
-	if picked_upgrade["type"] == "upgrade":
+	if picked_upgrade["type"] == "upgrade" or picked_upgrade["type"] == "item":
 		upgrade_value = picked_upgrade["value"]
 	#var upgrade_rarity = picked_upgrade["rarity"]
 	match upgrade_name:
@@ -265,26 +266,27 @@ func upgrade_character(picked_upgrade):
 		"Food":
 			healthComponent.health += upgrade_value
 			healthComponent.health = clamp(healthComponent.health, 0, healthComponent.MAX_HEALTH)
-	adjust_gui_collection(upgrade_name, picked_upgrade)
+	adjust_gui_collection(picked_upgrade)
 	var option_children = upgradeOption.get_children() 
 	for i in option_children: 
 		i.queue_free()
 	upgrade_options.clear() 
 	collected_weapons_spells.append(str(picked_upgrade["displayname"]) + str(picked_upgrade["level"])) 
+	collected_names.append(upgrade_name)
 	levelUpPanel.visible = false 
 	levelUpPanel.position = Vector2(800, 50) 
 	get_tree().paused = false 
 	leveling.calculate_experience(0) 
 
 
-func adjust_gui_collection(key, upgrade):
+func adjust_gui_collection(upgrade):
 	var get_upgraded_displayname = upgrade["displayname"] 
 	var get_type = upgrade["type"] 
 	if get_type != "item": 
-		var get_collected_displaynames = []
-		for i in collected_upgrades:
-			get_collected_displaynames.append(i["displayname"]) 
-		if not get_upgraded_displayname in get_collected_displaynames:
+		#var get_collected_displaynames = []
+		#for i in collected_names:
+			#get_collected_displaynames.append(i["displayname"]) 
+		if not get_upgraded_displayname in collected_names:
 			var new_item = itemContainer.instantiate() 
 			new_item.upgrade = upgrade
 			match get_type: 
@@ -300,15 +302,15 @@ func adjust_gui_collection(key, upgrade):
 					var current_weapons = collectedWeapons.get_children()
 					for w in current_weapons: 
 						if w.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and w.has_method("update_level"):
-							w.update_level(key)
+							w.update_level(upgrade)
 				"spell":
 					var current_weapons = collectedWeapons.get_children()
 					for w in current_weapons: 
 						if w.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and w.has_method("update_level"):
-							w.update_level(key)
+							w.update_level(upgrade)
 				"upgrade":
 					var current_upgrades = collectedUpgrades.get_children()
 					for u in current_upgrades: 
 						if u.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and u.has_method("update_level"):
-							u.update_level(key)
+							u.update_level(upgrade)
 

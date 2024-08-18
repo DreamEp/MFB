@@ -1,11 +1,13 @@
-[gd_scene load_steps=11 format=3 uid="uid://0q77ksscaho5"]
+[gd_scene load_steps=16 format=3 uid="uid://0q77ksscaho5"]
 
 [ext_resource type="PackedScene" uid="uid://b48nchocyocqp" path="res://Player/player.tscn" id="1_13lbo"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_a5gyv"]
-[ext_resource type="PackedScene" uid="uid://bkwl467oahx1d" path="res://Enemies/enemy.tscn" id="2_5su7r"]
+[ext_resource type="PackedScene" uid="uid://bkwl467oahx1d" path="res://Enemies/baseOrc.tscn" id="2_5su7r"]
 [ext_resource type="Texture2D" uid="uid://dn4p38y76xv3i" path="res://Art/tilemap_packed.png" id="3_sgcg1"]
 [ext_resource type="PackedScene" uid="uid://cxcen78y8bhox" path="res://Util/enemy_spawner.tscn" id="4_24gqt"]
 [ext_resource type="Script" path="res://Util/spawn_info.gd" id="5_i3ma0"]
+[ext_resource type="PackedScene" uid="uid://bdw6012jctyqw" path="res://Enemies/eliteOrc.tscn" id="7_3ci0i"]
+[ext_resource type="PackedScene" uid="uid://dnxlaao65sic8" path="res://Enemies/bossOrc.tscn" id="8_hk1je"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iigx"]
 texture = ExtResource("3_sgcg1")
@@ -415,18 +417,42 @@ sources/0 = SubResource("TileSetAtlasSource_8iigx")
 [sub_resource type="Resource" id="Resource_k0kof"]
 script = ExtResource("5_i3ma0")
 time_start = 0
-time_end = 10
+time_end = 180
 enemy_type = ExtResource("2_5su7r")
-enemy_num = 2
-enemy_spawn_delay = 0
+enemy_num = 1
+enemy_spawn_delay = 1
 
 [sub_resource type="Resource" id="Resource_cjmbi"]
 script = ExtResource("5_i3ma0")
-time_start = 3
-time_end = 10
+time_start = 60
+time_end = 180
 enemy_type = ExtResource("2_5su7r")
 enemy_num = 10
-enemy_spawn_delay = 1
+enemy_spawn_delay = 10
+
+[sub_resource type="Resource" id="Resource_cxdxq"]
+script = ExtResource("5_i3ma0")
+time_start = 20
+time_end = 180
+enemy_type = ExtResource("7_3ci0i")
+enemy_num = 1
+enemy_spawn_delay = 20
+
+[sub_resource type="Resource" id="Resource_rmihc"]
+script = ExtResource("5_i3ma0")
+time_start = 120
+time_end = 180
+enemy_type = ExtResource("7_3ci0i")
+enemy_num = 3
+enemy_spawn_delay = 60
+
+[sub_resource type="Resource" id="Resource_0xktq"]
+script = ExtResource("5_i3ma0")
+time_start = 180
+time_end = 180
+enemy_type = ExtResource("8_hk1je")
+enemy_num = 1
+enemy_spawn_delay = 0
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_a5gyv")
@@ -443,14 +469,11 @@ layer_2/tile_data = PackedInt32Array(-327665, 327680, 0, -262129, 327680, 1, -26
 
 [node name="Player" parent="." instance=ExtResource("1_13lbo")]
 
-[node name="Enemy" parent="." instance=ExtResource("2_5su7r")]
-position = Vector2(-38, -37)
-min_experience = 50
-max_experience = 100
-
 [node name="EnemySpawner" parent="." instance=ExtResource("4_24gqt")]
-spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_k0kof"), SubResource("Resource_cjmbi")])
+spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_k0kof"), SubResource("Resource_cjmbi"), SubResource("Resource_cxdxq"), SubResource("Resource_rmihc"), SubResource("Resource_0xktq")])
 
 [node name="Loots" type="Node2D" parent="."]
 
 [node name="Experience" type="Node2D" parent="Loots" groups=["experience"]]
+
+[node name="Chest" type="Node2D" parent="Loots" groups=["chest"]]

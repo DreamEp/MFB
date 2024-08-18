@@ -6,7 +6,7 @@ class_name Interraction
 @onready var leveling = $Leveling
 
 func _on_grab_area_area_entered(area):
-	if area is Experience:  
+	if area is Experience or area is Chest:  
 		area.target = player
 
 
@@ -14,3 +14,6 @@ func _on_interract_area_area_entered(area):
 	if area is Experience: 
 		var gem_exp = area.collect()
 		leveling.calculate_experience(gem_exp)
+	elif area is Chest:
+		area.collect()
+		leveling.retrieveWeaponsChest()

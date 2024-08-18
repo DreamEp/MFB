@@ -53,7 +53,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		aim_position = (event.position - half_viewport)
 
 func _ready():
-	print(healthBar.name)
 	set_healthbar(healthComponent.MAX_HEALTH, healthComponent.MAX_HEALTH)
 	set_expbar(player_experience, 5.0)
 	

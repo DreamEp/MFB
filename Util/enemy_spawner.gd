@@ -1,7 +1,7 @@
 extends Node2D
 
 @export var spawns : Array[SpawnInfo] = []
-@onready var player: Player = get_tree().get_first_node_in_group("player") #On récuppère le player
+@onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var gameTimer: Label = get_tree().get_first_node_in_group("hud").get_node("GameTimer")
 @onready var tileMap: TileMap = $"../TileMap"
 
@@ -51,6 +51,7 @@ func retrieve_spawnable_tile():
 func _physics_process(delta):
 	pass_time += delta
 	change_time()
+	#print("time : %s, pass_time : %s" % [time, pass_time])
 	
 func _ready():
 	_on_timer_timeout()

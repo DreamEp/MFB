@@ -160,6 +160,7 @@ vframes = 7
 frame = 9
 
 [node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.75, 0.75)
 
 [node name="CollisionPlayer" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)
@@ -170,6 +171,8 @@ script = ExtResource("5_o175c")
 
 [node name="PlayerAnimation" type="Node" parent="."]
 script = ExtResource("4_mi3k1")
+
+[node name="Interraction" parent="." instance=ExtResource("9_myqhg")]
 
 [node name="PlayerPosition" type="Marker2D" parent="."]
 
@@ -187,9 +190,9 @@ firing_position = NodePath("../AttacksPivot/Bow/ArrowFirePosition")
 
 [node name="AxeCircle" type="Node2D" parent="PlayerAttacks" node_paths=PackedStringArray("player_position")]
 script = ExtResource("7_1nedx")
-player_position = NodePath("../../PlayerPosition")
 axe_circle_count = 4
 axe_circle_rate = 8.0
+player_position = NodePath("../../PlayerPosition")
 
 [node name="ThunderSpell" type="Node2D" parent="PlayerAttacks"]
 script = ExtResource("8_6pk6l")
@@ -213,8 +216,6 @@ scale = Vector2(0.7, 0.7)
 libraries = {
 "": SubResource("AnimationLibrary_p2wor")
 }
-
-[node name="Interraction" parent="." instance=ExtResource("9_myqhg")]
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_hpyvg")]
 MAX_HEALTH = 80.0

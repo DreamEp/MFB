@@ -33,6 +33,7 @@ func _physics_process(_delta):
 			
 	if(settings_resource.auto_attacks_state):
 		arrowsShot.spawnArrowShot(enemy_position)
+		pass
 	else:
 		if Input.is_action_just_pressed("left_click"):
 			arrowsShot.spawnArrowShot(enemy_position)

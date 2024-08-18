@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://072ryf224c3t"]
+
+[ext_resource type="Script" path="res://Objects/chest_loot.gd" id="1_13ib1"]
+[ext_resource type="Texture2D" uid="uid://xw8odu2xvjva" path="res://Art/Objects/chest.png" id="2_8s163"]
+[ext_resource type="AudioStream" uid="uid://ce1fl2u4wb7sd" path="res://Audio/PickupGemSong.mp3" id="3_q7g88"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_64kth"]
+size = Vector2(21, 22)
+
+[node name="ChestLoot" type="Area2D" groups=["chest"]]
+collision_layer = 64
+collision_mask = 4
+script = ExtResource("1_13ib1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+scale = Vector2(1.3, 1.3)
+texture = ExtResource("2_8s163")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_64kth")
+
+[node name="PickupChestSong" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_q7g88")
+volume_db = 15.803
+pitch_scale = 0.68
+bus = &"SFX"

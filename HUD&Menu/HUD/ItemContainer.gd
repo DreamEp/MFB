@@ -14,13 +14,12 @@ func _ready():
 		label_item_number.text = str(upgrade["level"])
 		scaleChild(base_parent_size, base_child_size)
 
-func update_level(key):
-	var current_key = key.to_lower()
-	if UpgradeDb.UPGRADES.has(current_key):
-		upgrade = UpgradeDb.UPGRADES[current_key]
-		if upgrade.has("level"):
-			upgrade["level"] += 1
-			label_item_number.text = str(upgrade["level"])
+func update_level(picked_upgrade):
+	var current_level = int(label_item_number.text)
+	if picked_upgrade["type"] != "upgrade":
+		label_item_number.text = str(current_level + 1)
+	else:
+		label_item_number.text = str(current_level + picked_upgrade["level"])
 		
 func scaleChild(parent_size, child_size):
 	

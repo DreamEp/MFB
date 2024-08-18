@@ -17,6 +17,8 @@ signal selected_upgrade(upgrade)
 var base_color
 
 func _ready():
+	var item_level = 1
+	var item_rarity = "common"
 	connect("selected_upgrade", Callable(upgrade, "upgrade_character"))
 	if item == null:
 		for i in UpgradeDb.UPGRADES:
@@ -26,18 +28,29 @@ func _ready():
 		match item["rarity"]:
 				"common":
 					backgroundColor.color = Color(0.8, 0.8, 0.8, 1)
+					item_rarity = "common"
+					item_level = 1 
 				"uncommon":
 					backgroundColor.color = Color(0.6, 0.9, 0.6, 1)
+					item_rarity = "uncommon"
+					item_level = 2 
 				"rare":
 					backgroundColor.color = Color(0.7, 0.7, 1, 1)
+					item_rarity = "rare"
+					item_level = 3 
 				"epic":
 					backgroundColor.color = Color(0.8, 0.6, 0.9, 1)
+					item_rarity = "epic"
+					item_level = 4 
 				"leg":
 					backgroundColor.color = Color(1, 0.7, 0.7, 1)
+					item_rarity = "leg"
+					item_level = 5 
 				_:
 					pass
 		item = UpgradeDb.UPGRADES[item["item"]]
-				
+		item["rarity"] = item_rarity
+		item["level"] = item_level
 	base_color = backgroundColor.color
 	itemName.text = item["displayname"]
 	itemDescription.text = item["details"]
