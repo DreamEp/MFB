@@ -8,10 +8,10 @@
 [ext_resource type="Script" path="res://Player/PlayerAttacks.gd" id="5_72ra7"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="5_hs5nc"]
 [ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="5_o175c"]
-[ext_resource type="Script" path="res://Player/Attacks/ArrowShot/ArrowsShot.gd" id="6_ustk2"]
 [ext_resource type="Script" path="res://Player/Spells/AxeCircle/AxeCircle.gd" id="7_1nedx"]
-[ext_resource type="Script" path="res://Player/Spells/ThunderSpell/ThunderSpell.gd" id="8_6pk6l"]
+[ext_resource type="Script" path="res://Player/Attacks/ArrowShot/ArrowShot.gd" id="7_8fb6h"]
 [ext_resource type="PackedScene" uid="uid://36lv5b1iv1pu" path="res://Player/interraction.tscn" id="9_myqhg"]
+[ext_resource type="Script" path="res://Player/Spells/ThunderBolt/ThunderBolt.gd" id="9_qoqrc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx8ix"]
 size = Vector2(6, 11)
@@ -160,7 +160,7 @@ vframes = 7
 frame = 9
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.75, 0.75)
+zoom = Vector2(0.8, 0.8)
 
 [node name="CollisionPlayer" type="CollisionShape2D" parent="."]
 position = Vector2(0, -1.5)
@@ -184,18 +184,18 @@ script = ExtResource("5_72ra7")
 [node name="DetectEnemyArea" type="CollisionShape2D" parent="PlayerAttacks"]
 shape = SubResource("CircleShape2D_okonb")
 
-[node name="ArrowsShot" type="Node2D" parent="PlayerAttacks" node_paths=PackedStringArray("firing_position")]
-script = ExtResource("6_ustk2")
+[node name="ArrowShot" type="Node2D" parent="PlayerAttacks" node_paths=PackedStringArray("firing_position")]
+script = ExtResource("7_8fb6h")
 firing_position = NodePath("../AttacksPivot/Bow/ArrowFirePosition")
 
 [node name="AxeCircle" type="Node2D" parent="PlayerAttacks" node_paths=PackedStringArray("player_position")]
 script = ExtResource("7_1nedx")
+player_position = NodePath("../../PlayerPosition")
 axe_circle_count = 4
 axe_circle_rate = 8.0
-player_position = NodePath("../../PlayerPosition")
 
-[node name="ThunderSpell" type="Node2D" parent="PlayerAttacks"]
-script = ExtResource("8_6pk6l")
+[node name="ThunderBolt" type="Node2D" parent="PlayerAttacks"]
+script = ExtResource("9_qoqrc")
 
 [node name="AttacksPivot" type="Marker2D" parent="PlayerAttacks"]
 position = Vector2(15, 0)
@@ -218,7 +218,7 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_hpyvg")]
-MAX_HEALTH = 80.0
+MAX_HEALTH = 100.0
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_hs5nc")]
 collision_layer = 4

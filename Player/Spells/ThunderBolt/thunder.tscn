@@ -1,9 +1,9 @@
 [gd_scene load_steps=10 format=3 uid="uid://biy01r7bin3ks"]
 
-[ext_resource type="Script" path="res://Player/Spells/ThunderSpell/thunder.gd" id="1_mkk10"]
-[ext_resource type="Texture2D" uid="uid://dm6g6hsw3l4l" path="res://Art/Player/Spells/Thunder.png" id="2_a4bo6"]
-[ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="3_lagpu"]
-[ext_resource type="AudioStream" uid="uid://kqu3u46y7xg6" path="res://Audio/thunderSong.mp3" id="4_r2fvy"]
+[ext_resource type="Script" path="res://Player/Spells/ThunderBolt/thunder.gd" id="1_7uh22"]
+[ext_resource type="Texture2D" uid="uid://dm6g6hsw3l4l" path="res://Art/Player/Spells/Thunder.png" id="2_s1vb6"]
+[ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="3_6ds2v"]
+[ext_resource type="AudioStream" uid="uid://kqu3u46y7xg6" path="res://Audio/thunderSong.mp3" id="4_xs2up"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8fcfs"]
 size = Vector2(4, 3)
@@ -68,20 +68,20 @@ _data = {
 scale = Vector2(2, 2)
 collision_layer = 8
 collision_mask = 3
-script = ExtResource("1_mkk10")
+script = ExtResource("1_7uh22")
 anim_speed = 120.0
 attack_damage = 20.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_a4bo6")
+texture = ExtResource("2_s1vb6")
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 6.5)
 shape = SubResource("RectangleShape2D_8fcfs")
 
-[node name="HitboxComponent" parent="." instance=ExtResource("3_lagpu")]
+[node name="HitboxComponent" parent="." instance=ExtResource("3_6ds2v")]
 collision_layer = 8
 collision_mask = 51
 
@@ -90,7 +90,7 @@ position = Vector2(0.5, 5)
 shape = SubResource("RectangleShape2D_p32mm")
 
 [node name="ThunderSpellSong" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("4_r2fvy")
+stream = ExtResource("4_xs2up")
 volume_db = -5.0
 pitch_scale = 1.2
 autoplay = true

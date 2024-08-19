@@ -1,5 +1,5 @@
 extends Node2D
-class_name ArrowsShot
+class_name ArrowShot
 
 var arrow_scene: PackedScene = preload("res://Player/Attacks/ArrowShot/arrow.tscn")
 

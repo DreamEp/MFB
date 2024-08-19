@@ -23,11 +23,10 @@ func _physics_process(_delta):
 	elif (enemy.global_position.direction_to(player.global_position)).x < 0.1:
 		enemySprite2D.flip_h = true
 		
-		
 	if !enemy.alive:
 		animPlayer.play("death", -1, 1.2)
 		return
-	
+		
 	if enemy.attacking:		
 		animPlayer.set_speed_scale(enemy.attack_speed)
 		animPlayer.play("attack")

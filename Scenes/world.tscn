@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://0q77ksscaho5"]
+[gd_scene load_steps=17 format=3 uid="uid://0q77ksscaho5"]
 
 [ext_resource type="PackedScene" uid="uid://b48nchocyocqp" path="res://Player/player.tscn" id="1_13lbo"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_a5gyv"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" path="res://Util/spawn_info.gd" id="5_i3ma0"]
 [ext_resource type="PackedScene" uid="uid://bdw6012jctyqw" path="res://Enemies/eliteOrc.tscn" id="7_3ci0i"]
 [ext_resource type="PackedScene" uid="uid://dnxlaao65sic8" path="res://Enemies/bossOrc.tscn" id="8_hk1je"]
+[ext_resource type="PackedScene" uid="uid://072ryf224c3t" path="res://Objects/chest_loot.tscn" id="9_hy02c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iigx"]
 texture = ExtResource("3_sgcg1")
@@ -477,3 +478,6 @@ spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_k0kof"), SubResour
 [node name="Experience" type="Node2D" parent="Loots" groups=["experience"]]
 
 [node name="Chest" type="Node2D" parent="Loots" groups=["chest"]]
+
+[node name="ChestLoot" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
+position = Vector2(89, 23)

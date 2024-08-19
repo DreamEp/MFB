@@ -29,6 +29,7 @@ class_name Player
 @export var player_experience: float
 @export var player_experience_level: float = 1.0
 @export var player_collected_experience: float = 0
+@export var player_collected_weapons_and_spells: Array = []
 
 #Nodes
 @onready var healthBar: TextureProgressBar = get_tree().get_first_node_in_group("hud").get_node("HealthBar")

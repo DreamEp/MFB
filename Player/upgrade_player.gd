@@ -15,7 +15,7 @@ extends Node2D
 
 var upgrade_options = []
 var collected_upgrades = []
-var collected_weapons_spells = []
+var collected_weapons_spells_names_level = []
 var collected_names = []
 
 var rarity_chances: Dictionary = {
@@ -130,14 +130,14 @@ func get_random_player_attack():
 		if UpgradeDb.UPGRADES[i]["type"] == "attack" or UpgradeDb.UPGRADES[i]["type"] == "spell":
 			var current_attack_spell = UpgradeDb.UPGRADES[i]
 			var name_to_check = str(current_attack_spell["displayname"]) + str(current_attack_spell["level"]) 
-			if name_to_check in collected_weapons_spells:
+			if name_to_check in collected_weapons_spells_names_level:
 				pass 
 			elif i in upgrade_options:
 				pass 
 			elif current_attack_spell["prerequisite"].size() > 0:
 				var to_add = true 
 				for u in current_attack_spell["prerequisite"]: 
-					if not u in collected_weapons_spells:
+					if not u in collected_weapons_spells_names_level:
 						to_add = false 
 				if to_add: 
 					dblist.append(i)
@@ -267,12 +267,23 @@ func upgrade_character(picked_upgrade):
 			healthComponent.health += upgrade_value
 			healthComponent.health = clamp(healthComponent.health, 0, healthComponent.MAX_HEALTH)
 	adjust_gui_collection(picked_upgrade)
+	if picked_upgrade["type"] == "attack" or picked_upgrade["type"] == "spell":
+		collected_weapons_spells_names_level.append(str(picked_upgrade["displayname"]) + str(picked_upgrade["level"])) 
+		var player_collected_weapons_and_spells = player.player_collected_weapons_and_spells
+		var found = false
+		for i in range(player_collected_weapons_and_spells.size()):
+			if player_collected_weapons_and_spells[i]["displayname"] == picked_upgrade["displayname"]:
+				player_collected_weapons_and_spells[i] = picked_upgrade
+				found = true
+				break
+		if found == false:	
+			player_collected_weapons_and_spells.append(picked_upgrade)
+		player.player_collected_weapons_and_spells = player_collected_weapons_and_spells
+	collected_names.append(upgrade_name)
 	var option_children = upgradeOption.get_children() 
 	for i in option_children: 
 		i.queue_free()
 	upgrade_options.clear() 
-	collected_weapons_spells.append(str(picked_upgrade["displayname"]) + str(picked_upgrade["level"])) 
-	collected_names.append(upgrade_name)
 	levelUpPanel.visible = false 
 	levelUpPanel.position = Vector2(800, 50) 
 	get_tree().paused = false 

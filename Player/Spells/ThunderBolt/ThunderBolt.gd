@@ -1,7 +1,7 @@
 extends Node2D
-class_name ThunderSpell
+class_name ThunderBolt
 
-var thunder_scene: PackedScene = preload("res://Player/Spells/ThunderSpell/thunder.tscn")
+var thunder_scene: PackedScene = preload("res://Player/Spells/ThunderBolt/thunder.tscn")
 
 @onready var player: Player = get_owner()
 @onready var enemy: Enemy = get_tree().get_first_node_in_group("enemy")
@@ -23,7 +23,7 @@ func _ready():
 func _process(_delta):
 	pass
 
-func spawnThunderSpell(enemies_in_range):
+func spawnThunderBolt(enemies_in_range):
 	var thunder_count = thunder_spell_count + player.additional_spell_proctile
 	var closest_enemies = get_n_closest_enemies(player.global_position, enemies_in_range, thunder_count)
 	var thunder_rate = thunder_spell_rate - (thunder_spell_rate * (player.attack_coldown/100))

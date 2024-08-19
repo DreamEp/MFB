@@ -6,7 +6,7 @@ const SPELLS_PATH = "res://Art/Player/Spells/"
 var UPGRADES = {
 	"arrow1": {
 		"icon": ATTACKS_PATH + "Arrow.png",
-		"displayname": "Arrow Attacks",
+		"displayname": "Arrow Shot",
 		"details": "An arrow is thrown at a random enemy",
 		"level": 1,
 		"rarity": "common",
@@ -15,34 +15,34 @@ var UPGRADES = {
 	},
 	"arrow2": {
 		"icon": ATTACKS_PATH + "Arrow.png",
-		"displayname": "Arrow Attacks",
+		"displayname": "Arrow Shot",
 		"details": "An addition Arrow is thrown",
 		"level": 2,
 		"rarity": "uncommon",
-		"prerequisite": ["Arrow Attacks1"],
+		"prerequisite": ["Arrow Shot1"],
 		"type": "attack"
 	},
 	"arrow3": {
 		"icon": ATTACKS_PATH + "Arrow.png",
-		"displayname": "Arrow Attacks",
+		"displayname": "Arrow Shot",
 		"details": "Arrow now pass through another enemy and do + 3 damage",
 		"level": 3,
 		"rarity": "rare",
-		"prerequisite": ["Arrow Attacks2"],
+		"prerequisite": ["Arrow Shot2"],
 		"type": "attack"
 	},
 	"arrow4": {
 		"icon": ATTACKS_PATH + "Arrow.png",
-		"displayname": "Arrow Attacks",
+		"displayname": "Arrow Shot",
 		"details": "An additional 2 arrows are thrown",
 		"level": 4,
 		"rarity": "epic",
-		"prerequisite": ["Arrow Attacks3"],
+		"prerequisite": ["Arrow Shot3"],
 		"type": "attack"
 	},
 	"axe1": {
 		"icon": SPELLS_PATH + "Axe.png",
-		"displayname": "Axe Rotation",
+		"displayname": "Axe Circle",
 		"details": "A magical axe will follow you attacking enemies in a straight line",
 		"level": 1,
 		"rarity": "common",
@@ -51,34 +51,34 @@ var UPGRADES = {
 	},
 	"axe2": {
 		"icon": SPELLS_PATH + "Axe.png",
-		"displayname": "Axe Rotation",
+		"displayname": "Axe Circle",
 		"details": "The axe will now attack an additional enemy per attack",
 		"level": 2,
 		"rarity": "uncommon",
-		"prerequisite": ["Axe Rotation1"],
+		"prerequisite": ["Axe Circle1"],
 		"type": "spell"
 	},
 	"axe3": {
 		"icon": SPELLS_PATH + "Axe.png",
-		"displayname": "Axe Rotation",
+		"displayname": "Axe Circle",
 		"details": "The axe will attack another additional enemy per attack",
 		"level": 3,
 		"rarity": "rare",
-		"prerequisite": ["Axe Rotation2"],
+		"prerequisite": ["Axe Circle2"],
 		"type": "spell"
 	},
 	"axe4": {
 		"icon": SPELLS_PATH + "Axe.png",
-		"displayname": "Axe Rotation",
+		"displayname": "Axe Circle",
 		"details": "The axe now does + 5 damage per attack and causes 20% additional knockback",
 		"level": 4,
 		"rarity": "epic",
-		"prerequisite": ["Axe Rotation3"],
+		"prerequisite": ["Axe Circle3"],
 		"type": "spell"
 	},
 	"thunder1": {
 		"icon": SPELLS_PATH + "Thunder.png",
-		"displayname": "Thunder bolt",
+		"displayname": "Thunder Bolt",
 		"details": "A magical thunder will follow you attacking enemies in a straight line",
 		"level": 1,
 		"rarity": "common",
@@ -87,29 +87,29 @@ var UPGRADES = {
 	},
 	"thunder2": {
 		"icon": SPELLS_PATH + "Thunder.png",
-		"displayname": "Thunder bolt",
+		"displayname": "Thunder Bolt",
 		"details": "The thunder will now attack an additional enemy per attack",
 		"level": 2,
 		"rarity": "uncommon",
-		"prerequisite": ["Thunder bolt1"],
+		"prerequisite": ["Thunder Bolt1"],
 		"type": "spell"
 	},
 	"thunder3": {
 		"icon": SPELLS_PATH + "Thunder.png",
-		"displayname": "Thunder bolt",
+		"displayname": "Thunder Bolt",
 		"details": "The thunder will attack another additional enemy per attack",
 		"level": 3,
 		"rarity": "rare",
-		"prerequisite": ["Thunder bolt2"],
+		"prerequisite": ["Thunder Bolt2"],
 		"type": "spell"
 	},
 	"thunder4": {
 		"icon": SPELLS_PATH + "Thunder.png",
-		"displayname": "Thunder bolt",
+		"displayname": "Thunder Bolt",
 		"details": "The thunder now does + 5 damage per attack and causes 20% additional knockback",
 		"level": 4,
 		"rarity": "epic",
-		"prerequisite": ["Thunder bolt3"],
+		"prerequisite": ["Thunder Bolt3"],
 		"type": "spell"
 	},
 	"add_armor": {
