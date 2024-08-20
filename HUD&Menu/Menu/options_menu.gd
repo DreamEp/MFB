@@ -1,7 +1,7 @@
 extends Control
 class_name OptionMenu
 
-@onready var mainMenuContainer: MarginContainer = $"../MarginContainer"
+@onready var mainMenuContainer: NinePatchRect = $"../NinePatchRect"
 @onready var settingsTabContainer: Control = $MarginContainer/VBoxContainer/SettingsTabContainer
 
 func _ready():

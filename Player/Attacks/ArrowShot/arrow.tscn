@@ -15,6 +15,7 @@ size = Vector2(14.75, 5)
 collision_layer = 8
 collision_mask = 3
 script = ExtResource("1_x83n7")
+elemental_type = "physical"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

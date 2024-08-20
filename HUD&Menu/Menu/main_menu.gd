@@ -2,7 +2,7 @@ extends Control
 class_name MainMenu
 
 @onready var optionMenu: OptionMenu = $OptionsMenu
-@onready var mainMenuContainer: MarginContainer = $MarginContainer
+@onready var mainMenuContainer: NinePatchRect = $NinePatchRect
 
 func _process(_delta):
 	pass

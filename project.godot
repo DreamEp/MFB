@@ -36,6 +36,10 @@ mouse_cursor/custom_image="res://Art/crosshair.png"
 
 movie_writer/movie_file="S:/Taff/Perso/Godot_v4.2.2-stable_win64.exe/Projects/MFB/moovie/moovie.avi"
 
+[gui]
+
+theme/custom_font="res://Art/UI/MinimalPixel v2.ttf"
+
 [input]
 
 up={

@@ -1,60 +1,13 @@
-[gd_scene load_steps=13 format=3 uid="uid://cf1bgo1vnki3c"]
+[gd_scene load_steps=10 format=3 uid="uid://cf1bgo1vnki3c"]
 
 [ext_resource type="PackedScene" uid="uid://bqcr1sn787xkn" path="res://HUD&Menu/Menu/Options/window_mode_button.tscn" id="1_1gpcu"]
 [ext_resource type="Script" path="res://HUD&Menu/Menu/settings_tab_container.gd" id="1_ib5p3"]
 [ext_resource type="PackedScene" uid="uid://ci1k308cy4sm0" path="res://HUD&Menu/Menu/Options/resolution_button.tscn" id="2_4i1mq"]
+[ext_resource type="Theme" uid="uid://q72h1dd8g24p" path="res://Art/UI/Theme & Stylebox/tab.tres" id="2_gsj81"]
 [ext_resource type="PackedScene" uid="uid://5vuviw1xgjx0" path="res://HUD&Menu/Menu/Options/rebind_button.tscn" id="3_skhkp"]
 [ext_resource type="PackedScene" uid="uid://cg8bq6n8k4oec" path="res://HUD&Menu/Menu/Options/audio_slider_settings.tscn" id="4_4jfjc"]
 [ext_resource type="PackedScene" uid="uid://dkt7yaicfj7dw" path="res://HUD&Menu/Menu/Options/toggle_auto_aim_button.tscn" id="6_mel87"]
 [ext_resource type="PackedScene" uid="uid://b4f8fp48jq008" path="res://HUD&Menu/Menu/Options/toggle_auto_attacks_button.tscn" id="7_4hyqk"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ydsjq"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-bg_color = Color(0.252028, 0.252028, 0.252028, 1)
-border_width_left = 2
-border_width_top = 4
-border_width_right = 2
-border_color = Color(0.780392, 0.545098, 0.152941, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vmllx"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-bg_color = Color(0.230315, 0.230315, 0.230315, 1)
-border_width_left = 2
-border_width_top = 4
-border_width_right = 2
-border_color = Color(0.780392, 0.545098, 0.152941, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fntb2"]
-content_margin_left = 5.0
-content_margin_top = 5.0
-content_margin_right = 5.0
-bg_color = Color(0.176471, 0.176471, 0.176471, 1)
-border_width_left = 2
-border_width_top = 4
-border_width_right = 2
-border_color = Color(0.780871, 0.54533, 0.15466, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q7i7n"]
-bg_color = Color(0.176471, 0.176471, 0.176471, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.780392, 0.545098, 0.152941, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cdfq5"]
 
@@ -79,10 +32,7 @@ offset_right = -50.0
 offset_bottom = -25.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_styles/tab_selected = SubResource("StyleBoxFlat_ydsjq")
-theme_override_styles/tab_hovered = SubResource("StyleBoxFlat_vmllx")
-theme_override_styles/tab_unselected = SubResource("StyleBoxFlat_fntb2")
-theme_override_styles/panel = SubResource("StyleBoxFlat_q7i7n")
+theme = ExtResource("2_gsj81")
 tab_alignment = 1
 current_tab = 3
 

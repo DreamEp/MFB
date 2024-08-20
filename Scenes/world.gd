@@ -1,7 +1,7 @@
 extends Node2D
 
 @onready var mainMenu: Control = get_tree().get_first_node_in_group("menu")
-@onready var marginContainer: MarginContainer = mainMenu.get_node("MarginContainer")
+@onready var marginContainer: NinePatchRect = mainMenu.get_node("NinePatchRect")
 @onready var optionMenu: Control = mainMenu.get_node("OptionsMenu")
 
 func _ready():

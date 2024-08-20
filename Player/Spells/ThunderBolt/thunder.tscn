@@ -71,6 +71,7 @@ collision_mask = 3
 script = ExtResource("1_7uh22")
 anim_speed = 120.0
 attack_damage = 20.0
+elemental_type = "electric"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1

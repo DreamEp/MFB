@@ -7,10 +7,16 @@ class_name Enemy
 @export var enemy_damage: float = 1.0
 @export var attack_speed: float = 0.5
 @export var knockback_recovery: float = 3.0
-@export var armor: float = 2.0
+@export_range(0,1000) var armor: float = 200
 @export var min_experience: int = 0
 @export var max_experience: int = 5
+@export_enum("none","physical","fire","electric") var elemental_type: String
+@export_enum("none","physical","fire","electric") var type_resistant: String
+@export_enum("none","physical","fire","electric") var type_effective: String
 @export_enum("base", "elite", "boss") var enemy_type: String
+
+@onready var elemental_animation_player = $ElementalAnimationPlayer
+
 
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var enemySprite2D: Sprite2D = $Sprite2D
@@ -61,10 +67,22 @@ func damaging():
 		var hitbox: HitboxComponent = player.get_node("HitboxComponent")
 		
 		var attack = Attack.new()
-		attack.attack_damage = enemy_damage
+		attack.elemental_modifier = 0.5
+		attack.can_crit = false
 		attack.knockback_force = 0
-		attack.attack_position = global_position
 		attack.stun_time = 0
+		attack.attack_position = global_position
+		attack.target = player
+		attack.attacker = self		
+		var effective_damage = attack.calculate_effective_damage(elemental_type, enemy_damage)
+		attack.effective_damage = effective_damage
+		hitbox.damage(attack)
+		
+		#var attack = Attack.new()
+		#attack.attack_damage = enemy_damage
+		#attack.knockback_force = 0
+		#attack.attack_position = global_position
+		#attack.stun_time = 0
 		
 		hitbox.damage(attack)
 		on_player_hit()

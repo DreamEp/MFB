@@ -6,6 +6,8 @@ class_name Thunder
 @export var attack_damage: float = 2
 @export var knockback_force: float = 0
 @export var max_pierce := 1
+@export var stun_time := 1
+@export_enum("none","physical","fire","electric") var elemental_type: String
 
 @onready var enemy: Enemy = get_tree().get_first_node_in_group("enemy")
 @onready var player: Player = get_tree().get_first_node_in_group("player")
@@ -42,10 +44,16 @@ func damaging():
 		var hitbox: HitboxComponent = current_enemy.get_node("HitboxComponent")
 		
 		var attack = Attack.new()
-		attack.attack_damage = attack_damage + player.attack_damage
-		attack.knockback_force = knockback_force
+		attack.elemental_modifier = 0.5
+		attack.can_crit = true
+		attack.knockback_force = knockback_force + player.knockback_force
+		attack.stun_time = stun_time
 		attack.attack_position = global_position
-		attack.stun_time = 0
+		attack.target = current_enemy
+		attack.attacker = player		
+		attack_damage += player.attack_damage
+		var effective_damage = attack.calculate_effective_damage(elemental_type, attack_damage)
+		attack.effective_damage = effective_damage
 		
 		hitbox.damage(attack)
 		on_enemy_hit()

@@ -14,7 +14,7 @@ func _process(_delta):
 	
 func damage(attack: Attack):
 	if attack:
-		health -= attack.attack_damage
+		health -= snapped(attack.effective_damage, 0.01)
 		if health <= 0:
 			get_parent().alive = false
 		else:

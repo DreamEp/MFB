@@ -5,9 +5,9 @@ class_name MainNode
 
 @onready var mainMenu: Control = $"HUD&Menus/MainMenu"
 @onready var optionMenu: Control = mainMenu.get_node("OptionsMenu")
-@onready var mainMenuContainer: MarginContainer = mainMenu.get_node("MarginContainer")
+@onready var mainMenuContainer: NinePatchRect = mainMenu.get_node("NinePatchRect")
 @onready var main_2d: Node2D = $Main2DScene
-@onready var startButton: Button = mainMenuContainer.get_node("VBoxContainer").get_node("HBoxContainer").get_node("VBoxContainer").get_node("StartGame")
+@onready var startButton: Button = mainMenuContainer.get_node("HBoxContainer").get_node("VBoxContainer").get_node("StartGame")
 
 var scene_instance : Node2D
 

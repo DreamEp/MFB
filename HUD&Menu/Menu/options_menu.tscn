@@ -1,35 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bkq52g5a1py3k"]
+[gd_scene load_steps=5 format=3 uid="uid://bkq52g5a1py3k"]
 
 [ext_resource type="Script" path="res://HUD&Menu/Menu/options_menu.gd" id="1_ujxo8"]
 [ext_resource type="PackedScene" uid="uid://cf1bgo1vnki3c" path="res://HUD&Menu/Menu/settings_tab_container.tscn" id="2_qhh8p"]
+[ext_resource type="Theme" uid="uid://bccry05pp3gv2" path="res://Art/UI/Theme & Stylebox/button.tres" id="3_wgamw"]
 
 [sub_resource type="SystemFont" id="SystemFont_aq686"]
 font_names = PackedStringArray("Calisto MT")
 subpixel_positioning = 0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kmo0n"]
-bg_color = Color(0.176471, 0.176471, 0.176471, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.780392, 0.545098, 0.152941, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ud26h"]
-bg_color = Color(0.244777, 0.244776, 0.244776, 1)
-border_width_left = 4
-border_width_top = 4
-border_width_right = 4
-border_width_bottom = 4
-border_color = Color(0.780392, 0.545098, 0.152941, 1)
-corner_radius_top_left = 4
-corner_radius_top_right = 4
-corner_radius_bottom_right = 4
-corner_radius_bottom_left = 4
 
 [node name="OptionsMenu" type="Control" groups=["menu"]]
 layout_mode = 3
@@ -75,8 +52,7 @@ layout_mode = 2
 custom_minimum_size = Vector2(120, 30)
 layout_mode = 2
 size_flags_vertical = 8
-theme_override_styles/normal = SubResource("StyleBoxFlat_kmo0n")
-theme_override_styles/hover = SubResource("StyleBoxFlat_ud26h")
+theme = ExtResource("3_wgamw")
 text = "Exit
 "
 

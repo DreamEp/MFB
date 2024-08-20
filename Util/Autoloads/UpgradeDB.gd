@@ -77,7 +77,7 @@ var UPGRADES = {
 		"type": "spell"
 	},
 	"thunder1": {
-		"icon": SPELLS_PATH + "Thunder.png",
+		"icon": SPELLS_PATH + "ThunderIcon.png",
 		"displayname": "Thunder Bolt",
 		"details": "A magical thunder will follow you attacking enemies in a straight line",
 		"level": 1,
@@ -86,7 +86,7 @@ var UPGRADES = {
 		"type": "spell"
 	},
 	"thunder2": {
-		"icon": SPELLS_PATH + "Thunder.png",
+		"icon": SPELLS_PATH + "ThunderIcon.png",
 		"displayname": "Thunder Bolt",
 		"details": "The thunder will now attack an additional enemy per attack",
 		"level": 2,
@@ -95,7 +95,7 @@ var UPGRADES = {
 		"type": "spell"
 	},
 	"thunder3": {
-		"icon": SPELLS_PATH + "Thunder.png",
+		"icon": SPELLS_PATH + "ThunderIcon.png",
 		"displayname": "Thunder Bolt",
 		"details": "The thunder will attack another additional enemy per attack",
 		"level": 3,
@@ -104,7 +104,7 @@ var UPGRADES = {
 		"type": "spell"
 	},
 	"thunder4": {
-		"icon": SPELLS_PATH + "Thunder.png",
+		"icon": SPELLS_PATH + "ThunderIcon.png",
 		"displayname": "Thunder Bolt",
 		"details": "The thunder now does + 5 damage per attack and causes 20% additional knockback",
 		"level": 4,

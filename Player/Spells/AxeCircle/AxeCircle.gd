@@ -24,7 +24,7 @@ func _process(_delta):
 	pass
 
 func spawnAxeCircle():
-	var axe_count = axe_circle_count + player.additional_spell_proctile
+	var axe_count = axe_circle_count + player.additional_spell_proctile + player.additional_attack_proctile
 	var axe_rate = axe_circle_rate - (axe_circle_rate * (player.attack_coldown/100))
 	if can_spawn_axe:
 		can_spawn_axe = false
