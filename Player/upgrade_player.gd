@@ -252,9 +252,9 @@ func upgrade_character(picked_upgrade):
 		"Magic Hat":
 			player.spell_damage += player.spell_damage * upgrade_value
 		"Gloves":
-			print("after up as %s" % str(player.attack_coldown))
-			player.attack_coldown += player.attack_coldown * upgrade_value
-			print("after up as %s" % str(player.attack_coldown))
+			print("after up as %s" % str(player.attack_speed))
+			player.attack_speed += player.attack_speed * upgrade_value
+			print("after up as %s" % str(player.attack_speed))
 		"Tome":
 			player.spell_area += player.spell_area * upgrade_value
 		"Scroll":
@@ -269,16 +269,16 @@ func upgrade_character(picked_upgrade):
 	adjust_gui_collection(picked_upgrade)
 	if picked_upgrade["type"] == "attack" or picked_upgrade["type"] == "spell":
 		collected_weapons_spells_names_level.append(str(picked_upgrade["displayname"]) + str(picked_upgrade["level"])) 
-		var player_collected_weapons_and_spells = player.player_collected_weapons_and_spells
+		var player_collected_skills = player.player_collected_skills
 		var found = false
-		for i in range(player_collected_weapons_and_spells.size()):
-			if player_collected_weapons_and_spells[i]["displayname"] == picked_upgrade["displayname"]:
-				player_collected_weapons_and_spells[i] = picked_upgrade
+		for i in range(player_collected_skills.size()):
+			if player_collected_skills[i]["displayname"] == picked_upgrade["displayname"]:
+				player_collected_skills[i] = picked_upgrade
 				found = true
 				break
 		if found == false:	
-			player_collected_weapons_and_spells.append(picked_upgrade)
-		player.player_collected_weapons_and_spells = player_collected_weapons_and_spells
+			player_collected_skills.append(picked_upgrade)
+		player.player_collected_skills = player_collected_skills
 	collected_names.append(upgrade_name)
 	var option_children = upgradeOption.get_children() 
 	for i in option_children: 

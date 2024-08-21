@@ -1,8 +1,258 @@
-[gd_scene load_steps=4 format=3 uid="uid://4ai0mntatr2d"]
+[gd_scene load_steps=16 format=3 uid="uid://4ai0mntatr2d"]
 
 [ext_resource type="Script" path="res://Scenes/MainScene.gd" id="1_pwtwf"]
 [ext_resource type="PackedScene" uid="uid://c0ejinkqyooqo" path="res://HUD&Menu/Menu/main_menu.tscn" id="3_efc4l"]
+[ext_resource type="Texture2D" uid="uid://b43rq7kbdck2o" path="res://Art/UI/Status/stun.png" id="3_hnvs2"]
 [ext_resource type="Texture2D" uid="uid://b34pi2ay3k8rq" path="res://Art/UI/health.png" id="3_k0hkf"]
+[ext_resource type="Texture2D" uid="uid://0c3a3rao223x" path="res://Art/UI/Status/exhaust.png" id="4_mqvwc"]
+[ext_resource type="Texture2D" uid="uid://dc0f7wc5ccwpa" path="res://Art/UI/Status/slow.png" id="5_kewrl"]
+[ext_resource type="Texture2D" uid="uid://m14fqjtepux6" path="res://Art/UI/Status/haste.png" id="6_8pd6y"]
+[ext_resource type="Texture2D" uid="uid://b23m2x0s6xcov" path="res://Art/UI/Status/berserk.png" id="7_ne1gn"]
+
+[sub_resource type="Animation" id="Animation_o1uoe"]
+resource_name = "RESET"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentStatus:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [""]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentStatus:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.75, 0.75)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CurrentStatus:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_g6bm5"]
+resource_name = "berserk"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentStatus:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentStatus:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Berserk"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CurrentStatus:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qcyhv"]
+resource_name = "exhaust"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentStatus:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentStatus:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Exhaust"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CurrentStatus:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_asn44"]
+resource_name = "haste"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentStatus:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentStatus:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Haste"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CurrentStatus:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_sf2pf"]
+resource_name = "slow"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentStatus:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentStatus:text")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Slow"]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CurrentStatus:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qjiki"]
+resource_name = "stun"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CurrentStatus:text")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": ["Stun"]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CurrentStatus:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector2(0.75, 0.75), Vector2(1.5, 1.5), Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CurrentStatus:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.7, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_eescv"]
+_data = {
+"RESET": SubResource("Animation_o1uoe"),
+"berserk": SubResource("Animation_g6bm5"),
+"exhaust": SubResource("Animation_qcyhv"),
+"haste": SubResource("Animation_asn44"),
+"slow": SubResource("Animation_sf2pf"),
+"stun": SubResource("Animation_qjiki")
+}
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -15,13 +265,13 @@ script = ExtResource("1_pwtwf")
 
 [node name="HUD&Menus" type="CanvasLayer" parent="."]
 
-[node name="HUD" type="Control" parent="HUD&Menus" groups=["hud"]]
+[node name="PlayerHUD" type="Control" parent="HUD&Menus" groups=["hud"]]
 layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="GameTimer" type="Label" parent="HUD&Menus/HUD"]
+[node name="GameTimer" type="Label" parent="HUD&Menus/PlayerHUD"]
 layout_mode = 0
 offset_left = 290.0
 offset_top = 20.0
@@ -31,7 +281,7 @@ text = "20:00"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="HealthBar" type="TextureProgressBar" parent="HUD&Menus/HUD"]
+[node name="HealthBar" type="TextureProgressBar" parent="HUD&Menus/PlayerHUD"]
 layout_mode = 0
 offset_left = 304.0
 offset_top = 190.0
@@ -41,7 +291,7 @@ texture_under = ExtResource("3_k0hkf")
 texture_progress = ExtResource("3_k0hkf")
 tint_under = Color(0.329412, 0.180392, 0.192157, 0.419608)
 
-[node name="HealthLabel" type="Label" parent="HUD&Menus/HUD/HealthBar"]
+[node name="HealthLabel" type="Label" parent="HUD&Menus/PlayerHUD/HealthBar"]
 layout_mode = 0
 offset_right = 32.0
 offset_bottom = 8.0
@@ -50,7 +300,7 @@ text = "1 / 10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="ExperienceBar" type="ProgressBar" parent="HUD&Menus/HUD"]
+[node name="ExperienceBar" type="ProgressBar" parent="HUD&Menus/PlayerHUD"]
 self_modulate = Color(0.108513, 0.487729, 0.442931, 1)
 layout_mode = 0
 offset_left = 20.0
@@ -60,7 +310,7 @@ offset_bottom = 360.0
 value = 20.0
 show_percentage = false
 
-[node name="LevelLabel" type="Label" parent="HUD&Menus/HUD/ExperienceBar"]
+[node name="LevelLabel" type="Label" parent="HUD&Menus/PlayerHUD/ExperienceBar"]
 layout_mode = 0
 offset_left = 270.0
 offset_top = -49.0
@@ -68,7 +318,71 @@ offset_right = 332.0
 offset_bottom = -26.0
 text = "Level : 1"
 
-[node name="LevelUp" type="Panel" parent="HUD&Menus/HUD"]
+[node name="StatusEffectsBar" type="HBoxContainer" parent="HUD&Menus/PlayerHUD"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 48.0
+offset_right = 208.0
+offset_bottom = 68.0
+
+[node name="stun" type="TextureRect" parent="HUD&Menus/PlayerHUD/StatusEffectsBar"]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("3_hnvs2")
+expand_mode = 1
+
+[node name="exhaust" type="TextureRect" parent="HUD&Menus/PlayerHUD/StatusEffectsBar"]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("4_mqvwc")
+expand_mode = 1
+
+[node name="slow" type="TextureRect" parent="HUD&Menus/PlayerHUD/StatusEffectsBar"]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("5_kewrl")
+expand_mode = 1
+
+[node name="haste" type="TextureRect" parent="HUD&Menus/PlayerHUD/StatusEffectsBar"]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("6_8pd6y")
+expand_mode = 1
+
+[node name="berserk" type="TextureRect" parent="HUD&Menus/PlayerHUD/StatusEffectsBar"]
+visible = false
+texture_filter = 1
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 2
+texture = ExtResource("7_ne1gn")
+expand_mode = 1
+
+[node name="CurrentStatus" type="Label" parent="HUD&Menus/PlayerHUD"]
+layout_mode = 0
+offset_left = 299.0
+offset_top = 139.0
+offset_right = 339.0
+offset_bottom = 159.0
+scale = Vector2(0.75, 0.75)
+pivot_offset = Vector2(20, 10)
+theme_override_font_sizes/font_size = 8
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="StatusAnimationPlayer" type="AnimationPlayer" parent="HUD&Menus/PlayerHUD"]
+libraries = {
+"": SubResource("AnimationLibrary_eescv")
+}
+
+[node name="LevelUp" type="Panel" parent="HUD&Menus/PlayerHUD"]
 process_mode = 2
 visible = false
 layout_mode = 0
@@ -77,7 +391,7 @@ offset_top = 50.0
 offset_right = 420.0
 offset_bottom = 300.0
 
-[node name="LevelingUp" type="Label" parent="HUD&Menus/HUD/LevelUp"]
+[node name="LevelingUp" type="Label" parent="HUD&Menus/PlayerHUD/LevelUp"]
 layout_mode = 1
 anchors_preset = 10
 anchor_right = 1.0
@@ -87,14 +401,14 @@ text = "Level Up !"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="UpgradeOption" type="VBoxContainer" parent="HUD&Menus/HUD/LevelUp"]
+[node name="UpgradeOption" type="VBoxContainer" parent="HUD&Menus/PlayerHUD/LevelUp"]
 layout_mode = 0
 offset_left = 10.0
 offset_top = 50.0
 offset_right = 190.0
 offset_bottom = 100.0
 
-[node name="CollectedWeapons" type="GridContainer" parent="HUD&Menus/HUD"]
+[node name="CollectedWeapons" type="GridContainer" parent="HUD&Menus/PlayerHUD"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 16.0
@@ -102,7 +416,7 @@ offset_right = 208.0
 offset_bottom = 32.0
 columns = 10
 
-[node name="CollectedUpgrades" type="GridContainer" parent="HUD&Menus/HUD"]
+[node name="CollectedUpgrades" type="GridContainer" parent="HUD&Menus/PlayerHUD"]
 layout_mode = 0
 offset_left = 8.0
 offset_top = 32.0

@@ -1,7 +1,7 @@
 extends Control
 class_name MainNode
 
-@onready var hud: Control = $"HUD&Menus/HUD"
+@onready var hud: Control = $"HUD&Menus/PlayerHUD"
 
 @onready var mainMenu: Control = $"HUD&Menus/MainMenu"
 @onready var optionMenu: Control = mainMenu.get_node("OptionsMenu")

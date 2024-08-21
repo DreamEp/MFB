@@ -1,8 +1,8 @@
 extends Node
 
 const UPGRADES_PATH = "res://Art/Player/Upgrades/"
-const ATTACKS_PATH = "res://Art/Player/Attacks/"
-const SPELLS_PATH = "res://Art/Player/Spells/"
+const ATTACKS_PATH = "res://Art/Player/Skills/Attacks/"
+const SPELLS_PATH = "res://Art/Player/Skills/Spells/"
 var UPGRADES = {
 	"arrow1": {
 		"icon": ATTACKS_PATH + "Arrow.png",

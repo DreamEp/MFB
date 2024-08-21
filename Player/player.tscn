@@ -1,17 +1,18 @@
-[gd_scene load_steps=23 format=3 uid="uid://b48nchocyocqp"]
+[gd_scene load_steps=24 format=3 uid="uid://b48nchocyocqp"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nmtv"]
 [ext_resource type="Texture2D" uid="uid://d3ts4wde53vfh" path="res://Art/Player/Soldier.png" id="2_nsfec"]
 [ext_resource type="PackedScene" uid="uid://b0ocfd88fjt3j" path="res://Util/Components/health_component.tscn" id="4_hpyvg"]
 [ext_resource type="Script" path="res://Player/PlayerAnimation.gd" id="4_mi3k1"]
-[ext_resource type="Texture2D" uid="uid://bswtnc1fi15a2" path="res://Art/bow.png" id="5_1w16u"]
 [ext_resource type="Script" path="res://Player/PlayerAttacks.gd" id="5_72ra7"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="5_hs5nc"]
 [ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="5_o175c"]
-[ext_resource type="Script" path="res://Player/Spells/AxeCircle/AxeCircle.gd" id="7_1nedx"]
-[ext_resource type="Script" path="res://Player/Attacks/ArrowShot/ArrowShot.gd" id="7_8fb6h"]
+[ext_resource type="Resource" uid="uid://dxv7yd6jtoxjd" path="res://Resources/Weapons/Bow.tres" id="7_ckfv0"]
+[ext_resource type="Script" path="res://Player/Skills/Attacks/ArrowShot/ArrowShot.gd" id="7_fhbcv"]
+[ext_resource type="Script" path="res://Player/Skills/Spells/AxeCircle/AxeCircle.gd" id="8_e255p"]
+[ext_resource type="Script" path="res://Player/Skills/Spells/ThunderBolt/ThunderBolt.gd" id="9_88sjo"]
 [ext_resource type="PackedScene" uid="uid://36lv5b1iv1pu" path="res://Player/interraction.tscn" id="9_myqhg"]
-[ext_resource type="Script" path="res://Player/Spells/ThunderBolt/ThunderBolt.gd" id="9_qoqrc"]
+[ext_resource type="Texture2D" uid="uid://bswtnc1fi15a2" path="res://Art/Player/Weapons/bow.png" id="10_q0sbo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx8ix"]
 size = Vector2(6, 11)
@@ -150,6 +151,9 @@ collision_layer = 4
 collision_mask = 115
 motion_mode = 1
 script = ExtResource("1_1nmtv")
+movement_speed = 100.0
+crit_chance = 0.1
+attack_speed = 1.0
 collectible_area = 1.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -180,22 +184,23 @@ script = ExtResource("4_mi3k1")
 collision_layer = 12
 collision_mask = 18
 script = ExtResource("5_72ra7")
+item = ExtResource("7_ckfv0")
 
 [node name="DetectEnemyArea" type="CollisionShape2D" parent="PlayerAttacks"]
 shape = SubResource("CircleShape2D_okonb")
 
 [node name="ArrowShot" type="Node2D" parent="PlayerAttacks" node_paths=PackedStringArray("firing_position")]
-script = ExtResource("7_8fb6h")
+script = ExtResource("7_fhbcv")
 firing_position = NodePath("../AttacksPivot/Bow/ArrowFirePosition")
 
 [node name="AxeCircle" type="Node2D" parent="PlayerAttacks" node_paths=PackedStringArray("player_position")]
-script = ExtResource("7_1nedx")
+script = ExtResource("8_e255p")
 player_position = NodePath("../../PlayerPosition")
 axe_circle_count = 4
 axe_circle_rate = 8.0
 
 [node name="ThunderBolt" type="Node2D" parent="PlayerAttacks"]
-script = ExtResource("9_qoqrc")
+script = ExtResource("9_88sjo")
 
 [node name="AttacksPivot" type="Marker2D" parent="PlayerAttacks"]
 position = Vector2(15, 0)
@@ -205,7 +210,7 @@ texture_filter = 1
 position = Vector2(-1, -5.96046e-08)
 rotation = -2.35619
 scale = Vector2(0.7, 0.7)
-texture = ExtResource("5_1w16u")
+texture = ExtResource("10_q0sbo")
 
 [node name="ArrowFirePosition" type="Marker2D" parent="PlayerAttacks/AttacksPivot/Bow"]
 position = Vector2(-7.07107, 7.07107)

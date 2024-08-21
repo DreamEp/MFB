@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=4 format=3 uid="uid://dxv7yd6jtoxjd"]
+
+[ext_resource type="Texture2D" uid="uid://bswtnc1fi15a2" path="res://Art/Player/Weapons/bow.png" id="1_gaa3q"]
+[ext_resource type="Script" path="res://Player/Weapons/Item.gd" id="2_8g4rl"]
+[ext_resource type="Resource" uid="uid://cxv1g4iss10eb" path="res://Resources/Skills/Attacks/RainOfArrows.tres" id="3_dw4c6"]
+
+[resource]
+script = ExtResource("2_8g4rl")
+title = "Bow"
+texture = ExtResource("1_gaa3q")
+icon = ExtResource("1_gaa3q")
+animation = ExtResource("1_gaa3q")
+skills = Array[Resource("res://Player/Skills/Skill.gd")]([ExtResource("3_dw4c6")])

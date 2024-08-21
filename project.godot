@@ -36,6 +36,32 @@ mouse_cursor/custom_image="res://Art/crosshair.png"
 
 movie_writer/movie_file="S:/Taff/Perso/Godot_v4.2.2-stable_win64.exe/Projects/MFB/moovie/moovie.avi"
 
+[file_customization]
+
+folder_colors={
+"res://Art/": "teal",
+"res://Art/Enemies/": "red",
+"res://Art/Objects/": "gray",
+"res://Art/Player/": "green",
+"res://Art/Player/Weapons/": "yellow",
+"res://Art/UI/": "teal",
+"res://Enemies/": "red",
+"res://HUD&Menu/": "teal",
+"res://Objects/": "yellow",
+"res://Player/": "green",
+"res://Player/Projectiles/": "gray",
+"res://Player/Skills/": "purple",
+"res://Player/Skills/Attacks/": "orange",
+"res://Player/Skills/Spells/": "pink",
+"res://Player/Weapons/": "yellow",
+"res://Resources/": "gray",
+"res://Resources/Skills/Attacks/": "orange",
+"res://Resources/Skills/Spells/": "purple",
+"res://Resources/Weapons/": "yellow",
+"res://Scenes/": "blue",
+"res://Util/": "gray"
+}
+
 [gui]
 
 theme/custom_font="res://Art/UI/MinimalPixel v2.ttf"

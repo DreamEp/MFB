@@ -1,0 +1,19 @@
+[gd_resource type="Resource" script_class="RainOfArrows" load_steps=2 format=3 uid="uid://cxv1g4iss10eb"]
+
+[ext_resource type="Script" path="res://Player/Skills/Attacks/RainOfArrows.gd" id="1_734ct"]
+
+[resource]
+script = ExtResource("1_734ct")
+projectile_speed = 150.0
+shooting_range = 80.0
+attack_damage = 10.0
+knockback_force = 2.0
+max_pierce = 2
+stun_time = 1.0
+elemental_type = "physical"
+cast_count = 2
+coldown_between_salve = 0.5
+projectile_count = 8
+space_between_arrows = 16
+coldown = 2.0
+title = "Rain of Arrows"
