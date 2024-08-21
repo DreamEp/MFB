@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://bv81uvcy2h2sp"
-path="res://.godot/imported/Eletric_Arrow.png-12eee7ffa722e7c7a7c273f9f45f1736.ctex"
+path="res://.godot/imported/Electric_Arrow.png-ec415146df44eab84d097d48e797059d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/Player/Projectiles/Arrows/Eletric_Arrow.png"
-dest_files=["res://.godot/imported/Eletric_Arrow.png-12eee7ffa722e7c7a7c273f9f45f1736.ctex"]
+source_file="res://Art/Player/Projectiles/Arrows/Electric_Arrow.png"
+dest_files=["res://.godot/imported/Electric_Arrow.png-ec415146df44eab84d097d48e797059d.ctex"]
 
 [params]
 

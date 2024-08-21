@@ -8,7 +8,8 @@ class_name RainOfArrows
 @export var knockback_force: float
 @export var max_pierce: int
 @export var stun_time: float
-@export_enum("none","physical","fire","electric") var elemental_type: String
+@export_enum("physical","electric","fire","ice","poison") var elemental_type: String
+@export_enum("Base_Arrow","Electric_Arrow","Fire_Arrow","Ice_Arrow","Poison_Arrow") var type_arrow: String
 
 @export_group("Skill Stats")
 @export var cast_count: int
@@ -22,9 +23,10 @@ var ARROW_PATH: String = "res://Art/Player/Projectiles/Arrows/"
 var projectileNode: PackedScene = preload("res://Player/Projectiles/projectile.tscn")
 var can_fire = true
 
+
 func cast(mouse_position, tree, separation):
-	#var texture_path: String = ARROW_PATH + type_arrow + ".png"
-	#var texture = load(texture_path)
+	var texture_path:= "%s.png" % (ARROW_PATH + type_arrow)
+	var texture = load(texture_path)
 	var middle: int = (space_between_arrows*projectile_count)/2
 	var projectile = projectileNode.instantiate()
 	
@@ -38,7 +40,7 @@ func cast(mouse_position, tree, separation):
 	projectile.stun_time = stun_time
 	projectile.elemental_type = "physical"
 	
-	#projectile.find_child("Sprite2D").texture = texture
+	projectile.find_child("Sprite2D").texture = texture
 	
 	tree.current_scene.add_child(projectile)
 	
