@@ -1,7 +1,7 @@
 [gd_scene load_steps=10 format=3 uid="uid://biy01r7bin3ks"]
 
 [ext_resource type="Script" path="res://Player/Skills/Spells/ThunderBolt/thunder.gd" id="1_bdrbp"]
-[ext_resource type="Texture2D" uid="uid://dm6g6hsw3l4l" path="res://Art/Player/Skills/Spells/Thunder.png" id="2_fuihn"]
+[ext_resource type="Texture2D" uid="uid://dm6g6hsw3l4l" path="res://Art/Player/Skills/Thunder.png" id="2_gb802"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="3_spcqr"]
 [ext_resource type="AudioStream" uid="uid://kqu3u46y7xg6" path="res://Audio/thunderSong.mp3" id="4_y1h0v"]
 
@@ -75,7 +75,7 @@ elemental_type = "electric"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
-texture = ExtResource("2_fuihn")
+texture = ExtResource("2_gb802")
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]

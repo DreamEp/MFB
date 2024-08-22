@@ -1,8 +1,8 @@
 extends Skill
-class_name RainOfArrows
+class_name ArrowsShot
 
 @export_group("Projectile Stat")
-#@export_enum("linear_shot","rain", "rotative", "crescent") var projectile_physics: String
+#@export_enum("linear_shot","rain", "rotative","crescent") var projectile_physics: String
 @export var projectile_speed: float
 @export var shooting_range: float
 @export var attack_damage: float
@@ -13,30 +13,27 @@ class_name RainOfArrows
 @export_enum("Arrow","Axe") var projectile_type: String
 
 @export_group("Skill Stats")
+@export var coldown: float
 @export var cast_count: int
 @export var coldown_between_salve: float
 @export var projectile_count: int
 @export var space_between_projectiles: int
-@export var coldown: float
+
 
 var player: Player
 var PROJ_PATH: String = "res://Art/Player/Projectiles/"
 var projectileNode: PackedScene = preload("res://Player/Projectiles/projectile.tscn")
+var firing_position : Marker2D
 var can_fire = true
-var projectile_physics: String = "rain"
+var projectile_physics: String = "linear_shot"
 
 
-func cast(mouse_position, tree, separation):
-	#res://Art/Player/Projectiles/Arrows/Physical_Arrow.png"
-	#res://Art/Player/Projectiles/Arrows/Arrow_physical.png
+func cast(arc_rad, increment, counter, mouse_direction, tree):
 	var texture_path:= "%s%ss/%s.png" % [PROJ_PATH, projectile_type, elemental_type+"_"+projectile_type]
 	var texture = load(texture_path)
-	var middle: int = (space_between_projectiles*projectile_count)/2
 	var projectile = projectileNode.instantiate()
 	
-	projectile.angle_rotation = -80
-	projectile.direction = Vector2(0, 1)
-	projectile.position = mouse_position + separation - Vector2(middle, 60)
+	projectile.position = firing_position.global_position
 	projectile.projectile_speed = projectile_speed
 	projectile.shooting_range = shooting_range
 	projectile.attack_damage = attack_damage
@@ -45,21 +42,37 @@ func cast(mouse_position, tree, separation):
 	projectile.elemental_type = elemental_type
 	projectile.projectile_physics = projectile_physics
 	
+	if arc_rad != null:
+		projectile.global_rotation = (
+					mouse_direction.angle() +
+					increment * counter -
+					arc_rad / 2
+				)
+	else:
+		projectile.rotation = mouse_direction.angle()
+	
 	projectile.find_child("Sprite2D").texture = texture
+	tree.root.call_deferred("add_child", projectile)
+	#tree.current_scene.add_child(projectile)
 	
-	tree.current_scene.add_child(projectile)
-	
-func rain_down(mouse_position, tree):
+func arrows_shot(mouse_position, tree):
 	player = tree.get_first_node_in_group("player")
+	firing_position = player.get_node("PlayerAttacks").get_node("AttacksPivot").get_node("Bow").get_node("ArrowFirePosition")
 	projectile_count += player.additional_attack_proctile
 	if can_fire:
 		can_fire = false
+		var mouse_direction = mouse_position - firing_position.global_position
 		for j in range(cast_count):
 			for i in range(projectile_count):
-				cast(mouse_position, tree, Vector2(i*space_between_projectiles, 0))
+				if projectile_count == 1:
+					cast(null, null, null, mouse_position, tree)
+				else:
+					var arc_rad = deg_to_rad(space_between_projectiles + ((space_between_projectiles * projectile_count)/projectile_count))
+					var increment = arc_rad / (projectile_count - 1)
+					cast(arc_rad, increment, i, mouse_direction, tree)
 			await tree.create_timer(coldown_between_salve).timeout
 		await tree.create_timer(coldown).timeout
 		can_fire = true
-		
+
 func activate(mouse_position, tree):
-	rain_down(mouse_position, tree)
+	arrows_shot(mouse_position, tree)

@@ -5,7 +5,7 @@ extends Node2D
 @onready var healthComponent: HealthComponent = player.get_node("HealthComponent")
 @onready var levelUpPanel: Panel = get_tree().get_first_node_in_group("hud").get_node("LevelUp")
 @onready var upgradeOption: VBoxContainer = levelUpPanel.get_node("UpgradeOption")
-@onready var collectedWeapons: GridContainer = get_tree().get_first_node_in_group("hud").get_node("CollectedWeapons")
+@onready var CollectedSkills: GridContainer = get_tree().get_first_node_in_group("hud").get_node("CollectedSkills")
 @onready var collectedUpgrades: GridContainer = get_tree().get_first_node_in_group("hud").get_node("CollectedUpgrades")
 @onready var grabArea: CollisionShape2D = $"../../GrabArea/CollisionShape2D"
 
@@ -269,16 +269,34 @@ func upgrade_character(picked_upgrade):
 	adjust_gui_collection(picked_upgrade)
 	if picked_upgrade["type"] == "attack" or picked_upgrade["type"] == "spell":
 		collected_weapons_spells_names_level.append(str(picked_upgrade["displayname"]) + str(picked_upgrade["level"])) 
-		var player_collected_skills = player.player_collected_skills
+		#var player_collected_skills = player.player_collected_skills
+		#var item_collected_skills = player.items[0].already_collected
+		var item_current_skills = player.items[0].skills
 		var found = false
-		for i in range(player_collected_skills.size()):
-			if player_collected_skills[i]["displayname"] == picked_upgrade["displayname"]:
-				player_collected_skills[i] = picked_upgrade
-				found = true
-				break
+		
+		var skill_path = "res://Resources/Skills/%ss/%s.tres" %[picked_upgrade["type"].capitalize(), picked_upgrade["displayname"]+str(picked_upgrade["level"])]
+		var skill: Skill = ResourceLoader.load(skill_path)
+		for i in range(item_current_skills.size()):			
+			if item_current_skills[i] != null:
+				if item_current_skills[i].title == picked_upgrade["displayname"]:
+					item_current_skills[i] = skill
+					found = true
+					break
+				#print("Collected skills : %s" % skill.title)
+			else:
+				("Null a la position %s : " % i)
+		#for i in range(player_collected_skills.size()):
+			#if player_collected_skills[i]["displayname"] == picked_upgrade["displayname"]:
+				#player_collected_skills[i] = picked_upgrade
+				#found = true
+				#break
 		if found == false:	
-			player_collected_skills.append(picked_upgrade)
-		player.player_collected_skills = player_collected_skills
+			item_current_skills.append(skill)
+			#player_collected_skills.append(picked_upgrade)
+			#var skill_path = "res://Resources/Skills/%ss/%s.tres" %[picked_upgrade["type"].capitalize(), picked_upgrade["displayname"]+str(picked_upgrade["level"])]
+			#var skill: Skill = ResourceLoader.load(skill_path)
+		player.items[0].skills = item_current_skills
+		#player.player_collected_skills = player_collected_skills
 	collected_names.append(upgrade_name)
 	var option_children = upgradeOption.get_children() 
 	for i in option_children: 
@@ -302,20 +320,20 @@ func adjust_gui_collection(upgrade):
 			new_item.upgrade = upgrade
 			match get_type: 
 				"attack":
-					collectedWeapons.add_child(new_item)
+					CollectedSkills.add_child(new_item)
 				"spell":
-					collectedWeapons.add_child(new_item)
+					CollectedSkills.add_child(new_item)
 				"upgrade":
 					collectedUpgrades.add_child(new_item)
 		else:			
 			match get_type: 
 				"attack":
-					var current_weapons = collectedWeapons.get_children()
+					var current_weapons = CollectedSkills.get_children()
 					for w in current_weapons: 
 						if w.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and w.has_method("update_level"):
 							w.update_level(upgrade)
 				"spell":
-					var current_weapons = collectedWeapons.get_children()
+					var current_weapons = CollectedSkills.get_children()
 					for w in current_weapons: 
 						if w.upgrade["displayname"].substr(0, 3) == upgrade["displayname"].substr(0, 3) and w.has_method("update_level"):
 							w.update_level(upgrade)

@@ -25,13 +25,14 @@ class_name Player
 @export var block: float = 0
 @export_group("Misc Values")
 @export var collectible_area: float = 2.0
-@export var additional_attack_proctile: float = 0
-@export var additional_spell_proctile: float = 0
+@export var additional_attack_proctile: int = 0
+@export var additional_spell_proctile: int = 0
 @export var rarity_chance: float = 1.0
 @export var player_experience: float
 @export var player_experience_level: float = 1.0
 @export var player_collected_experience: float = 0
 @export var player_collected_skills: Array = []
+@export var items: Array[Item]
 
 #Nodes
 @onready var healthBar: TextureProgressBar = get_tree().get_first_node_in_group("hud").get_node("HealthBar")

@@ -275,8 +275,8 @@ attack_speed = 1.0
 min_experience = 3
 max_experience = 10
 elemental_type = "none"
-type_resistant = "none"
-type_effective = "physical"
+type_resistant = "physical"
+type_effective = "electric"
 enemy_type = "elite"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

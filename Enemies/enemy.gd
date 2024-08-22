@@ -10,9 +10,9 @@ class_name Enemy
 @export_range(0,1000) var armor: float = 200
 @export var min_experience: int = 0
 @export var max_experience: int = 5
-@export_enum("none","physical","fire","electric") var elemental_type: String
-@export_enum("none","physical","fire","electric") var type_resistant: String
-@export_enum("none","physical","fire","electric") var type_effective: String
+@export_enum("Physical","Electric","Fire","Ice","Poison") var elemental_type: String
+@export_enum("Physical","Electric","Fire","Ice","Poison", "None") var type_resistant: String
+@export_enum("Physical","Electric","Fire","Ice","Poison", "None") var type_effective: String
 @export_enum("base", "elite", "boss") var enemy_type: String
 
 @onready var elemental_animation_player = $ElementalAnimationPlayer
@@ -83,8 +83,6 @@ func damaging():
 		#attack.knockback_force = 0
 		#attack.attack_position = global_position
 		#attack.stun_time = 0
-		
-		hitbox.damage(attack)
 		on_player_hit()
 	else:
 		attacking = false

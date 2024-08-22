@@ -1,5 +1,5 @@
 extends Skill
-class_name RainOfArrows
+class_name CrescentStrike
 
 @export_group("Projectile Stat")
 #@export_enum("linear_shot","rain", "rotative", "crescent") var projectile_physics: String
@@ -13,32 +13,36 @@ class_name RainOfArrows
 @export_enum("Arrow","Axe") var projectile_type: String
 
 @export_group("Skill Stats")
+@export var coldown: float
 @export var cast_count: int
 @export var coldown_between_salve: float
 @export var projectile_count: int
-@export var space_between_projectiles: int
-@export var coldown: float
+#@export var space_between_projectiles: int
+@export var distance: Array[float]
+@export var angle: Array[float]
+@export var can_return: Array[bool]
+
 
 var player: Player
 var PROJ_PATH: String = "res://Art/Player/Projectiles/"
 var projectileNode: PackedScene = preload("res://Player/Projectiles/projectile.tscn")
+var firing_position : Marker2D
 var can_fire = true
-var projectile_physics: String = "rain"
+var projectile_physics: String = "crescent"
 
-
-func cast(mouse_position, tree, separation):
-	#res://Art/Player/Projectiles/Arrows/Physical_Arrow.png"
-	#res://Art/Player/Projectiles/Arrows/Arrow_physical.png
+func cast(current_distance, current_angle, current_can_return, playerNode, mouse_position, tree):
 	var texture_path:= "%s%ss/%s.png" % [PROJ_PATH, projectile_type, elemental_type+"_"+projectile_type]
 	var texture = load(texture_path)
-	var middle: int = (space_between_projectiles*projectile_count)/2
 	var projectile = projectileNode.instantiate()
 	
-	projectile.angle_rotation = -80
-	projectile.direction = Vector2(0, 1)
-	projectile.position = mouse_position + separation - Vector2(middle, 60)
+	projectile.position = playerNode.global_position
+	
+	projectile.set_deviation(current_distance,current_angle)
+	projectile.set_can_return(current_can_return)
+	projectile.set_destination(mouse_position)
+	
+	projectile.angle_rotation = mouse_position.angle()
 	projectile.projectile_speed = projectile_speed
-	projectile.shooting_range = shooting_range
 	projectile.attack_damage = attack_damage
 	projectile.max_pierce = max_pierce
 	projectile.stun_time = stun_time
@@ -49,17 +53,25 @@ func cast(mouse_position, tree, separation):
 	
 	tree.current_scene.add_child(projectile)
 	
-func rain_down(mouse_position, tree):
+func crescent_strike(mouse_position, tree):
 	player = tree.get_first_node_in_group("player")
 	projectile_count += player.additional_attack_proctile
 	if can_fire:
 		can_fire = false
 		for j in range(cast_count):
 			for i in range(projectile_count):
-				cast(mouse_position, tree, Vector2(i*space_between_projectiles, 0))
+				var current_distance = self.distance[0]
+				var current_angle = self.angle[0]
+				var current_can_return = self.can_return[0]
+				if i < self.distance[i]:
+					current_distance = self.distance[i]
+					current_angle = self.angle[i]
+					current_can_return = self.can_return[i]
+				#mouse
+				cast(current_distance, current_angle, current_can_return, player, mouse_position, tree)
 			await tree.create_timer(coldown_between_salve).timeout
 		await tree.create_timer(coldown).timeout
 		can_fire = true
 		
 func activate(mouse_position, tree):
-	rain_down(mouse_position, tree)
+	crescent_strike(mouse_position, tree)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4twsyegeobrd"]
 
-[ext_resource type="Texture2D" uid="uid://dw1lwytmjve8h" path="res://Art/Player/Projectiles/Arrows/Base_Arrow.png" id="1_25wuu"]
 [ext_resource type="Script" path="res://Player/Projectiles/projectile.gd" id="1_clehl"]
+[ext_resource type="Texture2D" uid="uid://dw1lwytmjve8h" path="res://Art/Player/Projectiles/Arrows/Physical_Arrow.png" id="2_5x3qf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_femvd"]
 size = Vector2(20, 6)
@@ -14,7 +14,7 @@ script = ExtResource("1_clehl")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
 rotation = 2.35619
-texture = ExtResource("1_25wuu")
+texture = ExtResource("2_5x3qf")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(1, 0)
@@ -23,5 +23,8 @@ shape = SubResource("RectangleShape2D_femvd")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(1, 0)
 
+[node name="TimerDuration" type="Timer" parent="."]
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_screen_exited"]
+[connection signal="timeout" from="TimerDuration" to="." method="_on_timer_duration_timeout"]

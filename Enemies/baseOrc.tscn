@@ -260,7 +260,7 @@ enemy_damage = 5.0
 min_experience = 1
 elemental_type = "none"
 type_resistant = "none"
-type_effective = "electric"
+type_effective = "physical"
 enemy_type = "base"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

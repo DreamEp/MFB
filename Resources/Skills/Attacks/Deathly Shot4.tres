@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ArrowsShot" load_steps=2 format=3 uid="uid://c3v8kr2hg6ctd"]
+
+[ext_resource type="Script" path="res://Player/Skills/Attacks/ArrowsShot.gd" id="1_gmcgu"]
+
+[resource]
+script = ExtResource("1_gmcgu")
+projectile_speed = 150.0
+shooting_range = 300.0
+attack_damage = 2.0
+knockback_force = 0.0
+max_pierce = 3
+stun_time = 0.0
+elemental_type = "Ice"
+projectile_type = "Arrow"
+coldown = 1.0
+cast_count = 1
+coldown_between_salve = 0.0
+projectile_count = 6
+space_between_projectiles = 15
+title = "Deathly Shot"

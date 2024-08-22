@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b48nchocyocqp"]
+[gd_scene load_steps=22 format=3 uid="uid://b48nchocyocqp"]
 
 [ext_resource type="Script" path="res://Player/player.gd" id="1_1nmtv"]
 [ext_resource type="Texture2D" uid="uid://d3ts4wde53vfh" path="res://Art/Player/Soldier.png" id="2_nsfec"]
@@ -7,9 +7,7 @@
 [ext_resource type="Script" path="res://Player/PlayerAttacks.gd" id="5_72ra7"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="5_hs5nc"]
 [ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="5_o175c"]
-[ext_resource type="Resource" uid="uid://dxv7yd6jtoxjd" path="res://Resources/Weapons/Bow.tres" id="7_ckfv0"]
-[ext_resource type="Script" path="res://Player/Skills/Attacks/ArrowShot/ArrowShot.gd" id="7_fhbcv"]
-[ext_resource type="Script" path="res://Player/Skills/Spells/AxeCircle/AxeCircle.gd" id="8_e255p"]
+[ext_resource type="Resource" uid="uid://cuopj0axk466w" path="res://Resources/Weapons/EmptyBow.tres" id="7_ad0ol"]
 [ext_resource type="Script" path="res://Player/Skills/Spells/ThunderBolt/ThunderBolt.gd" id="9_88sjo"]
 [ext_resource type="PackedScene" uid="uid://36lv5b1iv1pu" path="res://Player/interraction.tscn" id="9_myqhg"]
 [ext_resource type="Texture2D" uid="uid://bswtnc1fi15a2" path="res://Art/Player/Weapons/bow.png" id="10_q0sbo"]
@@ -155,6 +153,7 @@ movement_speed = 100.0
 crit_chance = 0.1
 attack_speed = 1.0
 collectible_area = 1.0
+items = Array[Resource("res://Player/Weapons/Item.gd")]([ExtResource("7_ad0ol")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -184,20 +183,9 @@ script = ExtResource("4_mi3k1")
 collision_layer = 12
 collision_mask = 18
 script = ExtResource("5_72ra7")
-item = ExtResource("7_ckfv0")
 
 [node name="DetectEnemyArea" type="CollisionShape2D" parent="PlayerAttacks"]
 shape = SubResource("CircleShape2D_okonb")
-
-[node name="ArrowShot" type="Node2D" parent="PlayerAttacks" node_paths=PackedStringArray("firing_position")]
-script = ExtResource("7_fhbcv")
-firing_position = NodePath("../AttacksPivot/Bow/ArrowFirePosition")
-
-[node name="AxeCircle" type="Node2D" parent="PlayerAttacks" node_paths=PackedStringArray("player_position")]
-script = ExtResource("8_e255p")
-player_position = NodePath("../../PlayerPosition")
-axe_circle_count = 4
-axe_circle_rate = 8.0
 
 [node name="ThunderBolt" type="Node2D" parent="PlayerAttacks"]
 script = ExtResource("9_88sjo")

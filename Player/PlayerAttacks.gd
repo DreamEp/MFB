@@ -1,16 +1,13 @@
 extends Area2D
 
-@export var item: Item
-
 @onready var player: Player = get_owner()
 @onready var enemy: Enemy = get_tree().get_first_node_in_group("enemy")
 
-@onready var arrowShot = $ArrowShot
-@onready var axeCircle = $AxeCircle
 @onready var thunderBolt = $ThunderBolt
 
 @onready var settings_resource: DefaultSettingsResource = preload("res://Resources/Settings/DefaultSettings.tres")
 
+var items: Array[Item]
 var player_collected_skills
 var enemy_position: Vector2
 
@@ -18,8 +15,8 @@ func _ready():
 	pass
 
 func _physics_process(_delta):
-
-	#player_collected_skills = player.player_collected_skills
+	items = player.items
+	player_collected_skills = player.player_collected_skills
 	var enemies_in_range = get_overlapping_bodies()
 	if(!settings_resource.auto_aim_state):
 		enemy_position = get_global_mouse_position()
@@ -32,7 +29,8 @@ func _physics_process(_delta):
 					closest_enemy = current_enemy
 			enemy_position = closest_enemy.global_position
 			look_at(enemy_position)
-	play_animation(enemy_position, item)
+	for item in items:
+		shoot_skills(enemy_position, item)
 	#for attack_or_spell in player_collected_skills:
 		#match attack_or_spell["displayname"]:
 			#"Arrow Shot":
@@ -48,10 +46,11 @@ func _physics_process(_delta):
 				#thunderBolt.spawnThunderBolt(enemies_in_range)
 			
 	
-func play_animation(mouse_position, current_item: Item = null):
+func shoot_skills(mouse_position, current_item: Item = null):
 	if current_item == null:
 		return
 	else:
 		if current_item.skills != null:
 			for skill in current_item.skills:
-				skill.activate(mouse_position, get_tree())
+				if skill != null:
+					skill.activate(mouse_position, get_tree())

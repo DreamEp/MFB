@@ -4,113 +4,222 @@ const UPGRADES_PATH = "res://Art/Player/Upgrades/"
 const ATTACKS_PATH = "res://Art/Player/Skills/Attacks/"
 const SPELLS_PATH = "res://Art/Player/Skills/Spells/"
 var UPGRADES = {
-	"arrow1": {
-		"icon": ATTACKS_PATH + "Arrow.png",
-		"displayname": "Arrow Shot",
-		"details": "An arrow is thrown at a random enemy",
-		"level": 1,
-		"rarity": "common",
-		"prerequisite": [],
-		"type": "attack"
-	},
-	"arrow2": {
-		"icon": ATTACKS_PATH + "Arrow.png",
-		"displayname": "Arrow Shot",
-		"details": "An addition Arrow is thrown",
-		"level": 2,
-		"rarity": "uncommon",
-		"prerequisite": ["Arrow Shot1"],
-		"type": "attack"
-	},
-	"arrow3": {
-		"icon": ATTACKS_PATH + "Arrow.png",
-		"displayname": "Arrow Shot",
-		"details": "Arrow now pass through another enemy and do + 3 damage",
-		"level": 3,
-		"rarity": "rare",
-		"prerequisite": ["Arrow Shot2"],
-		"type": "attack"
-	},
-	"arrow4": {
-		"icon": ATTACKS_PATH + "Arrow.png",
-		"displayname": "Arrow Shot",
-		"details": "An additional 2 arrows are thrown",
-		"level": 4,
-		"rarity": "epic",
-		"prerequisite": ["Arrow Shot3"],
-		"type": "attack"
-	},
-	"axe1": {
-		"icon": SPELLS_PATH + "Axe.png",
-		"displayname": "Axe Circle",
-		"details": "A magical axe will follow you attacking enemies in a straight line",
+	"AxeRotation1": {
+		"icon": SPELLS_PATH + "AxeRotation.png",
+		"displayname": "Axe Rotation",
+		"details": "Multiple axes rotating around the player",
 		"level": 1,
 		"rarity": "common",
 		"prerequisite": [],
 		"type": "spell"
 	},
-	"axe2": {
-		"icon": SPELLS_PATH + "Axe.png",
-		"displayname": "Axe Circle",
-		"details": "The axe will now attack an additional enemy per attack",
+	"AxeRotation2": {
+		"icon": SPELLS_PATH + "AxeRotation.png",
+		"displayname": "Axe Rotation",
+		"details": "An additional axe is rotating around the player",
 		"level": 2,
 		"rarity": "uncommon",
-		"prerequisite": ["Axe Circle1"],
+		"prerequisite": ["Axe Rotation1"],
 		"type": "spell"
 	},
-	"axe3": {
-		"icon": SPELLS_PATH + "Axe.png",
-		"displayname": "Axe Circle",
-		"details": "The axe will attack another additional enemy per attack",
+	"AxeRotation3": {
+		"icon": SPELLS_PATH + "AxeRotation.png",
+		"displayname": "Axe Rotation",
+		"details": "The axes is rotating way faster around the player",
 		"level": 3,
-		"rarity": "rare",
-		"prerequisite": ["Axe Circle2"],
-		"type": "spell"
-	},
-	"axe4": {
-		"icon": SPELLS_PATH + "Axe.png",
-		"displayname": "Axe Circle",
-		"details": "The axe now does + 5 damage per attack and causes 20% additional knockback",
-		"level": 4,
 		"rarity": "epic",
-		"prerequisite": ["Axe Circle3"],
+		"prerequisite": ["Axe Rotation2"],
 		"type": "spell"
 	},
-	"thunder1": {
-		"icon": SPELLS_PATH + "ThunderIcon.png",
-		"displayname": "Thunder Bolt",
-		"details": "A magical thunder will follow you attacking enemies in a straight line",
+	"AxeRotation4": {
+		"icon": SPELLS_PATH + "AxeRotation.png",
+		"displayname": "Axe Rotation",
+		"details": "An additional 2 axes is rotating around the player",
+		"level": 4,
+		"rarity": "leg",
+		"prerequisite": ["Axe Rotation3"],
+		"type": "spell"
+	},
+	"CalamityShot1": {
+		"icon": SPELLS_PATH + "CalamityShot.png",
+		"displayname": "Calamity Shot",
+		"details": "Multiple arrows are fired all around the player",
 		"level": 1,
 		"rarity": "common",
 		"prerequisite": [],
 		"type": "spell"
 	},
-	"thunder2": {
-		"icon": SPELLS_PATH + "ThunderIcon.png",
-		"displayname": "Thunder Bolt",
-		"details": "The thunder will now attack an additional enemy per attack",
+	"CalamityShot2": {
+		"icon": SPELLS_PATH + "CalamityShot.png",
+		"displayname": "Calamity Shot",
+		"details": "Reduce a bit the coldown of Calamity Shot",
 		"level": 2,
 		"rarity": "uncommon",
-		"prerequisite": ["Thunder Bolt1"],
+		"prerequisite": ["Calamity Shot1"],
 		"type": "spell"
 	},
-	"thunder3": {
-		"icon": SPELLS_PATH + "ThunderIcon.png",
-		"displayname": "Thunder Bolt",
-		"details": "The thunder will attack another additional enemy per attack",
+	"CalamityShot3": {
+		"icon": SPELLS_PATH + "CalamityShot.png",
+		"displayname": "Calamity Shot",
+		"details": "There is one more salve fired by Calamity Shot",
 		"level": 3,
-		"rarity": "rare",
-		"prerequisite": ["Thunder Bolt2"],
+		"rarity": "epic",
+		"prerequisite": ["Calamity Shot2"],
 		"type": "spell"
 	},
-	"thunder4": {
-		"icon": SPELLS_PATH + "ThunderIcon.png",
-		"displayname": "Thunder Bolt",
-		"details": "The thunder now does + 5 damage per attack and causes 20% additional knockback",
+	"CalamityShot4": {
+		"icon": SPELLS_PATH + "CalamityShot.png",
+		"displayname": "Calamity Shot",
+		"details": "Reduce a bit the cd of Calamity Shot",
 		"level": 4,
-		"rarity": "epic",
-		"prerequisite": ["Thunder Bolt3"],
+		"rarity": "leg",
+		"prerequisite": ["Calamity Shot3"],
 		"type": "spell"
+	},
+	"SpreadShot1": {
+		"icon": ATTACKS_PATH + "SpreadShot.png",
+		"displayname": "Spread Shot",
+		"details": "Four arrows are fired in the direction of the enemy",
+		"level": 1,
+		"rarity": "common",
+		"prerequisite": [],
+		"type": "attack"
+	},
+	"SpreadShot2": {
+		"icon": ATTACKS_PATH + "SpreadShot.png",
+		"displayname": "Spread Shot",
+		"details": "Arrow pierce one more enemy",
+		"level": 2,
+		"rarity": "uncommon",
+		"prerequisite": ["Spread Shot1"],
+		"type": "attack"
+	},
+	"SpreadShot3": {
+		"icon": ATTACKS_PATH + "SpreadShot.png",
+		"displayname": "Spread Shot",
+		"details": "Three more arrows are fired",
+		"level": 3,
+		"rarity": "epic",
+		"prerequisite": ["Spread Shot2"],
+		"type": "attack"
+	},
+	"SpreadShot4": {
+		"icon": ATTACKS_PATH + "SpreadShot.png",
+		"displayname": "Spread Shot",
+		"details": "Add one salve",
+		"level": 4,
+		"rarity": "leg",
+		"prerequisite": ["Spread Shot3"],
+		"type": "attack"
+	},
+	"RainOfArrows1": {
+		"icon": ATTACKS_PATH + "RainOfArrows.png",
+		"displayname": "Rain of Arrows",
+		"details": "Multiple arrows are raining at the position of the enemy",
+		"level": 1,
+		"rarity": "common",
+		"prerequisite": [],
+		"type": "attack"
+	},
+	"RainOfArrows2": {
+		"icon": ATTACKS_PATH + "RainOfArrows.png",
+		"displayname": "Rain of Arrows",
+		"details": "Arrow pierce one more enemy",
+		"level": 2,
+		"rarity": "uncommon",
+		"prerequisite": ["Rain of Arrows1"],
+		"type": "attack"
+	},
+	"RainOfArrows3": {
+		"icon": ATTACKS_PATH + "RainOfArrows.png",
+		"displayname": "Rain of Arrows",
+		"details": "Multiple the cast of raining",
+		"level": 3,
+		"rarity": "epic",
+		"prerequisite": ["Rain of Arrows2"],
+		"type": "attack"
+	},
+	"RainOfArrows4": {
+		"icon": ATTACKS_PATH + "RainOfArrows.png",
+		"displayname": "Rain of Arrows",
+		"details": "Add more arrows to the raining",
+		"level": 4,
+		"rarity": "leg",
+		"prerequisite": ["Rain of Arrows3"],
+		"type": "attack"
+	},
+	"DeathlyShot1": {
+		"icon": ATTACKS_PATH + "DeathlyShot.png",
+		"displayname": "Deathly Shot",
+		"details": "One deathly arrow is fired in the direction of an enemy dealing massive damage and passing through all enemies",
+		"level": 1,
+		"rarity": "common",
+		"prerequisite": [],
+		"type": "attack"
+	},
+	"DeathlyShot2": {
+		"icon": ATTACKS_PATH + "DeathlyShot.png",
+		"displayname": "Deathly Shot",
+		"details": "Reduce the cd of Deathly Shot",
+		"level": 2,
+		"rarity": "uncommon",
+		"prerequisite": ["Deathly Shot1"],
+		"type": "attack"
+	},
+	"DeathlyShot3": {
+		"icon": ATTACKS_PATH + "DeathlyShot.png",
+		"displayname": "Deathly Shot",
+		"details": "Add one arrow to the Deathly Shot",
+		"level": 3,
+		"rarity": "epic",
+		"prerequisite": ["Deathly Shot2"],
+		"type": "attack"
+	},
+	"DeathlyShot4": {
+		"icon": ATTACKS_PATH + "DeathlyShot.png",
+		"displayname": "Deathly Shot",
+		"details": "Increase range of Deathly Shot",
+		"level": 4,
+		"rarity": "leg",
+		"prerequisite": ["Deathly Shot3"],
+		"type": "attack"
+	},
+	
+	"CrescentStrike1": {
+		"icon": ATTACKS_PATH + "CrescentStrike.png",
+		"displayname": "Crescent Strike",
+		"details": "One deadly axe is thrown to the enemy",
+		"level": 1,
+		"rarity": "common",
+		"prerequisite": [],
+		"type": "attack"
+	},
+	"CrescentStrike2": {
+		"icon": ATTACKS_PATH + "CrescentStrike.png",
+		"displayname": "Crescent Strike",
+		"details": "Two deadly axe is throwwn to the enemy",
+		"level": 2,
+		"rarity": "uncommon",
+		"prerequisite": ["Crescent Strike1"],
+		"type": "attack"
+	},
+	"CrescentStrike3": {
+		"icon": ATTACKS_PATH + "CrescentStrike.png",
+		"displayname": "Crescent Strike",
+		"details": "Axes came back to the player",
+		"level": 3,
+		"rarity": "epic",
+		"prerequisite": ["Crescent Strike2"],
+		"type": "attack"
+	},
+	"CrescentStrike4": {
+		"icon": ATTACKS_PATH + "CrescentStrike.png",
+		"displayname": "Crescent Strike",
+		"details": "One more salve of axes is thrown",
+		"level": 4,
+		"rarity": "leg",
+		"prerequisite": ["Crescent Strike3"],
+		"type": "attack"
 	},
 	"add_armor": {
 		"icon": UPGRADES_PATH + "Armor.png",
