@@ -39,7 +39,7 @@ func cast(current_distance, current_angle, current_can_return, playerNode, mouse
 	
 	projectile.set_deviation(current_distance,current_angle)
 	projectile.set_can_return(current_can_return)
-	projectile.set_destination(mouse_position)
+	projectile.set_destination(mouse_position, playerNode.global_position)
 	
 	projectile.angle_rotation = mouse_position.angle()
 	projectile.projectile_speed = projectile_speed
@@ -53,20 +53,22 @@ func cast(current_distance, current_angle, current_can_return, playerNode, mouse
 	
 	tree.current_scene.add_child(projectile)
 	
-func crescent_strike(mouse_position, tree):
-	player = tree.get_first_node_in_group("player")
-	projectile_count += player.additional_attack_proctile
+func crescent_strike(mouse_position, tree, current_projectile_count):
 	if can_fire:
 		can_fire = false
 		for j in range(cast_count):
-			for i in range(projectile_count):
-				var current_distance = self.distance[0]
-				var current_angle = self.angle[0]
-				var current_can_return = self.can_return[0]
-				if i < self.distance[i]:
+			for i in range(current_projectile_count):
+				var current_distance
+				var current_angle 
+				var current_can_return
+				if i < self.distance.size():
 					current_distance = self.distance[i]
 					current_angle = self.angle[i]
 					current_can_return = self.can_return[i]
+				else:
+					current_distance = self.distance[i%2]
+					current_angle = self.angle[i%2]
+					current_can_return = self.can_return[i%2]
 				#mouse
 				cast(current_distance, current_angle, current_can_return, player, mouse_position, tree)
 			await tree.create_timer(coldown_between_salve).timeout
@@ -74,4 +76,6 @@ func crescent_strike(mouse_position, tree):
 		can_fire = true
 		
 func activate(mouse_position, tree):
-	crescent_strike(mouse_position, tree)
+	player = tree.get_first_node_in_group("player")
+	var current_projectile_count = projectile_count + player.additional_attack_projectile
+	crescent_strike(mouse_position, tree, current_projectile_count)

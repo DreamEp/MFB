@@ -226,9 +226,7 @@ func pick_random_upgrade(list_upgrades_chance):
 	
 	
 func upgrade_character(picked_upgrade):
-	#var upgrade = UpgradeDb.UPGRADES[picked_upgrade["item"]]
 	var upgrade_name = picked_upgrade["displayname"]
-	#var upgrade_display_name = upgrade["displayname"]
 	var upgrade_value
 	if picked_upgrade["type"] == "upgrade" or picked_upgrade["type"] == "item":
 		upgrade_value = picked_upgrade["value"]
@@ -239,42 +237,42 @@ func upgrade_character(picked_upgrade):
 		"Shield":
 			player.block += upgrade_value
 		"Pearl":
-			print("previous scale collectible %s" % str(player.collectible_area))
-			player.collectible_area += player.collectible_area * upgrade_value
+			print("before scale collectible %s" % str(player.collectible_area))
+			player.collectible_area += upgrade_value
 			print("after scale collectible %s" % str(player.collectible_area))
 			grabArea.apply_scale(Vector2(player.collectible_area, player.collectible_area))
 		"Boots":
-			print("previous ms %s" % str(player.movement_speed))
-			player.movement_speed += player.movement_speed * upgrade_value
+			print("before ms %s" % str(player.movement_speed))
+			player.movement_speed += upgrade_value
 			print("after up ms %s" % str(player.movement_speed))
 		"Sword":
 			player.attack_damage += player.attack_damage * upgrade_value
 		"Magic Hat":
 			player.spell_damage += player.spell_damage * upgrade_value
 		"Gloves":
-			print("after up as %s" % str(player.attack_speed))
+			print("before up as %s" % str(player.attack_speed))
 			player.attack_speed += player.attack_speed * upgrade_value
 			print("after up as %s" % str(player.attack_speed))
 		"Tome":
-			player.spell_area += player.spell_area * upgrade_value
+			player.spell_area += upgrade_value
 		"Scroll":
-			player.spell_coldown += player.spell_coldown * upgrade_value
+			player.spell_coldown += upgrade_value
 		"Ring":
-			player.additional_spell_proctile += upgrade_value
+			player.additional_spell_projectile += upgrade_value
 		"Stone":
-			player.additional_attack_proctile += upgrade_value
+			print("before up add_proj %s" % str(player.additional_attack_projectile))
+			player.additional_attack_projectile += upgrade_value
+			print("after up add_proj %s" % str(player.additional_attack_projectile))
 		"Food":
 			healthComponent.health += upgrade_value
 			healthComponent.health = clamp(healthComponent.health, 0, healthComponent.MAX_HEALTH)
 	adjust_gui_collection(picked_upgrade)
 	if picked_upgrade["type"] == "attack" or picked_upgrade["type"] == "spell":
 		collected_weapons_spells_names_level.append(str(picked_upgrade["displayname"]) + str(picked_upgrade["level"])) 
-		#var player_collected_skills = player.player_collected_skills
-		#var item_collected_skills = player.items[0].already_collected
 		var item_current_skills = player.items[0].skills
 		var found = false
 		
-		var skill_path = "res://Resources/Skills/%ss/%s.tres" %[picked_upgrade["type"].capitalize(), picked_upgrade["displayname"]+str(picked_upgrade["level"])]
+		var skill_path = "res://Resources/Skills/%ss/%s/%s.tres" %[picked_upgrade["type"].capitalize(), upgrade_name, picked_upgrade["displayname"]+str(picked_upgrade["level"])]
 		var skill: Skill = ResourceLoader.load(skill_path)
 		for i in range(item_current_skills.size()):			
 			if item_current_skills[i] != null:
@@ -282,21 +280,9 @@ func upgrade_character(picked_upgrade):
 					item_current_skills[i] = skill
 					found = true
 					break
-				#print("Collected skills : %s" % skill.title)
-			else:
-				("Null a la position %s : " % i)
-		#for i in range(player_collected_skills.size()):
-			#if player_collected_skills[i]["displayname"] == picked_upgrade["displayname"]:
-				#player_collected_skills[i] = picked_upgrade
-				#found = true
-				#break
 		if found == false:	
 			item_current_skills.append(skill)
-			#player_collected_skills.append(picked_upgrade)
-			#var skill_path = "res://Resources/Skills/%ss/%s.tres" %[picked_upgrade["type"].capitalize(), picked_upgrade["displayname"]+str(picked_upgrade["level"])]
-			#var skill: Skill = ResourceLoader.load(skill_path)
 		player.items[0].skills = item_current_skills
-		#player.player_collected_skills = player_collected_skills
 	collected_names.append(upgrade_name)
 	var option_children = upgradeOption.get_children() 
 	for i in option_children: 
@@ -312,9 +298,6 @@ func adjust_gui_collection(upgrade):
 	var get_upgraded_displayname = upgrade["displayname"] 
 	var get_type = upgrade["type"] 
 	if get_type != "item": 
-		#var get_collected_displaynames = []
-		#for i in collected_names:
-			#get_collected_displaynames.append(i["displayname"]) 
 		if not get_upgraded_displayname in collected_names:
 			var new_item = itemContainer.instantiate() 
 			new_item.upgrade = upgrade

@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Orc" load_steps=2 format=3 uid="uid://dm6gcswq1j810"]
+
+[ext_resource type="Script" path="res://Enemies/Orc.gd" id="1_x8iu2"]
+
+[resource]
+script = ExtResource("1_x8iu2")
+movemement_speed = 40.0
+health = 40.0
+enemy_damage = 2.0
+attack_speed = 0.5
+knockback_recovery = 3.0
+armor = 50.0
+min_experience = 0
+max_experience = 5
+elemental_type = "Physical"
+type_resistant = "None"
+type_effective = "None"
+enemy_type = "base"
+enemySpritePath = "res://Art/Enemies/Orc.png"
+title = "Basic Orc"

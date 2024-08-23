@@ -55,24 +55,24 @@ func cast(arc_rad, increment, counter, mouse_direction, tree):
 	tree.root.call_deferred("add_child", projectile)
 	#tree.current_scene.add_child(projectile)
 	
-func arrows_shot(mouse_position, tree):
-	player = tree.get_first_node_in_group("player")
+func arrows_shot(mouse_position, tree, current_projectile_count):
 	firing_position = player.get_node("PlayerAttacks").get_node("AttacksPivot").get_node("Bow").get_node("ArrowFirePosition")
-	projectile_count += player.additional_attack_proctile
 	if can_fire:
 		can_fire = false
 		var mouse_direction = mouse_position - firing_position.global_position
 		for j in range(cast_count):
-			for i in range(projectile_count):
+			for i in range(current_projectile_count):
 				if projectile_count == 1:
 					cast(null, null, null, mouse_position, tree)
 				else:
-					var arc_rad = deg_to_rad(space_between_projectiles + ((space_between_projectiles * projectile_count)/projectile_count))
-					var increment = arc_rad / (projectile_count - 1)
+					var arc_rad = deg_to_rad(space_between_projectiles + ((space_between_projectiles * current_projectile_count)/current_projectile_count))
+					var increment = arc_rad / (current_projectile_count - 1)
 					cast(arc_rad, increment, i, mouse_direction, tree)
 			await tree.create_timer(coldown_between_salve).timeout
 		await tree.create_timer(coldown).timeout
 		can_fire = true
 
 func activate(mouse_position, tree):
-	arrows_shot(mouse_position, tree)
+	player = tree.get_first_node_in_group("player")
+	var current_projectile_count = projectile_count + player.additional_attack_projectile
+	arrows_shot(mouse_position, tree, current_projectile_count)

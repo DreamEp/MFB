@@ -27,7 +27,7 @@ var UPGRADES = {
 		"displayname": "Axe Rotation",
 		"details": "The axes is rotating way faster around the player",
 		"level": 3,
-		"rarity": "epic",
+		"rarity": "rare",
 		"prerequisite": ["Axe Rotation2"],
 		"type": "spell"
 	},
@@ -36,45 +36,45 @@ var UPGRADES = {
 		"displayname": "Axe Rotation",
 		"details": "An additional 2 axes is rotating around the player",
 		"level": 4,
-		"rarity": "leg",
+		"rarity": "epic",
 		"prerequisite": ["Axe Rotation3"],
 		"type": "spell"
 	},
 	"CalamityShot1": {
-		"icon": SPELLS_PATH + "CalamityShot.png",
+		"icon": ATTACKS_PATH + "CalamityShot.png",
 		"displayname": "Calamity Shot",
 		"details": "Multiple arrows are fired all around the player",
 		"level": 1,
 		"rarity": "common",
 		"prerequisite": [],
-		"type": "spell"
+		"type": "attack"
 	},
 	"CalamityShot2": {
-		"icon": SPELLS_PATH + "CalamityShot.png",
+		"icon": ATTACKS_PATH + "CalamityShot.png",
 		"displayname": "Calamity Shot",
 		"details": "Reduce a bit the coldown of Calamity Shot",
 		"level": 2,
 		"rarity": "uncommon",
 		"prerequisite": ["Calamity Shot1"],
-		"type": "spell"
+		"type": "attack"
 	},
 	"CalamityShot3": {
-		"icon": SPELLS_PATH + "CalamityShot.png",
+		"icon": ATTACKS_PATH + "CalamityShot.png",
 		"displayname": "Calamity Shot",
 		"details": "There is one more salve fired by Calamity Shot",
 		"level": 3,
-		"rarity": "epic",
+		"rarity": "rare",
 		"prerequisite": ["Calamity Shot2"],
-		"type": "spell"
+		"type": "attack"
 	},
 	"CalamityShot4": {
-		"icon": SPELLS_PATH + "CalamityShot.png",
+		"icon": ATTACKS_PATH + "CalamityShot.png",
 		"displayname": "Calamity Shot",
-		"details": "Reduce a bit the cd of Calamity Shot",
+		"details": "Calamity Shot pierce one more enemy",
 		"level": 4,
-		"rarity": "leg",
+		"rarity": "epic",
 		"prerequisite": ["Calamity Shot3"],
-		"type": "spell"
+		"type": "attack"
 	},
 	"SpreadShot1": {
 		"icon": ATTACKS_PATH + "SpreadShot.png",
@@ -99,7 +99,7 @@ var UPGRADES = {
 		"displayname": "Spread Shot",
 		"details": "Three more arrows are fired",
 		"level": 3,
-		"rarity": "epic",
+		"rarity": "rare",
 		"prerequisite": ["Spread Shot2"],
 		"type": "attack"
 	},
@@ -108,45 +108,45 @@ var UPGRADES = {
 		"displayname": "Spread Shot",
 		"details": "Add one salve",
 		"level": 4,
-		"rarity": "leg",
+		"rarity": "epic",
 		"prerequisite": ["Spread Shot3"],
 		"type": "attack"
 	},
 	"RainOfArrows1": {
-		"icon": ATTACKS_PATH + "RainOfArrows.png",
+		"icon": SPELLS_PATH + "RainOfArrows.png",
 		"displayname": "Rain of Arrows",
 		"details": "Multiple arrows are raining at the position of the enemy",
 		"level": 1,
 		"rarity": "common",
 		"prerequisite": [],
-		"type": "attack"
+		"type": "spell"
 	},
 	"RainOfArrows2": {
-		"icon": ATTACKS_PATH + "RainOfArrows.png",
+		"icon": SPELLS_PATH + "RainOfArrows.png",
 		"displayname": "Rain of Arrows",
 		"details": "Arrow pierce one more enemy",
 		"level": 2,
 		"rarity": "uncommon",
 		"prerequisite": ["Rain of Arrows1"],
-		"type": "attack"
+		"type": "spell"
 	},
 	"RainOfArrows3": {
-		"icon": ATTACKS_PATH + "RainOfArrows.png",
+		"icon": SPELLS_PATH + "RainOfArrows.png",
 		"displayname": "Rain of Arrows",
-		"details": "Multiple the cast of raining",
+		"details": "It's raininng dayyyy",
 		"level": 3,
-		"rarity": "epic",
+		"rarity": "rare",
 		"prerequisite": ["Rain of Arrows2"],
-		"type": "attack"
+		"type": "spell"
 	},
 	"RainOfArrows4": {
-		"icon": ATTACKS_PATH + "RainOfArrows.png",
+		"icon": SPELLS_PATH + "RainOfArrows.png",
 		"displayname": "Rain of Arrows",
 		"details": "Add more arrows to the raining",
 		"level": 4,
-		"rarity": "leg",
+		"rarity": "epic",
 		"prerequisite": ["Rain of Arrows3"],
-		"type": "attack"
+		"type": "spell"
 	},
 	"DeathlyShot1": {
 		"icon": ATTACKS_PATH + "DeathlyShot.png",
@@ -171,7 +171,7 @@ var UPGRADES = {
 		"displayname": "Deathly Shot",
 		"details": "Add one arrow to the Deathly Shot",
 		"level": 3,
-		"rarity": "epic",
+		"rarity": "rare",
 		"prerequisite": ["Deathly Shot2"],
 		"type": "attack"
 	},
@@ -180,11 +180,10 @@ var UPGRADES = {
 		"displayname": "Deathly Shot",
 		"details": "Increase range of Deathly Shot",
 		"level": 4,
-		"rarity": "leg",
+		"rarity": "epic",
 		"prerequisite": ["Deathly Shot3"],
 		"type": "attack"
 	},
-	
 	"CrescentStrike1": {
 		"icon": ATTACKS_PATH + "CrescentStrike.png",
 		"displayname": "Crescent Strike",
@@ -208,7 +207,7 @@ var UPGRADES = {
 		"displayname": "Crescent Strike",
 		"details": "Axes came back to the player",
 		"level": 3,
-		"rarity": "epic",
+		"rarity": "rare",
 		"prerequisite": ["Crescent Strike2"],
 		"type": "attack"
 	},
@@ -217,7 +216,7 @@ var UPGRADES = {
 		"displayname": "Crescent Strike",
 		"details": "One more salve of axes is thrown",
 		"level": 4,
-		"rarity": "leg",
+		"rarity": "epic",
 		"prerequisite": ["Crescent Strike3"],
 		"type": "attack"
 	},

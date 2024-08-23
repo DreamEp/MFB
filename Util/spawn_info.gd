@@ -3,7 +3,7 @@ class_name SpawnInfo
 
 @export var time_start: int 
 @export var time_end: int 
-@export var enemy_type: Resource 
+@export var enemy_type: EnemyRes 
 @export var enemy_num: int 
 @export var enemy_spawn_delay: int 
 

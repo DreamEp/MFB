@@ -68,9 +68,11 @@ func _on_timer_timeout():
 				var new_enemy = i.enemy_type 
 				var counter = 0
 				while counter < i.enemy_num: 
-					var enemy_spawn = new_enemy.instantiate() 
-					enemy_spawn.global_position = retrieve_spawnable_tile() #get_random_position() 
-					add_child(enemy_spawn) 
+					#var enemy_spawn: EnemyRes = new_enemy.instantiate() 
+					var spawn_pos = retrieve_spawnable_tile() #get_random_position() 
+					new_enemy.instantiate_enemy(self, spawn_pos)
+
+					#add_child(enemy_spawn) 
 					counter += 1 
 
 func get_random_position():

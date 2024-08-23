@@ -1,0 +1,22 @@
+[gd_resource type="Resource" script_class="CrescentStrike" load_steps=2 format=3 uid="uid://vmb3grkm0v5a"]
+
+[ext_resource type="Script" path="res://Player/Skills/Attacks/CrescentStrike.gd" id="1_5twx0"]
+
+[resource]
+script = ExtResource("1_5twx0")
+projectile_speed = 150.0
+shooting_range = 200.0
+attack_damage = 13.0
+knockback_force = 2.0
+max_pierce = -1
+stun_time = 2.0
+elemental_type = "Electric"
+projectile_type = "Axe"
+coldown = 5.0
+cast_count = 1
+coldown_between_salve = 0.0
+projectile_count = 2
+distance = Array[float]([120.0, 120.0])
+angle = Array[float]([60.0, -60.0])
+can_return = Array[bool]([false, false])
+title = "Crescent Strike"

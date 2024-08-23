@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ArrowsShot" load_steps=2 format=3 uid="uid://imglej56p1hy"]
+
+[ext_resource type="Script" path="res://Player/Skills/Attacks/ArrowsShot.gd" id="1_m5jao"]
+
+[resource]
+script = ExtResource("1_m5jao")
+projectile_speed = 150.0
+shooting_range = 100.0
+attack_damage = 3.0
+knockback_force = 0.0
+max_pierce = 2
+stun_time = 0.0
+elemental_type = "Electric"
+projectile_type = "Arrow"
+coldown = 3.0
+cast_count = 1
+coldown_between_salve = 0.0
+projectile_count = 4
+space_between_projectiles = 15
+title = "Spread Shot"

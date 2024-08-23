@@ -2,12 +2,12 @@
 
 [ext_resource type="Texture2D" uid="uid://bswtnc1fi15a2" path="res://Art/Player/Weapons/bow.png" id="1_gaa3q"]
 [ext_resource type="Script" path="res://Player/Weapons/Item.gd" id="2_8g4rl"]
-[ext_resource type="Resource" uid="uid://dqpab7drvmcp1" path="res://Resources/Skills/Attacks/Crescent Strike1.tres" id="3_8ur86"]
-[ext_resource type="Resource" uid="uid://cxv1g4iss10eb" path="res://Resources/Skills/Attacks/Rain of Arrows1.tres" id="3_dw4c6"]
-[ext_resource type="Resource" uid="uid://ddg1psgm5dldj" path="res://Resources/Skills/Attacks/Deathly Shot1.tres" id="3_ng8k1"]
-[ext_resource type="Resource" uid="uid://dpqprjqc6u4te" path="res://Resources/Skills/Attacks/Rain of Arrows2.tres" id="4_a5fmo"]
-[ext_resource type="Resource" uid="uid://8u0k1n2orv1" path="res://Resources/Skills/Spells/Calamity Shot1.tres" id="4_dikey"]
-[ext_resource type="Resource" uid="uid://dxiflivocjb27" path="res://Resources/Skills/Spells/Axe Rotation1.tres" id="7_21jym"]
+[ext_resource type="Resource" uid="uid://dqpab7drvmcp1" path="res://Resources/Skills/Attacks/Crescent Strike/Crescent Strike1.tres" id="3_8ur86"]
+[ext_resource type="Resource" uid="uid://cxv1g4iss10eb" path="res://Resources/Skills/Spells/Rain of Arrows/Rain of Arrows1.tres" id="3_dw4c6"]
+[ext_resource type="Resource" uid="uid://ddg1psgm5dldj" path="res://Resources/Skills/Attacks/Deathly Shot/Deathly Shot1.tres" id="3_ng8k1"]
+[ext_resource type="Resource" uid="uid://62xpnmv73hsk" path="res://Resources/Skills/Spells/Rain of Arrows/Rain of Arrows2.tres" id="4_a5fmo"]
+[ext_resource type="Resource" uid="uid://8u0k1n2orv1" path="res://Resources/Skills/Attacks/Calamity Shot/Calamity Shot1.tres" id="4_dikey"]
+[ext_resource type="Resource" uid="uid://dxiflivocjb27" path="res://Resources/Skills/Spells/Axe Rotation/Axe Rotation1.tres" id="7_21jym"]
 
 [resource]
 script = ExtResource("2_8g4rl")

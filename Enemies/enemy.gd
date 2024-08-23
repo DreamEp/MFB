@@ -1,19 +1,19 @@
 extends CharacterBody2D
 class_name Enemy
 
-@export_group("Stat Values")
-@export var movemement_speed: float = 40.0
-@export var health: float = 20.0
-@export var enemy_damage: float = 1.0
-@export var attack_speed: float = 0.5
-@export var knockback_recovery: float = 3.0
-@export_range(0,1000) var armor: float = 200
-@export var min_experience: int = 0
-@export var max_experience: int = 5
-@export_enum("Physical","Electric","Fire","Ice","Poison") var elemental_type: String
-@export_enum("Physical","Electric","Fire","Ice","Poison", "None") var type_resistant: String
-@export_enum("Physical","Electric","Fire","Ice","Poison", "None") var type_effective: String
-@export_enum("base", "elite", "boss") var enemy_type: String
+var movemement_speed: float = 40.0
+var health: float = 20.0
+var enemy_damage: float = 1.0
+var attack_speed: float = 0.5
+var knockback_recovery: float = 3.0
+var armor: float = 200
+var min_experience: int = 0
+var max_experience: int = 5
+var elemental_type: String
+var type_resistant: String
+var type_effective: String
+var enemy_type: String
+var enemySpritePath: String
 
 @onready var elemental_animation_player = $ElementalAnimationPlayer
 
@@ -35,7 +35,18 @@ var hurt := false
 var stunned := false
 
 func _ready():
-	pass
+	enemySprite2D.texture = load(enemySpritePath)
+	var scaling_vector: Vector2
+	match(enemy_type):
+		"base":
+			scaling_vector = Vector2(1, 1)
+		"elite":
+			scaling_vector = Vector2(2, 2)
+			enemySprite2D.self_modulate = Color(0.964, 0.948, 0)
+		"boss":
+			scaling_vector = Vector2(5, 5)
+			enemySprite2D.self_modulate = Color(0.257, 0.645, 1)
+	self.scale = scaling_vector
 	
 func _on_hitbox_component_body_entered(body):
 	if body is Player:
@@ -53,11 +64,19 @@ func spawnExperience():
 	experienceGem.call_deferred('add_child', new_gem)
 	
 func spawnLoot():
-	var value = [1, 2].pick_random() 
-	if enemy_type != "base" and value == 2:
-		var new_loot = chest_loot.instantiate()
-		new_loot.global_position = global_position
-		chestLoot.call_deferred('add_child', new_loot)
+	match(enemy_type):
+		"base":
+			pass
+		"elite":
+			var value = [1, 2, 3, 4].pick_random() 
+			if value == 2:
+				var new_loot = chest_loot.instantiate()
+				new_loot.global_position = global_position
+				chestLoot.call_deferred('add_child', new_loot)
+		"boss":
+			var new_loot = chest_loot.instantiate()
+			new_loot.global_position = global_position
+			chestLoot.call_deferred('add_child', new_loot)
 
 func on_player_hit():
 	pass

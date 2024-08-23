@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="ArrowsShot" load_steps=2 format=3 uid="uid://do2cd5qsmb8pg"]
+
+[ext_resource type="Script" path="res://Player/Skills/Attacks/ArrowsShot.gd" id="1_umc4t"]
+
+[resource]
+script = ExtResource("1_umc4t")
+projectile_speed = 150.0
+shooting_range = 400.0
+attack_damage = 15.0
+knockback_force = 0.0
+max_pierce = 1
+stun_time = 0.0
+elemental_type = "Electric"
+projectile_type = "Arrow"
+coldown = 12.0
+cast_count = 1
+coldown_between_salve = 0.5
+projectile_count = 30
+space_between_projectiles = 180
+title = "Calamity Shot"

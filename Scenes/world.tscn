@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://b48nchocyocqp" path="res://Player/player.tscn" id="1_13lbo"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_a5gyv"]
-[ext_resource type="PackedScene" uid="uid://bkwl467oahx1d" path="res://Enemies/baseOrc.tscn" id="2_5su7r"]
 [ext_resource type="Texture2D" uid="uid://dn4p38y76xv3i" path="res://Art/tilemap_packed.png" id="3_sgcg1"]
 [ext_resource type="PackedScene" uid="uid://cxcen78y8bhox" path="res://Util/enemy_spawner.tscn" id="4_24gqt"]
+[ext_resource type="Resource" uid="uid://dm6gcswq1j810" path="res://Resources/Enemies/Orcs/BasicOrc.tres" id="5_bwjhd"]
 [ext_resource type="Script" path="res://Util/spawn_info.gd" id="5_i3ma0"]
-[ext_resource type="PackedScene" uid="uid://bdw6012jctyqw" path="res://Enemies/eliteOrc.tscn" id="7_3ci0i"]
-[ext_resource type="PackedScene" uid="uid://dnxlaao65sic8" path="res://Enemies/bossOrc.tscn" id="8_hk1je"]
+[ext_resource type="Resource" uid="uid://cysqjnlr2sabb" path="res://Resources/Enemies/Orcs/EliteOrc.tres" id="7_q2mgx"]
+[ext_resource type="Resource" uid="uid://byupk5rpj5kl1" path="res://Resources/Enemies/Orcs/BossOrc.tres" id="8_ee6ah"]
 [ext_resource type="PackedScene" uid="uid://072ryf224c3t" path="res://Objects/chest_loot.tscn" id="9_hy02c"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_8iigx"]
@@ -419,7 +419,7 @@ sources/0 = SubResource("TileSetAtlasSource_8iigx")
 script = ExtResource("5_i3ma0")
 time_start = 0
 time_end = 180
-enemy_type = ExtResource("2_5su7r")
+enemy_type = ExtResource("5_bwjhd")
 enemy_num = 1
 enemy_spawn_delay = 1
 
@@ -427,7 +427,7 @@ enemy_spawn_delay = 1
 script = ExtResource("5_i3ma0")
 time_start = 60
 time_end = 180
-enemy_type = ExtResource("2_5su7r")
+enemy_type = ExtResource("7_q2mgx")
 enemy_num = 10
 enemy_spawn_delay = 10
 
@@ -435,7 +435,7 @@ enemy_spawn_delay = 10
 script = ExtResource("5_i3ma0")
 time_start = 20
 time_end = 180
-enemy_type = ExtResource("7_3ci0i")
+enemy_type = ExtResource("5_bwjhd")
 enemy_num = 1
 enemy_spawn_delay = 20
 
@@ -443,7 +443,7 @@ enemy_spawn_delay = 20
 script = ExtResource("5_i3ma0")
 time_start = 120
 time_end = 180
-enemy_type = ExtResource("7_3ci0i")
+enemy_type = ExtResource("7_q2mgx")
 enemy_num = 3
 enemy_spawn_delay = 60
 
@@ -451,7 +451,7 @@ enemy_spawn_delay = 60
 script = ExtResource("5_i3ma0")
 time_start = 180
 time_end = 180
-enemy_type = ExtResource("8_hk1je")
+enemy_type = ExtResource("8_ee6ah")
 enemy_num = 1
 enemy_spawn_delay = 0
 
@@ -469,8 +469,11 @@ layer_2/name = "AirConstruct"
 layer_2/tile_data = PackedInt32Array(-327665, 327680, 0, -262129, 327680, 1, -262134, 262144, 1, -327670, 262144, 0, -327669, 131072, 2, -327668, 131072, 2, -327667, 131072, 2, -327666, 131072, 2, -262133, 131072, 0, -262132, 131072, 0, -262131, 131072, 0, -262130, 131072, 0, -196594, 327680, 2, -196597, 327680, 2, -196596, 131072, 1, -196595, 262144, 3, -196598, 589824, 4, -196593, 720896, 4)
 
 [node name="Player" parent="." instance=ExtResource("1_13lbo")]
+z_index = 2
+collision_mask = 99
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_24gqt")]
+z_index = 1
 spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_k0kof"), SubResource("Resource_cjmbi"), SubResource("Resource_cxdxq"), SubResource("Resource_rmihc"), SubResource("Resource_0xktq")])
 
 [node name="Loots" type="Node2D" parent="."]
@@ -481,27 +484,3 @@ spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_k0kof"), SubResour
 
 [node name="ChestLoot" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
 position = Vector2(89, 23)
-
-[node name="ChestLoot2" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(-103, 57)
-
-[node name="ChestLoot3" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(99, -35)
-
-[node name="ChestLoot4" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(-21, 77)
-
-[node name="ChestLoot5" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(-113, 107)
-
-[node name="ChestLoot6" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(114, 89)
-
-[node name="ChestLoot7" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(-43, -57)
-
-[node name="ChestLoot8" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(221, 63)
-
-[node name="ChestLoot9" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(-108, -27)

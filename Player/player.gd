@@ -25,8 +25,8 @@ class_name Player
 @export var block: float = 0
 @export_group("Misc Values")
 @export var collectible_area: float = 2.0
-@export var additional_attack_proctile: int = 0
-@export var additional_spell_proctile: int = 0
+@export var additional_attack_projectile: int = 0
+@export var additional_spell_projectile: int = 0
 @export var rarity_chance: float = 1.0
 @export var player_experience: float
 @export var player_experience_level: float = 1.0

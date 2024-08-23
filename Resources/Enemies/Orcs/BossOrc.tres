@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Orc" load_steps=2 format=3 uid="uid://byupk5rpj5kl1"]
+
+[ext_resource type="Script" path="res://Enemies/Orc.gd" id="1_a58hp"]
+
+[resource]
+script = ExtResource("1_a58hp")
+movemement_speed = 30.0
+health = 200.0
+enemy_damage = 20.0
+attack_speed = 0.5
+knockback_recovery = 3.0
+armor = 200.0
+min_experience = 20
+max_experience = 30
+elemental_type = "Fire"
+type_resistant = "Ice"
+type_effective = "Fire"
+enemy_type = "boss"
+enemySpritePath = "res://Art/Enemies/Orc.png"
+title = "Boss Orc"

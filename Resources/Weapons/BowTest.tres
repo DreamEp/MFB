@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bswtnc1fi15a2" path="res://Art/Player/Weapons/bow.png" id="1_hxf4o"]
 [ext_resource type="Script" path="res://Player/Weapons/Item.gd" id="2_qg4d3"]
-[ext_resource type="Resource" uid="uid://dxiflivocjb27" path="res://Resources/Skills/Spells/Axe Rotation1.tres" id="3_xlvhx"]
+[ext_resource type="Resource" uid="uid://dxiflivocjb27" path="res://Resources/Skills/Spells/Axe Rotation/Axe Rotation1.tres" id="3_xlvhx"]
 
 [resource]
 script = ExtResource("2_qg4d3")

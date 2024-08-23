@@ -11,12 +11,15 @@ var upgrade = null
 func _ready():
 	if upgrade != null:
 		item_texture.texture = load(upgrade["icon"])
-		label_item_number.text = str(upgrade["level"])
+		if upgrade["displayname"] == "Ring" or upgrade["displayname"] == "Stone":
+			label_item_number.text = "1"
+		else:
+			label_item_number.text = str(upgrade["level"])
 		scaleChild(base_parent_size, base_child_size)
 
 func update_level(picked_upgrade):
 	var current_level = int(label_item_number.text)
-	if picked_upgrade["type"] != "upgrade":
+	if picked_upgrade["type"] != "upgrade" or picked_upgrade["displayname"] == "Ring" or picked_upgrade["displayname"] == "Stone":
 		label_item_number.text = str(current_level + 1)
 	else:
 		label_item_number.text = str(current_level + picked_upgrade["level"])

@@ -107,9 +107,13 @@ func _on_body_entered(body):
 			on_enemy_hit()	
 			
 #Crescent			
-func set_destination(destination):
-	p0 = global_position
-	p2 = destination
+func set_destination(enemy_pos, player_pos):
+	var final_destination: Vector2 = enemy_pos - player_pos
+	var x = final_destination.x/sqrt(pow(final_destination.x, 2) + pow(final_destination.y, 2))
+	var y = final_destination.y/sqrt(pow(final_destination.x, 2) + pow(final_destination.y, 2))
+	final_destination = Vector2(x, y) * shooting_range
+	p0 = player_pos
+	p2 = final_destination
  
 	var tilted_unit_vector = (p2-p0).normalized().rotated(deg_to_rad(-deviation_angle))
 	p1 = p0 + deviation_distance * tilted_unit_vector

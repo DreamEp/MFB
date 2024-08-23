@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="AxeRotation" load_steps=2 format=3 uid="uid://ddxe6apau5tos"]
+
+[ext_resource type="Script" path="res://Player/Skills/Spells/AxeRotation.gd" id="1_wnvxk"]
+
+[resource]
+script = ExtResource("1_wnvxk")
+projectile_speed = 50.0
+attack_damage = 5.0
+knockback_force = 10.0
+stun_time = 2.0
+elemental_type = "Electric"
+projectile_type = "Axe"
+coldown = 10.0
+duration = 4.0
+projectile_count = 5
+radius = 50
+title = "Axe Rotation"
