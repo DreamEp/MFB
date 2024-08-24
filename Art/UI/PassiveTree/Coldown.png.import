@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://fy78657qxvvw"
-path="res://.godot/imported/Area.png-07ad86fd0ada934d6c7fd85d35fd570d.ctex"
+uid="uid://dvjrqwgc02dix"
+path="res://.godot/imported/Coldown.png-f368c8c13e0e014c5ce517e044fb9123.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/PassiveTree/Area.png"
-dest_files=["res://.godot/imported/Area.png-07ad86fd0ada934d6c7fd85d35fd570d.ctex"]
+source_file="res://Art/UI/PassiveTree/Coldown.png"
+dest_files=["res://.godot/imported/Coldown.png-f368c8c13e0e014c5ce517e044fb9123.ctex"]
 
 [params]
 

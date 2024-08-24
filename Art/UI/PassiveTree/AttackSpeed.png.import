@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://rgwbur4yx6np"
-path="res://.godot/imported/Yes.png-90661f8b1b2a8130e9fd31c7826badb6.ctex"
+uid="uid://b1kdgh47dtgi6"
+path="res://.godot/imported/AttackSpeed.png-b7575c7bf2d7d4ee2c00d7df4f00cf4d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/PassiveTree/Yes.png"
-dest_files=["res://.godot/imported/Yes.png-90661f8b1b2a8130e9fd31c7826badb6.ctex"]
+source_file="res://Art/UI/PassiveTree/AttackSpeed.png"
+dest_files=["res://.godot/imported/AttackSpeed.png-b7575c7bf2d7d4ee2c00d7df4f00cf4d.ctex"]
 
 [params]
 

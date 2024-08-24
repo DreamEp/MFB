@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c0ejinkqyooqo"]
+[gd_scene load_steps=9 format=3 uid="uid://c0ejinkqyooqo"]
 
 [ext_resource type="Script" path="res://HUD&Menu/Menu/main_menu.gd" id="1_4kwf0"]
 [ext_resource type="Texture2D" uid="uid://dliagwd6h3tcs" path="res://Art/UI/background.jpeg" id="1_d01rf"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bkq52g5a1py3k" path="res://HUD&Menu/Menu/options_menu.tscn" id="3_a35cd"]
 [ext_resource type="AudioStream" uid="uid://bagt8v42moj8h" path="res://Audio/MainMenuSong.mp3" id="4_ls1ck"]
 [ext_resource type="Theme" uid="uid://bccry05pp3gv2" path="res://Art/UI/Theme & Stylebox/button.tres" id="4_mj0pw"]
+[ext_resource type="PackedScene" uid="uid://bmjot0owiq1gt" path="res://HUD&Menu/Menu/SkillTree/skill_tree.tscn" id="6_ckrds"]
 
 [sub_resource type="SystemFont" id="SystemFont_rr06g"]
 font_names = PackedStringArray("Calisto MT")
@@ -41,7 +42,7 @@ anchor_bottom = 0.5
 offset_left = -72.5
 offset_top = -74.5
 offset_right = 72.5
-offset_bottom = 74.5
+offset_bottom = 105.5
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -107,6 +108,11 @@ layout_mode = 2
 theme = ExtResource("4_mj0pw")
 text = "Start Game"
 
+[node name="PassiveTree" type="Button" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("4_mj0pw")
+text = "Passive Tree"
+
 [node name="Options" type="Button" parent="NinePatchRect/HBoxContainer/VBoxContainer"]
 layout_mode = 2
 theme = ExtResource("4_mj0pw")
@@ -121,11 +127,16 @@ text = "Quit Game"
 visible = false
 layout_mode = 1
 
+[node name="SkillTree" parent="." instance=ExtResource("6_ckrds")]
+visible = false
+layout_mode = 1
+
 [node name="MainMenuSong" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("4_ls1ck")
 volume_db = -0.5
 autoplay = true
 bus = &"Music"
 
+[connection signal="pressed" from="NinePatchRect/HBoxContainer/VBoxContainer/PassiveTree" to="." method="_on_passive_tree_pressed"]
 [connection signal="pressed" from="NinePatchRect/HBoxContainer/VBoxContainer/Options" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="NinePatchRect/HBoxContainer/VBoxContainer/QuitGame" to="." method="_on_quit_game_pressed"]

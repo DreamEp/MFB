@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://l02dkfx2vttg"
-path="res://.godot/imported/Cdr.png-3de43c5257d4b6fc79c8538f3023e65f.ctex"
+uid="uid://0t81bd8rvugs"
+path="res://.godot/imported/ProjectileCount.png-99ea496ef98b06b2a99509a614d975c6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/PassiveTree/Cdr.png"
-dest_files=["res://.godot/imported/Cdr.png-3de43c5257d4b6fc79c8538f3023e65f.ctex"]
+source_file="res://Art/UI/PassiveTree/ProjectileCount.png"
+dest_files=["res://.godot/imported/ProjectileCount.png-99ea496ef98b06b2a99509a614d975c6.ctex"]
 
 [params]
 

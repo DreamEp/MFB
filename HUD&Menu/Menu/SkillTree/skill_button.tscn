@@ -1,0 +1,58 @@
+[gd_scene load_steps=6 format=3 uid="uid://b8ipevbl1pc6g"]
+
+[ext_resource type="Texture2D" uid="uid://soqn3oxgxarl" path="res://Art/UI/PassiveTree/Damage.png" id="1_bxmrv"]
+[ext_resource type="Script" path="res://HUD&Menu/Menu/SkillTree/skill_button.gd" id="2_ml4ir"]
+
+[sub_resource type="Theme" id="Theme_bpbkb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_xdlic"]
+bg_color = Color(0, 0, 0, 0.545098)
+
+[sub_resource type="Theme" id="Theme_jdnq7"]
+Panel/styles/panel = SubResource("StyleBoxFlat_xdlic")
+
+[node name="SkillButton" type="TextureButton"]
+z_index = 1
+offset_right = 30.0
+offset_bottom = 30.0
+theme = SubResource("Theme_bpbkb")
+texture_normal = ExtResource("1_bxmrv")
+ignore_texture_size = true
+stretch_mode = 0
+script = ExtResource("2_ml4ir")
+max_level = 3
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 30.0
+mouse_filter = 2
+theme = SubResource("Theme_jdnq7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 0
+offset_right = 30.0
+offset_bottom = 30.0
+theme_override_constants/margin_left = 1
+theme_override_constants/margin_top = 1
+theme_override_constants/margin_right = 1
+theme_override_constants/margin_bottom = 1
+
+[node name="Label" type="Label" parent="MarginContainer"]
+layout_mode = 2
+size_flags_vertical = 8
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 6
+text = "0/10"
+horizontal_alignment = 2
+vertical_alignment = 2
+
+[node name="Line2D" type="Line2D" parent="."]
+modulate = Color(0.956863, 0.886275, 0.776471, 1)
+top_level = true
+width = 3.0
+default_color = Color(0.435294, 0.403922, 0.360784, 1)
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="pressed" from="." to="." method="_on_pressed"]

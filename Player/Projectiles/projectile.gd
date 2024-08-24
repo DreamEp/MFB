@@ -111,7 +111,8 @@ func set_destination(enemy_pos, player_pos):
 	var final_destination: Vector2 = enemy_pos - player_pos
 	var x = final_destination.x/sqrt(pow(final_destination.x, 2) + pow(final_destination.y, 2))
 	var y = final_destination.y/sqrt(pow(final_destination.x, 2) + pow(final_destination.y, 2))
-	final_destination = Vector2(x, y) * shooting_range
+	final_destination = Vector2(x, y)  * shooting_range
+	#final_destination = sqrt(pow(final_destination.x, 2) + pow(final_destination.y, 2)) * shooting_range
 	p0 = player_pos
 	p2 = final_destination
  

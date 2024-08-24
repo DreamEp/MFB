@@ -3,6 +3,7 @@ class_name MainMenu
 
 @onready var optionMenu: OptionMenu = $OptionsMenu
 @onready var mainMenuContainer: NinePatchRect = $NinePatchRect
+@onready var skillTree = $SkillTree
 
 func _process(_delta):
 	pass
@@ -24,3 +25,7 @@ func _on_quit_game_pressed():
 func _on_options_pressed():
 	mainMenuContainer.visible = false
 	optionMenu.visible = true
+
+func _on_passive_tree_pressed():
+	mainMenuContainer.visible = false
+	skillTree.visible = true

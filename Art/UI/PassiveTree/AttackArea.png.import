@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ber1i1yxu28as"
-path="res://.godot/imported/ProjSpell.png-c704aecd9bd2212f16c28630ec8d193e.ctex"
+uid="uid://yqguvmw1i16l"
+path="res://.godot/imported/AttackArea.png-cc34d42952e02f9d8cd592d4847ddfae.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Art/UI/PassiveTree/ProjSpell.png"
-dest_files=["res://.godot/imported/ProjSpell.png-c704aecd9bd2212f16c28630ec8d193e.ctex"]
+source_file="res://Art/UI/PassiveTree/AttackArea.png"
+dest_files=["res://.godot/imported/AttackArea.png-cc34d42952e02f9d8cd592d4847ddfae.ctex"]
 
 [params]
 
