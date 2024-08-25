@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AddProjectile" load_steps=2 format=3 uid="uid://cvvgtx4fi1702"]
+
+[ext_resource type="Script" path="res://Player/Skills/Supports/AddProjectile.gd" id="1_2frsm"]
+
+[resource]
+script = ExtResource("1_2frsm")
+value = 1

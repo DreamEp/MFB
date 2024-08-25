@@ -484,3 +484,21 @@ spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_k0kof"), SubResour
 
 [node name="ChestLoot" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
 position = Vector2(89, 23)
+
+[node name="ChestLoot2" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
+position = Vector2(-38, -106)
+
+[node name="ChestLoot3" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
+position = Vector2(-137, 10)
+
+[node name="ChestLoot4" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
+position = Vector2(27, -117)
+
+[node name="ChestLoot5" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
+position = Vector2(-54, -53)
+
+[node name="ChestLoot6" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
+position = Vector2(32, -46)
+
+[node name="ChestLoot7" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
+position = Vector2(-5, -193)

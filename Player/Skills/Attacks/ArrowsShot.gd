@@ -18,7 +18,7 @@ class_name ArrowsShot
 @export var coldown_between_salve: float
 @export var projectile_count: int
 @export var space_between_projectiles: int
-
+@export var support_skills: Array[SupportSkill]
 
 var player: Player
 var PROJ_PATH: String = "res://Art/Player/Projectiles/"

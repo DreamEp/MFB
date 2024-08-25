@@ -14,4 +14,5 @@ coldown = 10.0
 duration = 4.0
 projectile_count = 5
 radius = 50
+support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([])
 title = "Axe Rotation"

@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ElementalType" load_steps=2 format=3 uid="uid://6iwqs8dsap50"]
+
+[ext_resource type="Script" path="res://Player/Skills/Supports/ElementalType.gd" id="1_lp5tp"]
+
+[resource]
+script = ExtResource("1_lp5tp")
+value = "Ice"

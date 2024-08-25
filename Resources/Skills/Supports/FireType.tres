@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ElementalType" load_steps=2 format=3 uid="uid://d1c40m6f54tmt"]
+
+[ext_resource type="Script" path="res://Player/Skills/Supports/ElementalType.gd" id="1_iklyc"]
+
+[resource]
+script = ExtResource("1_iklyc")
+value = "Fire"

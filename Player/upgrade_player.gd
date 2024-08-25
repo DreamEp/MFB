@@ -277,10 +277,21 @@ func upgrade_character(picked_upgrade):
 		for i in range(item_current_skills.size()):			
 			if item_current_skills[i] != null:
 				if item_current_skills[i].title == picked_upgrade["displayname"]:
+					if skill.support_skills.size() > 0: #If the current skill got supports then we play those
+						for support in skill.support_skills:
+							skill = support.activate(skill)
+					elif item_current_skills[i].support_skills.size() > 0: #If the founded previous skill got supports
+						var current_suppoprt = item_current_skills[i].support_skills
+						skill.support_skills = item_current_skills[i].support_skills #Then the new skill got the previous supports
+						for support in skill.support_skills:
+							skill = support.activate(skill)
 					item_current_skills[i] = skill
 					found = true
 					break
 		if found == false:	
+			if skill.support_skills != null:
+				for support in skill.support_skills:
+					skill = support.activate(skill)
 			item_current_skills.append(skill)
 		player.items[0].skills = item_current_skills
 	collected_names.append(upgrade_name)

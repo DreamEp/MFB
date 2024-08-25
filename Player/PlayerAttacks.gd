@@ -53,4 +53,7 @@ func shoot_skills(mouse_position, current_item: Item = null):
 		if current_item.skills != null:
 			for skill in current_item.skills:
 				if skill != null:
+					#if skill.support_skills != null:
+						#for support in skill.support_skills:
+							#skill = support.activate(skill)
 					skill.activate(mouse_position, get_tree())

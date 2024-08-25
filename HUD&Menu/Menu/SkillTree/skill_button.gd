@@ -15,7 +15,6 @@ var descriptionLabel: Label
 func _ready():
 	self.texture_normal = load("res://Art/UI/PassiveTree/%s.png" % textureName)
 	label.text = str(level) + "/" + str(max_level)
-	print(get_parent() is SkillNode)
 	if get_parent() is SkillNode:
 		line2d.add_point(global_position + size/2)
 		line2d.add_point(get_parent().global_position + size/2)

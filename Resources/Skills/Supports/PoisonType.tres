@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ElementalType" load_steps=2 format=3 uid="uid://doxiifj5yik6s"]
+
+[ext_resource type="Script" path="res://Player/Skills/Supports/ElementalType.gd" id="1_2rg7m"]
+
+[resource]
+script = ExtResource("1_2rg7m")
+value = "Poison"

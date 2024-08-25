@@ -18,6 +18,7 @@ class_name RainOfArrows
 @export var projectile_count: int
 @export var space_between_projectiles: int
 @export var coldown: float
+@export var support_skills: Array[SupportSkill]
 
 var player: Player
 var PROJ_PATH: String = "res://Art/Player/Projectiles/"

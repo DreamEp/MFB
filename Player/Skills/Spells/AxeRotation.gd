@@ -15,6 +15,7 @@ class_name AxeRotation
 @export var duration: float
 @export var projectile_count: int
 @export var radius: int
+@export var support_skills: Array[SupportSkill]
 
 
 var player: Player
@@ -22,7 +23,6 @@ var PROJ_PATH: String = "res://Art/Player/Projectiles/"
 var projectileNode: PackedScene = preload("res://Player/Projectiles/projectile.tscn")
 var can_fire = true
 var projectile_physics: String = "rotative"
-
 
 func cast(current_angle, current_radius, playerNode, tree):
 	var texture_path:= "%s%ss/%s.png" % [PROJ_PATH, projectile_type, elemental_type+"_"+projectile_type]
@@ -60,5 +60,8 @@ func axe_rotation(tree, current_projectile_count):
 
 func activate(_mouse_position, tree):
 	player = tree.get_first_node_in_group("player")
+	#if support_skills != null:
+		#for support in support_skills:
+			#self = support.activate(self.)
 	var current_projectile_count = projectile_count + player.additional_spell_projectile
 	axe_rotation(tree, current_projectile_count)

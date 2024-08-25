@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="ElementalType" load_steps=2 format=3 uid="uid://duntlso8654ve"]
+
+[ext_resource type="Script" path="res://Player/Skills/Supports/ElementalType.gd" id="1_xnexb"]
+
+[resource]
+script = ExtResource("1_xnexb")
+value = "Electric"

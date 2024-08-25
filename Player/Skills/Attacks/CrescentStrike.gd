@@ -21,7 +21,7 @@ class_name CrescentStrike
 @export var distance: Array[float]
 @export var angle: Array[float]
 @export var can_return: Array[bool]
-
+@export var support_skills: Array[SupportSkill]
 
 var player: Player
 var PROJ_PATH: String = "res://Art/Player/Projectiles/"
