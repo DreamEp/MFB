@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PassiveSkillNode" load_steps=2 format=3 uid="uid://cdlaapmu48xtm"]
+
+[ext_resource type="Script" path="res://HUD&Menu/Menu/SkillTree/PassiveSkillNode.gd" id="1_8u1x6"]
+
+[resource]
+script = ExtResource("1_8u1x6")
+title = "Armor"
+description = "Increase the armor of the player by 5%/level"
+texture_name = "Armor"
+level = 0
+max_level = 5
+initial_cost = 100

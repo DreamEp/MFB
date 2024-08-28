@@ -22,6 +22,7 @@ SignalBus="*res://Util/Autoloads/SignalBus.gd"
 SettingsDataContainer="*res://Util/Autoloads/SettingsDataContainer.gd"
 SettingsSignalBus="*res://Util/Autoloads/SettingsSignalBus.gd"
 SaveManager="*res://Util/Autoloads/SaveManager.gd"
+PassiveTreeDataContainer="*res://Util/Autoloads/PassiveTreeDataContainer.gd"
 
 [display]
 

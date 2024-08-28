@@ -2,7 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://bswtnc1fi15a2" path="res://Art/Player/Weapons/bow.png" id="1_hxf4o"]
 [ext_resource type="Script" path="res://Player/Weapons/Item.gd" id="2_qg4d3"]
-[ext_resource type="Resource" uid="uid://dxiflivocjb27" path="res://Resources/Skills/Spells/Axe Rotation/Axe Rotation1.tres" id="3_xlvhx"]
+[ext_resource type="Resource" uid="uid://dqpab7drvmcp1" path="res://Resources/Skills/Attacks/Crescent Strike/Crescent Strike1.tres" id="3_s6qlr"]
 
 [resource]
 script = ExtResource("2_qg4d3")
@@ -10,4 +10,4 @@ title = "Bow"
 texture = ExtResource("1_hxf4o")
 icon = ExtResource("1_hxf4o")
 animation = ExtResource("1_hxf4o")
-skills = Array[Resource("res://Player/Skills/Skill.gd")]([ExtResource("3_xlvhx")])
+skills = Array[Resource("res://Player/Skills/Skill.gd")]([ExtResource("3_s6qlr")])

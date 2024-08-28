@@ -111,10 +111,13 @@ func set_destination(enemy_pos, player_pos):
 	var final_destination: Vector2 = enemy_pos - player_pos
 	var x = final_destination.x/sqrt(pow(final_destination.x, 2) + pow(final_destination.y, 2))
 	var y = final_destination.y/sqrt(pow(final_destination.x, 2) + pow(final_destination.y, 2))
+	print("x : %s" % x)
+	print("y : %s" % y)
+	print("x^2+y^2 : %s" % str(pow(x, 2) + pow(y, 2)))
 	final_destination = Vector2(x, y)  * shooting_range
 	#final_destination = sqrt(pow(final_destination.x, 2) + pow(final_destination.y, 2)) * shooting_range
 	p0 = player_pos
-	p2 = final_destination
+	p2 = final_destination #enemy_pos
  
 	var tilted_unit_vector = (p2-p0).normalized().rotated(deg_to_rad(-deviation_angle))
 	p1 = p0 + deviation_distance * tilted_unit_vector

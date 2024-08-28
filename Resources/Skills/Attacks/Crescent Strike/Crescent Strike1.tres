@@ -19,4 +19,5 @@ projectile_count = 1
 distance = Array[float]([120.0])
 angle = Array[float]([60.0])
 can_return = Array[bool]([false])
+support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([])
 title = "Crescent Strike"

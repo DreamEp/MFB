@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://0q77ksscaho5"]
+[gd_scene load_steps=18 format=3 uid="uid://0q77ksscaho5"]
 
 [ext_resource type="PackedScene" uid="uid://b48nchocyocqp" path="res://Player/player.tscn" id="1_13lbo"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_a5gyv"]
 [ext_resource type="Texture2D" uid="uid://dn4p38y76xv3i" path="res://Art/tilemap_packed.png" id="3_sgcg1"]
 [ext_resource type="PackedScene" uid="uid://cxcen78y8bhox" path="res://Util/enemy_spawner.tscn" id="4_24gqt"]
+[ext_resource type="Resource" uid="uid://b4dhvx1k7657k" path="res://Resources/Weapons/BowTest.tres" id="4_yxtht"]
 [ext_resource type="Resource" uid="uid://dm6gcswq1j810" path="res://Resources/Enemies/Orcs/BasicOrc.tres" id="5_bwjhd"]
 [ext_resource type="Script" path="res://Util/spawn_info.gd" id="5_i3ma0"]
 [ext_resource type="Resource" uid="uid://cysqjnlr2sabb" path="res://Resources/Enemies/Orcs/EliteOrc.tres" id="7_q2mgx"]
@@ -471,6 +472,7 @@ layer_2/tile_data = PackedInt32Array(-327665, 327680, 0, -262129, 327680, 1, -26
 [node name="Player" parent="." instance=ExtResource("1_13lbo")]
 z_index = 2
 collision_mask = 99
+items = Array[Resource("res://Player/Weapons/Item.gd")]([ExtResource("4_yxtht")])
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_24gqt")]
 z_index = 1
@@ -484,21 +486,3 @@ spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_k0kof"), SubResour
 
 [node name="ChestLoot" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
 position = Vector2(89, 23)
-
-[node name="ChestLoot2" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(-38, -106)
-
-[node name="ChestLoot3" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(-137, 10)
-
-[node name="ChestLoot4" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(27, -117)
-
-[node name="ChestLoot5" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(-54, -53)
-
-[node name="ChestLoot6" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(32, -46)
-
-[node name="ChestLoot7" parent="Loots/Chest" instance=ExtResource("9_hy02c")]
-position = Vector2(-5, -193)

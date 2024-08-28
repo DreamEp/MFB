@@ -20,7 +20,6 @@ texture_normal = ExtResource("1_bxmrv")
 ignore_texture_size = true
 stretch_mode = 0
 script = ExtResource("2_ml4ir")
-max_level = 3
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0

@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="PassiveSkillNode" load_steps=2 format=3 uid="uid://dtckw1pltnk7y"]
+
+[ext_resource type="Script" path="res://HUD&Menu/Menu/SkillTree/PassiveSkillNode.gd" id="1_meir1"]
+
+[resource]
+script = ExtResource("1_meir1")
+title = "Health"
+description = "Increase the health of the player by 5%/level"
+texture_name = "Health"
+level = 0
+max_level = 4
+initial_cost = 220
