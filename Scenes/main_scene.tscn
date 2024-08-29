@@ -254,7 +254,7 @@ _data = {
 "stun": SubResource("Animation_qjiki")
 }
 
-[node name="MainScene" type="Control"]
+[node name="MainScene" type="Control" groups=["main_scene"]]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

@@ -7,9 +7,9 @@
 [ext_resource type="Script" path="res://Player/PlayerAttacks.gd" id="5_72ra7"]
 [ext_resource type="PackedScene" uid="uid://caufekfovd6qa" path="res://Util/Components/hitbox_component.tscn" id="5_hs5nc"]
 [ext_resource type="Script" path="res://Player/PlayerMovement.gd" id="5_o175c"]
+[ext_resource type="PackedScene" uid="uid://36lv5b1iv1pu" path="res://Player/PlayerInterraction.tscn" id="6_demga"]
 [ext_resource type="Resource" uid="uid://cuopj0axk466w" path="res://Resources/Weapons/EmptyBow.tres" id="7_ad0ol"]
 [ext_resource type="Script" path="res://Player/Skills/Spells/ThunderBolt/ThunderBolt.gd" id="9_88sjo"]
-[ext_resource type="PackedScene" uid="uid://36lv5b1iv1pu" path="res://Player/interraction.tscn" id="9_myqhg"]
 [ext_resource type="Texture2D" uid="uid://bswtnc1fi15a2" path="res://Art/Player/Weapons/bow.png" id="10_q0sbo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jx8ix"]
@@ -64,6 +64,20 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [Vector2i(0, 6), Vector2i(1, 6), Vector2i(2, 6), Vector2i(3, 6)]
+}
+tracks/1/type = "method"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("PlayerInterraction")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"game_over"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_w04he"]
@@ -175,7 +189,7 @@ script = ExtResource("5_o175c")
 [node name="PlayerAnimation" type="Node" parent="."]
 script = ExtResource("4_mi3k1")
 
-[node name="Interraction" parent="." instance=ExtResource("9_myqhg")]
+[node name="PlayerInterraction" parent="." instance=ExtResource("6_demga")]
 
 [node name="PlayerPosition" type="Marker2D" parent="."]
 
@@ -211,7 +225,7 @@ libraries = {
 }
 
 [node name="HealthComponent" parent="." instance=ExtResource("4_hpyvg")]
-MAX_HEALTH = 100.0
+MAX_HEALTH = 0.05
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("5_hs5nc")]
 collision_layer = 4

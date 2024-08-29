@@ -281,7 +281,6 @@ func upgrade_character(picked_upgrade):
 						for support in skill.support_skills:
 							skill = support.activate(skill)
 					elif item_current_skills[i].support_skills.size() > 0: #If the founded previous skill got supports
-						var current_suppoprt = item_current_skills[i].support_skills
 						skill.support_skills = item_current_skills[i].support_skills #Then the new skill got the previous supports
 						for support in skill.support_skills:
 							skill = support.activate(skill)

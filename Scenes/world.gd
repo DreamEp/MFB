@@ -4,6 +4,7 @@ extends Node2D
 @onready var marginContainer: NinePatchRect = mainMenu.get_node("NinePatchRect")
 @onready var optionMenu: Control = mainMenu.get_node("OptionsMenu")
 
+
 func _ready():
 	pass 
 

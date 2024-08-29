@@ -9,8 +9,8 @@ class_name  ItemOption
 
 var item = null
 @onready var player = get_tree().get_first_node_in_group("player")
-@onready var interraction = player.get_node("Interraction")
-@onready var leveling = interraction.get_node("Leveling")
+@onready var playerInterraction = player.get_node("PlayerInterraction")
+@onready var leveling = playerInterraction.get_node("Leveling")
 @onready var upgrade = leveling.get_node("UpgradePlayer")
 
 signal selected_upgrade(upgrade)

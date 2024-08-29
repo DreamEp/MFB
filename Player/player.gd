@@ -34,6 +34,7 @@ class_name Player
 @export var player_collected_skills: Array = []
 @export var items: Array[Item]
 
+var collected_golds = 0
 #Nodes
 @onready var healthBar: TextureProgressBar = get_tree().get_first_node_in_group("hud").get_node("HealthBar")
 @onready var expBar: ProgressBar = get_tree().get_first_node_in_group("hud").get_node("ExperienceBar")

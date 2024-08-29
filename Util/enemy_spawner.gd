@@ -1,4 +1,5 @@
 extends Node2D
+class_name EnemySpawner
 
 @export var spawns : Array[SpawnInfo] = []
 @onready var player: Player = get_tree().get_first_node_in_group("player")

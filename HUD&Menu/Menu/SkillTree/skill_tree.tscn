@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://bmjot0owiq1gt"]
+[gd_scene load_steps=19 format=3 uid="uid://bmjot0owiq1gt"]
 
 [ext_resource type="Texture2D" uid="uid://cfmwnnwdeqen3" path="res://Art/UI/TextureMenu.png" id="1_napjd"]
 [ext_resource type="Script" path="res://HUD&Menu/Menu/SkillTree/skill_tree.gd" id="1_o6h65"]
@@ -14,6 +14,7 @@
 [ext_resource type="Resource" uid="uid://8c8c0f8dvnvh" path="res://Resources/PassiveSkillTree/SpellDamagePassiveSkillNode.tres" id="11_52j0f"]
 [ext_resource type="Resource" uid="uid://dqae8pihcsyah" path="res://Resources/PassiveSkillTree/SpellAreaPassiveSkillNode.tres" id="12_o52ev"]
 [ext_resource type="Resource" uid="uid://dyvx2byd6caeo" path="res://Resources/PassiveSkillTree/MovementSpeedPassiveSkillNode.tres" id="13_nmid3"]
+[ext_resource type="Texture2D" uid="uid://sfj1qn3hv6sm" path="res://Art/UI/PassiveTree/SoulGem.png" id="15_5fs6u"]
 [ext_resource type="Theme" uid="uid://bccry05pp3gv2" path="res://Art/UI/Theme & Stylebox/button.tres" id="15_q7ci8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hrbi2"]
@@ -199,15 +200,10 @@ passiveSkillNode = ExtResource("13_nmid3")
 
 [node name="Panel" type="Panel" parent="."]
 visible = false
+z_index = 10
 layout_mode = 1
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -140.0
-offset_top = 20.0
-offset_right = -20.0
-offset_bottom = 140.0
-grow_horizontal = 0
+offset_right = 120.0
+offset_bottom = 120.0
 theme = SubResource("Theme_ir07j")
 
 [node name="Label" type="Label" parent="Panel"]
@@ -220,6 +216,50 @@ text = "Increase the value of attack damage"
 horizontal_alignment = 1
 vertical_alignment = 1
 autowrap_mode = 3
+
+[node name="Panel2" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -45.0
+offset_top = 10.0
+offset_right = 45.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme = SubResource("Theme_ir07j")
+
+[node name="CollectedSoulGem" type="Label" parent="Panel2"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 16
+text = "1920"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 3
+
+[node name="ImageSoulGem" type="TextureRect" parent="Panel2"]
+self_modulate = Color(0.617455, 0.617455, 0.617455, 1)
+texture_filter = 1
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = -25.0
+offset_top = -11.0
+offset_right = -5.0
+offset_bottom = 9.0
+grow_horizontal = 0
+grow_vertical = 2
+texture = ExtResource("15_5fs6u")
+expand_mode = 1
 
 [node name="Exit" type="Button" parent="."]
 custom_minimum_size = Vector2(120, 30)

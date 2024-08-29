@@ -27,8 +27,11 @@ func _physics_process(_delta):
 			for current_enemy in enemies_in_range:
 				if(current_enemy.global_position.distance_to(player.global_position) < closest_enemy.global_position.distance_to(player.global_position)):
 					closest_enemy = current_enemy
+					
+			#Input.warp_mouse( get_viewport_rect().position + closest_enemy.position)
 			enemy_position = closest_enemy.global_position
 			look_at(enemy_position)
+			
 	for item in items:
 		shoot_skills(enemy_position, item)
 	#for attack_or_spell in player_collected_skills:

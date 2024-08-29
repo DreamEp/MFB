@@ -19,10 +19,10 @@ config/icon="res://icon.svg"
 
 UpgradeDb="*res://Util/Autoloads/upgrade_db.tscn"
 SignalBus="*res://Util/Autoloads/SignalBus.gd"
-SettingsDataContainer="*res://Util/Autoloads/SettingsDataContainer.gd"
 SettingsSignalBus="*res://Util/Autoloads/SettingsSignalBus.gd"
-SaveManager="*res://Util/Autoloads/SaveManager.gd"
+SettingsDataContainer="*res://Util/Autoloads/SettingsDataContainer.gd"
 PassiveTreeDataContainer="*res://Util/Autoloads/PassiveTreeDataContainer.gd"
+SaveManager="*res://Util/Autoloads/SaveManager.gd"
 
 [display]
 
