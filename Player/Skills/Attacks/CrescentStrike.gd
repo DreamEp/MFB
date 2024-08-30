@@ -18,7 +18,7 @@ class_name CrescentStrike
 @export var coldown_between_salve: float
 @export var projectile_count: int
 #@export var space_between_projectiles: int
-@export var distance: Array[float]
+@export var distance_inter: Array[float]
 @export var angle: Array[float]
 @export var can_return: Array[bool]
 @export var support_skills: Array[SupportSkill]
@@ -61,16 +61,17 @@ func crescent_strike(mouse_position, tree, current_projectile_count):
 				var current_distance
 				var current_angle 
 				var current_can_return
-				if i < self.distance.size():
-					current_distance = self.distance[i]
-					current_angle = self.angle[i]
-					current_can_return = self.can_return[i]
-				else:
-					current_distance = self.distance[i%2]
-					current_angle = self.angle[i%2]
-					current_can_return = self.can_return[i%2]
-				#mouse
-				cast(current_distance, current_angle, current_can_return, player, mouse_position, tree)
+				if self.distance_inter.size() > 0:
+					if i < self.distance_inter.size():
+						current_distance = self.distance_inter[i]
+						current_angle = self.angle[i]
+						current_can_return = self.can_return[i]
+					else:
+						current_distance = self.distance_inter[i%2]
+						current_angle = self.angle[i%2]
+						current_can_return = self.can_return[i%2]
+					#mouse
+					cast(current_distance, current_angle, current_can_return, player, mouse_position, tree)
 			await tree.create_timer(coldown_between_salve).timeout
 		await tree.create_timer(coldown).timeout
 		can_fire = true

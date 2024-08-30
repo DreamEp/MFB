@@ -1,5 +1,5 @@
 extends EnemyRes
-class_name Orc
+class_name Slime
 
 @export_group("Stat Values")
 @export var movemement_speed: float = 40.0
@@ -16,28 +16,28 @@ class_name Orc
 @export_enum("base", "elite", "boss") var enemy_type: String
 @export var enemySpritePath: String
 
-var enemyNode: PackedScene = preload("res://Enemies/Orc.tscn")
+var enemyNode: PackedScene = preload("res://Enemies/Slime.tscn")
 
-func instantiate_orc(tree, spawn_pos):
-	var orc: Enemy = enemyNode.instantiate()
+func instantiate_slime(tree, spawn_pos):
+	var slime: Enemy = enemyNode.instantiate()
 	
-	orc.movemement_speed = movemement_speed
-	orc.health = health
-	orc.enemy_damage = enemy_damage
-	orc.attack_speed = attack_speed
-	orc.knockback_recovery = knockback_recovery
-	orc.armor = armor
-	orc.min_experience = min_experience
-	orc.max_experience = max_experience
-	orc.elemental_type = elemental_type
-	orc.type_resistant = type_resistant
-	orc.type_effective = type_effective
-	orc.enemy_type = enemy_type
-	orc.enemySpritePath = enemySpritePath
-	orc.global_position = spawn_pos
+	slime.movemement_speed = movemement_speed
+	slime.health = health
+	slime.enemy_damage = enemy_damage
+	slime.attack_speed = attack_speed
+	slime.knockback_recovery = knockback_recovery
+	slime.armor = armor
+	slime.min_experience = min_experience
+	slime.max_experience = max_experience
+	slime.elemental_type = elemental_type
+	slime.type_resistant = type_resistant
+	slime.type_effective = type_effective
+	slime.enemy_type = enemy_type
+	slime.enemySpritePath = enemySpritePath
+	slime.global_position = spawn_pos
 	
-	tree.add_child(orc)
+	tree.add_child(slime)
 	
 
 func instantiate_enemy(tree, spawn_pos):
-	instantiate_orc(tree, spawn_pos)
+	instantiate_slime(tree, spawn_pos)

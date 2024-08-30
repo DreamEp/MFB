@@ -1,6 +1,7 @@
 extends Resource
 class_name SpawnInfo
 
+@export var title: String
 @export var time_start: int 
 @export var time_end: int 
 @export var enemy_type: EnemyRes 

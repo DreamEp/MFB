@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="Skeleton" load_steps=2 format=3 uid="uid://r0j7b4h42iwa"]
+
+[ext_resource type="Script" path="res://Enemies/Skeleton.gd" id="1_kfll0"]
+
+[resource]
+script = ExtResource("1_kfll0")
+movemement_speed = 40.0
+health = 50.0
+enemy_damage = 5.0
+attack_speed = 0.8
+knockback_recovery = 3.0
+armor = 10.0
+min_experience = 0
+max_experience = 3
+elemental_type = "Physical"
+type_resistant = "Poison"
+type_effective = "Ice"
+enemy_type = "base"
+enemySpritePath = "res://Art/Enemies/Skeleton.png"
+title = "Basic Skeleton"

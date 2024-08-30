@@ -5,8 +5,8 @@
 [resource]
 script = ExtResource("1_47nyw")
 movemement_speed = 50.0
-health = 80.0
-enemy_damage = 5.0
+health = 200.0
+enemy_damage = 10.0
 attack_speed = 0.5
 knockback_recovery = 3.0
 armor = 200.0
