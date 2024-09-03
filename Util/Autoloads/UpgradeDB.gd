@@ -16,7 +16,7 @@ var UPGRADES = {
 	"AxeRotation2": {
 		"icon": SPELLS_PATH + "AxeRotation.png",
 		"displayname": "Axe Rotation",
-		"details": "An additional axe is rotating around the player",
+		"details": "An increaseitional axe is rotating around the player",
 		"level": 2,
 		"rarity": "uncommon",
 		"prerequisite": ["Axe Rotation1"],
@@ -34,7 +34,7 @@ var UPGRADES = {
 	"AxeRotation4": {
 		"icon": SPELLS_PATH + "AxeRotation.png",
 		"displayname": "Axe Rotation",
-		"details": "An additional 2 axes is rotating around the player",
+		"details": "An increaseitional 2 axes is rotating around the player",
 		"level": 4,
 		"rarity": "epic",
 		"prerequisite": ["Axe Rotation3"],
@@ -106,7 +106,7 @@ var UPGRADES = {
 	"SpreadShot4": {
 		"icon": ATTACKS_PATH + "SpreadShot.png",
 		"displayname": "Spread Shot",
-		"details": "Add one salve",
+		"details": "increase one salve",
 		"level": 4,
 		"rarity": "epic",
 		"prerequisite": ["Spread Shot3"],
@@ -142,7 +142,7 @@ var UPGRADES = {
 	"RainOfArrows4": {
 		"icon": SPELLS_PATH + "RainOfArrows.png",
 		"displayname": "Rain of Arrows",
-		"details": "Add more arrows to the raining",
+		"details": "increase more arrows to the raining",
 		"level": 4,
 		"rarity": "epic",
 		"prerequisite": ["Rain of Arrows3"],
@@ -169,7 +169,7 @@ var UPGRADES = {
 	"DeathlyShot3": {
 		"icon": ATTACKS_PATH + "DeathlyShot.png",
 		"displayname": "Deathly Shot",
-		"details": "Add one arrow to the Deathly Shot",
+		"details": "increase one arrow to the Deathly Shot",
 		"level": 3,
 		"rarity": "rare",
 		"prerequisite": ["Deathly Shot2"],
@@ -220,100 +220,100 @@ var UPGRADES = {
 		"prerequisite": ["Crescent Strike3"],
 		"type": "attack"
 	},
-	"add_armor": {
+	"increase_armor": {
 		"icon": UPGRADES_PATH + "Armor.png",
 		"displayname": "Armor",
-		"details": "Reduces incomming damage",
+		"details": "Reduces incomming damage by 10%",
 		"level": 1,
 		"rarity": "",
-		"value": 1,
+		"value": 10,
 		"prerequisite": [],
 		"type": "upgrade"
 	},
-	"add_block": {
+	"increase_block": {
 		"icon": UPGRADES_PATH + "Shield.png",
 		"displayname": "Shield",
-		"details": "Increase block chance",
+		"details": "Increase block chance by 10%",
 		"level": 1,
 		"rarity": "",
-		"value": 1,
+		"value": 10,
 		"prerequisite": [],
 		"type": "upgrade"
 	},
-	"add_collect_area": {
+	"increase_collect_area": {
 		"icon": UPGRADES_PATH + "Pearl.png",
 		"displayname": "Pearl",
-		"details": "Increase area of collect",
+		"details": "Increase area of collect by 10%",
 		"level": 1,
 		"rarity": "",
-		"value": 0.2,
+		"value": 10,
 		"prerequisite": [],
 		"type": "upgrade"
 	},
-	"add_mov_speed": {
+	"increase_mov_speed": {
 		"icon": UPGRADES_PATH + "Boots.png",
 		"displayname": "Boots",
-		"details": "Increase movement speed",
+		"details": "Increase movement speed by 10%",
 		"level": 1,
 		"rarity": "",
-		"value": 0.2,
+		"value": 10,
 		"prerequisite": [],
 		"type": "upgrade"
 	},
-	"add_attack_dmg": {
+	"increase_attack_dmg": {
 		"icon": UPGRADES_PATH + "Sword.png",
 		"displayname": "Sword",
-		"details": "Increase attack damage",
+		"details": "Increase attack damage by 10%",
 		"level": 1,
 		"rarity": "",
-		"value": 2,
+		"value": 10,
 		"prerequisite": [],
 		"type": "upgrade"
 	},
-	"add_spell_dmg": {
+	"increase_spell_dmg": {
 		"icon": UPGRADES_PATH + "MagicHat.png",
 		"displayname": "Magic Hat",
-		"details": "Increase spell damage",
+		"details": "Increase spell damage by 10%",
 		"level": 1,
 		"rarity": "",
-		"value": 2,
+		"value": 10,
 		"prerequisite": [],
 		"type": "upgrade"
 	},
-	"add_attack_speed": {
+	"increase_attack_speed": {
 		"icon": UPGRADES_PATH + "Gloves.png",
 		"displayname": "Gloves",
-		"details": "Increase attacks speed",
+		"details": "Increase attacks speed by 10%",
 		"level": 1,
 		"rarity": "",
-		"value": 0.2,
+		"value": 10,
 		"prerequisite": [],
 		"type": "upgrade"
 	},
-	"add_area_spell": {
+	"increase_area_spell": {
 		"icon": UPGRADES_PATH + "Tome.png",
 		"displayname": "Tome",
-		"details": "Increases the size of spells",
+		"details": "Increases the size of spells by 10%",
 		"level": 1,
 		"rarity": "",
-		"value": 0.10,
+		"value": 10,
 		"prerequisite": [],
 		"type": "upgrade"
 	},
-	"add_cdr_spell": {
+	"increase_cdr_spell": {
 		"icon": UPGRADES_PATH + "Scroll.png",
 		"displayname": "Scroll",
-		"details": "Decreases the cooldown of spells",
+		"details": "Decreases the cooldown of spells by 10%",
 		"level": 1,
 		"rarity": "",
-		"value": 0.5,
+		"value": 10,
 		"prerequisite": [],
 		"type": "upgrade"
 	},
 	"add_spell_proj": {
 		"icon": UPGRADES_PATH + "Ring.png",
 		"displayname": "Ring",
-		"details": "Your spells now spawn 1 more additional attack",
+		"details": "Your spells now spawn 1 more increaseitional attack",
 		"level": 1,
 		"rarity": "leg",
 		"value": 1,
@@ -323,7 +323,7 @@ var UPGRADES = {
 	"add_attacks_proj": {
 		"icon": UPGRADES_PATH + "Stone.png",
 		"displayname": "Stone",
-		"details": "Your attacks now spawn 1 more additional attack",
+		"details": "Your attacks now spawn 1 more increaseitional attack",
 		"level": 1,
 		"rarity": "epic",
 		"value": 1,

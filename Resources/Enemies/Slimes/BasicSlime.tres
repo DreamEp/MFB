@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1_rgfpr")
 movemement_speed = 30.0
-health = 400.0
+health = 200.0
 enemy_damage = 10.0
-attack_speed = 0.3
+attack_speed = 0.8
 knockback_recovery = 3.0
-armor = 400.0
+armor = 40.0
 min_experience = 0
 max_experience = 5
 elemental_type = "Electric"

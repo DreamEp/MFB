@@ -19,8 +19,11 @@ var floating_number_scene: PackedScene = preload("res://HUD&Menu/HUD/floating_nu
 func defense(attack_damage) -> float:
 	if attack_damage == 0 and target.armor == 0:
 		return 0.0
-		
-	return ( attack_damage / (attack_damage+target.armor))
+	print("before calculation defense : %s" % attack_damage)
+	print("target armor : %s" % str(target.armor))
+	var calculated_attack_damage = attack_damage / (attack_damage+target.armor)
+	print("after calculation defense : %s" % calculated_attack_damage)	
+	return calculated_attack_damage
 
 func crit(crit_chance) -> float:
 	if can_crit:
@@ -36,7 +39,7 @@ func crit(crit_chance) -> float:
 		return 1.0
 
 func randomness():
-	return randf_range(0.9, 1.0)
+	return randf_range(0.90, 1.1)
 
 func elemental_damage(elemental_type) -> float:
 	if elemental_type == target.type_resistant:
@@ -54,10 +57,10 @@ func effectiveness(elemental_type) -> float:
 	else:
 		return 1.0
 
-func spawn_floating_number(damage):
+func spawn_floating_number(current_damage):
 	var number = floating_number_scene.instantiate()
 	number.position = attack_position
-	number.find_child("Label").text = "%.2f" % damage
+	number.find_child("Label").text = "%.2f" % current_damage
 	
 	if can_crit == false:
 		number.find_child("AnimationPlayer").play("normal")
@@ -68,7 +71,7 @@ func spawn_floating_number(damage):
 
 func calculate_effective_damage(elemental_type, attack_damage) -> float:
 	if attacker is Player:
-		effective_damage = attack_damage * defense(attack_damage) * crit(attacker.crit_chance) * randomness() \
+		effective_damage = attack_damage * defense(attack_damage  * (attacker.increase_attack_damage / 100)) * crit(attacker.crit_chance * (attacker.increase_crit_chance / 100)) * randomness() \
 		* elemental_damage(elemental_type) * effectiveness(elemental_type)
 		spawn_floating_number(effective_damage)
 	else:

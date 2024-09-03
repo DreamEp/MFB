@@ -36,11 +36,12 @@ var direction: Vector2
 var angle_rotation: float
 
 func _ready():
+	projectile_speed += player.projectile_speed * player.increase_projectile_speed / 100
 	match(projectile_physics):
 		"rain":
 			sprite.rotate(angle_rotation)
 		"rotative":
-			timerDuration.wait_time = duration + player.spell_duration
+			timerDuration.wait_time = duration + (player.spell_duration * player.increase_spell_duration / 100)
 			timerDuration.start()
 		"crescent":
 			sprite.rotate(angle_rotation)

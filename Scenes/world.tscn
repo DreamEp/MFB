@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://0q77ksscaho5"]
+[gd_scene load_steps=22 format=3 uid="uid://0q77ksscaho5"]
 
 [ext_resource type="PackedScene" uid="uid://b48nchocyocqp" path="res://Player/player.tscn" id="1_13lbo"]
 [ext_resource type="Script" path="res://Scenes/world.gd" id="1_a5gyv"]
@@ -418,92 +418,65 @@ physics_layer_0/collision_layer = 1
 physics_layer_0/collision_mask = 28
 sources/0 = SubResource("TileSetAtlasSource_8iigx")
 
-[sub_resource type="Resource" id="Resource_k0kof"]
+[sub_resource type="Resource" id="Resource_lbkxp"]
 script = ExtResource("5_i3ma0")
-title = "BaseOrc"
+title = "BSk1"
 time_start = 0
-time_end = 180
-enemy_type = ExtResource("5_bwjhd")
-enemy_num = 1
+time_end = 60
+enemy_type = ExtResource("9_re75a")
+enemy_num = 3
 enemy_spawn_delay = 1
 
-[sub_resource type="Resource" id="Resource_cxdxq"]
+[sub_resource type="Resource" id="Resource_xywj6"]
 script = ExtResource("5_i3ma0")
-title = "BaseOrc2"
-time_start = 20
-time_end = 180
-enemy_type = ExtResource("5_bwjhd")
-enemy_num = 2
-enemy_spawn_delay = 1
-
-[sub_resource type="Resource" id="Resource_kfymo"]
-script = ExtResource("5_i3ma0")
-title = "BaseSlime"
-time_start = 0
-time_end = 180
-enemy_type = ExtResource("9_evpmu")
-enemy_num = 2
-enemy_spawn_delay = 10
-
-[sub_resource type="Resource" id="Resource_y2p5q"]
-script = ExtResource("5_i3ma0")
-title = "BaseSkeleton"
-time_start = 5
-time_end = 180
+title = "BSk2"
+time_start = 60
+time_end = 120
 enemy_type = ExtResource("9_re75a")
 enemy_num = 5
 enemy_spawn_delay = 1
 
-[sub_resource type="Resource" id="Resource_cjmbi"]
+[sub_resource type="Resource" id="Resource_t8q4j"]
 script = ExtResource("5_i3ma0")
-title = "EliteOrc"
+title = "BO1"
 time_start = 60
-time_end = 180
-enemy_type = ExtResource("7_q2mgx")
-enemy_num = 3
+time_end = 120
+enemy_type = ExtResource("5_bwjhd")
+enemy_num = 2
 enemy_spawn_delay = 2
 
-[sub_resource type="Resource" id="Resource_rmihc"]
+[sub_resource type="Resource" id="Resource_js6gt"]
 script = ExtResource("5_i3ma0")
-title = "EliteOrc2"
+title = "BO2"
 time_start = 120
 time_end = 180
-enemy_type = ExtResource("7_q2mgx")
-enemy_num = 2
-enemy_spawn_delay = 10
-
-[sub_resource type="Resource" id="Resource_6b4y0"]
-script = ExtResource("5_i3ma0")
-title = "FinalWaveSkeleton"
-time_start = 150
-time_end = 153
-enemy_type = ExtResource("9_re75a")
-enemy_num = 100
-enemy_spawn_delay = 1
-
-[sub_resource type="Resource" id="Resource_22exo"]
-script = ExtResource("5_i3ma0")
-title = "FinalWaveOrc"
-time_start = 150
-time_end = 153
 enemy_type = ExtResource("5_bwjhd")
-enemy_num = 50
+enemy_num = 4
 enemy_spawn_delay = 1
 
-[sub_resource type="Resource" id="Resource_ykqo3"]
+[sub_resource type="Resource" id="Resource_2y3e1"]
 script = ExtResource("5_i3ma0")
-title = "FinalWaveSlime"
-time_start = 150
-time_end = 153
-enemy_type = ExtResource("9_evpmu")
-enemy_num = 50
-enemy_spawn_delay = 1
-
-[sub_resource type="Resource" id="Resource_0xktq"]
-script = ExtResource("5_i3ma0")
-title = "BossOrc"
-time_start = 180
+title = "BasicSlime1"
+time_start = 120
 time_end = 180
+enemy_type = ExtResource("9_evpmu")
+enemy_num = 2
+enemy_spawn_delay = 1
+
+[sub_resource type="Resource" id="Resource_qwggd"]
+script = ExtResource("5_i3ma0")
+title = "EliteOrc1"
+time_start = 0
+time_end = 300
+enemy_type = ExtResource("7_q2mgx")
+enemy_num = 1
+enemy_spawn_delay = 60
+
+[sub_resource type="Resource" id="Resource_odh80"]
+script = ExtResource("5_i3ma0")
+title = "BossOrc1"
+time_start = 300
+time_end = 300
 enemy_type = ExtResource("8_ee6ah")
 enemy_num = 1
 enemy_spawn_delay = 0
@@ -528,7 +501,7 @@ items = Array[Resource("res://Player/Weapons/Item.gd")]([ExtResource("4_yxtht")]
 
 [node name="EnemySpawner" parent="." instance=ExtResource("4_24gqt")]
 z_index = 1
-spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_k0kof"), SubResource("Resource_cxdxq"), SubResource("Resource_kfymo"), SubResource("Resource_y2p5q"), SubResource("Resource_cjmbi"), SubResource("Resource_rmihc"), SubResource("Resource_6b4y0"), SubResource("Resource_22exo"), SubResource("Resource_ykqo3"), SubResource("Resource_0xktq")])
+spawns = Array[ExtResource("5_i3ma0")]([SubResource("Resource_lbkxp"), SubResource("Resource_xywj6"), SubResource("Resource_t8q4j"), SubResource("Resource_js6gt"), SubResource("Resource_2y3e1"), SubResource("Resource_qwggd"), SubResource("Resource_odh80")])
 
 [node name="Loots" type="Node2D" parent="."]
 

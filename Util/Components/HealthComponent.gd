@@ -7,7 +7,11 @@ var health : float
 @onready var animPlayer: AnimationPlayer = $"../AnimationPlayer"
 
 func _ready():
-	health = MAX_HEALTH
+	if get_parent() is Player:
+		health = MAX_HEALTH
+	else:
+		health = get_parent().health
+		MAX_HEALTH = health
 
 func _process(_delta):
 	pass

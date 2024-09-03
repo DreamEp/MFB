@@ -15,7 +15,9 @@ var speed = -0.5
 @onready var audioStreamPlayer: AudioStreamPlayer2D = $PickupGemSong
 
 func _ready():
-	if experience < 5:
+	if experience <= 0:
+		queue_free()
+	elif experience < 5:
 		return
 	elif experience < 25:
 		sprite.texture = blue_gem

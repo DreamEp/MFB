@@ -6,5 +6,5 @@ class_name ElementalType
 func activate(skill: Skill) -> Skill:
 	print("Before adding elemental : %s" % skill.elemental_type)
 	skill.elemental_type = value
-	print("After adding proj : %s" % skill.elemental_type)
+	print("After adding elemental : %s" % skill.elemental_type)
 	return skill

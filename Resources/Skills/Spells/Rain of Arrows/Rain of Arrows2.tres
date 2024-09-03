@@ -6,7 +6,7 @@
 script = ExtResource("1_mrafo")
 projectile_speed = 200.0
 shooting_range = 60.0
-attack_damage = 5.0
+attack_damage = 10.0
 knockback_force = 2.0
 max_pierce = 2
 stun_time = 1.0

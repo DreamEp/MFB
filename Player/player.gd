@@ -2,13 +2,14 @@ extends CharacterBody2D
 class_name Player
 
 #Variables
+
 @export var player_level: int = 1
 @export_group("Speed Values")
 @export var movement_speed: float = 60.0
 @export var acceleration_time: float = 0.1
 @export_group("Offensive Values")
 @export var attack_damage: float = 10.0
-@export_range(0, 1) var crit_chance: float = 10
+@export_range(0, 1) var crit_chance: float = 0
 @export var attack_area: float = 2.0
 @export var attack_speed: float = 2.0
 @export var knockback_force: float = 2.0
@@ -17,7 +18,7 @@ class_name Player
 @export var spell_coldown: float = 2.0
 @export var spell_knockback: float = 2.0
 @export var spell_duration: float = 2.0
-@export var bullet_speed: float = 10.0
+@export var projectile_speed: float = 10.0
 @export_group("Defensive Values")
 @export var knockback_recovery: float = 3.0
 @export var armor: float = 100.0
@@ -33,6 +34,26 @@ class_name Player
 @export var player_collected_experience: float = 0
 @export var player_collected_skills: Array = []
 @export var items: Array[Item]
+
+@export_group("Stat Multiplicator")
+var increase_movement_speed: float = 100
+var increase_health: float = 100
+var increase_attack_damage: float = 100
+var increase_spell_damage: float = 100
+var increase_attack_speed: float = 100
+var increase_attack_area: float = 100
+var increase_knockback_force: float = 100
+var increase_spell_area: float = 100
+var increase_spell_coldown: float = 100
+var increase_spell_knockback: float = 100
+var increase_spell_duration: float = 100
+var increase_crit_chance: float = 100
+var increase_projectile_speed: float = 100
+var increase_knockback_recovery: float = 100
+var increase_armor: float = 100
+var increase_evasiness: float = 100
+var increase_block: float = 100
+var increase_collectible_area: float = 100
 
 var collected_golds = 0
 #Nodes

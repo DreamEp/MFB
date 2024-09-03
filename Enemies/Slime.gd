@@ -1,7 +1,7 @@
 extends EnemyRes
 class_name Slime
 
-@export_group("Stat Values")
+@export_group("Base Stat")
 @export var movemement_speed: float = 40.0
 @export var health: float = 20.0
 @export var enemy_damage: float = 1.0
@@ -15,6 +15,14 @@ class_name Slime
 @export_enum("Physical","Electric","Fire","Ice","Poison", "None") var type_effective: String
 @export_enum("base", "elite", "boss") var enemy_type: String
 @export var enemySpritePath: String
+
+@export_group("Stat Multiplicator")
+var increase_movement_speed: float = 100
+var increase_health: float = 100
+var increase_enemy_damage: float = 100
+var increase_attack_speed: float = 100
+var increase_knockback_recovery: float = 100
+var increase_armor: float = 100
 
 var enemyNode: PackedScene = preload("res://Enemies/Slime.tscn")
 

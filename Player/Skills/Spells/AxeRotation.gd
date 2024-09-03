@@ -6,7 +6,6 @@ class_name AxeRotation
 @export var projectile_speed: float
 @export var attack_damage: float
 @export var knockback_force: float
-@export var stun_time: float
 @export_enum("Physical","Electric","Fire","Ice","Poison") var elemental_type: String
 @export_enum("Arrow","Axe") var projectile_type: String
 
@@ -31,13 +30,12 @@ func cast(current_angle, current_radius, playerNode, tree):
 	
 	projectile.duration = duration
 	projectile.radius = current_radius
-	projectile.projectile_speed = projectile_speed
+	projectile.projectile_speed = projectile_speed 
 	projectile.attack_damage = attack_damage
-	projectile.stun_time = stun_time
 	projectile.elemental_type = elemental_type
 	projectile.projectile_physics = projectile_physics
 	projectile.max_pierce = -1
-	
+
 	projectile.rotation = current_angle
 	projectile.current_rotation = current_angle
 	projectile.position = Vector2(
@@ -48,20 +46,17 @@ func cast(current_angle, current_radius, playerNode, tree):
 	projectile.find_child("Sprite2D").texture = texture
 	tree.root.call_deferred("add_child", projectile)
 	
-func axe_rotation(tree, current_projectile_count):
-	coldown = coldown #- (coldown * (player.attack_speed/100))
+func axe_rotation(tree, coldown, current_projectile_count):
 	if can_fire:
 		can_fire = false
 		for i in range(current_projectile_count):
 			var current_angle = i * (360 / current_projectile_count)
 			cast(current_angle, radius, player, tree)
-		await tree.create_timer(coldown+duration).timeout
+		await tree.create_timer(coldown + duration + (player.spell_duration * player.increase_spell_duration/100)).timeout
 		can_fire = true
 
 func activate(_mouse_position, tree):
 	player = tree.get_first_node_in_group("player")
-	#if support_skills != null:
-		#for support in support_skills:
-			#self = support.activate(self.)
 	var current_projectile_count = projectile_count + player.additional_spell_projectile
-	axe_rotation(tree, current_projectile_count)
+	var current_coldown = coldown - (player.spell_coldown * player.increase_spell_coldown/100)
+	axe_rotation(tree, current_coldown, current_projectile_count)

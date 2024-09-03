@@ -5,11 +5,11 @@
 [resource]
 script = ExtResource("1_a58hp")
 movemement_speed = 30.0
-health = 1000.0
+health = 10000.0
 enemy_damage = 20.0
 attack_speed = 0.5
 knockback_recovery = 3.0
-armor = 200.0
+armor = 120.0
 min_experience = 20
 max_experience = 30
 elemental_type = "Fire"

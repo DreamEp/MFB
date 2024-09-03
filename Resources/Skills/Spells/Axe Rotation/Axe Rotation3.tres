@@ -4,14 +4,14 @@
 
 [resource]
 script = ExtResource("1_tjms6")
-projectile_speed = 100.0
-attack_damage = 5.0
-knockback_force = 10.0
-stun_time = 2.0
+projectile_speed = 40.0
+attack_damage = 20.0
+knockback_force = 2.0
 elemental_type = "Fire"
 projectile_type = "Axe"
 coldown = 10.0
 duration = 4.0
-projectile_count = 5
+projectile_count = 3
 radius = 50
+support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([])
 title = "Axe Rotation"

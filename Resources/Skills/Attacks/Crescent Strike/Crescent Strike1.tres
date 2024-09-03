@@ -6,7 +6,7 @@
 script = ExtResource("1_kl0ea")
 projectile_speed = 150.0
 shooting_range = 100.0
-attack_damage = 13.0
+attack_damage = 30.0
 knockback_force = 2.0
 max_pierce = -1
 stun_time = 2.0
@@ -16,7 +16,7 @@ coldown = 5.0
 cast_count = 1
 coldown_between_salve = 0.0
 projectile_count = 1
-distance = Array[float]([120.0])
+distance_inter = Array[float]([])
 angle = Array[float]([60.0])
 can_return = Array[bool]([false])
 support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([])

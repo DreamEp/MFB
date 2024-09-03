@@ -22,7 +22,6 @@ collision_mask = 64
 shape = SubResource("CircleShape2D_0b383")
 
 [node name="InterractArea" type="Area2D" parent="."]
-visible = false
 collision_layer = 4
 collision_mask = 64
 

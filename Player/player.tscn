@@ -16,7 +16,7 @@
 size = Vector2(6, 11)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_okonb"]
-radius = 382.021
+radius = 127.318
 
 [sub_resource type="Animation" id="Animation_13uj0"]
 length = 0.001
@@ -163,10 +163,14 @@ collision_layer = 4
 collision_mask = 115
 motion_mode = 1
 script = ExtResource("1_1nmtv")
-movement_speed = 100.0
+movement_speed = 80.0
 crit_chance = 0.1
 attack_speed = 1.0
-collectible_area = 1.0
+spell_damage = 10.0
+knockback_recovery = 0.0
+armor = 40.0
+evasiness = 10.0
+collectible_area = 4.0
 items = Array[Resource("res://Player/Weapons/Item.gd")]([ExtResource("7_ad0ol")])
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

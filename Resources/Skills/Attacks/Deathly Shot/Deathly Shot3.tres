@@ -6,7 +6,7 @@
 script = ExtResource("1_fiudh")
 projectile_speed = 100.0
 shooting_range = 300.0
-attack_damage = 20.0
+attack_damage = 100.0
 knockback_force = 0.0
 max_pierce = 5
 stun_time = 0.0
@@ -17,4 +17,5 @@ cast_count = 1
 coldown_between_salve = 0.0
 projectile_count = 1
 space_between_projectiles = 8
+support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([])
 title = "Deathly Shot"

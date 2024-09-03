@@ -233,36 +233,28 @@ func upgrade_character(picked_upgrade):
 	#var upgrade_rarity = picked_upgrade["rarity"]
 	match upgrade_name:
 		"Armor":
-			player.armor += upgrade_value
+			player.increase_armor += upgrade_value
 		"Shield":
-			player.block += upgrade_value
+			player.increase_block += upgrade_value
 		"Pearl":
-			print("before scale collectible %s" % str(player.collectible_area))
-			player.collectible_area += upgrade_value
-			print("after scale collectible %s" % str(player.collectible_area))
-			grabArea.apply_scale(Vector2(player.collectible_area, player.collectible_area))
+			player.increase_collectible_area += upgrade_value
+			grabArea.apply_scale(Vector2(player.increase_collectible_area/100, player.increase_collectible_area/100))
 		"Boots":
-			print("before ms %s" % str(player.movement_speed))
-			player.movement_speed += upgrade_value
-			print("after up ms %s" % str(player.movement_speed))
+			player.increase_movement_speed += upgrade_value
 		"Sword":
-			player.attack_damage += player.attack_damage * upgrade_value
+			player.increase_attack_damage += upgrade_value
 		"Magic Hat":
-			player.spell_damage += player.spell_damage * upgrade_value
+			player.increase_spell_damage += upgrade_value
 		"Gloves":
-			print("before up as %s" % str(player.attack_speed))
-			player.attack_speed += player.attack_speed * upgrade_value
-			print("after up as %s" % str(player.attack_speed))
+			player.increase_attack_speed += upgrade_value
 		"Tome":
-			player.spell_area += upgrade_value
+			player.increase_spell_area += upgrade_value
 		"Scroll":
-			player.spell_coldown += upgrade_value
+			player.increase_spell_coldown += upgrade_value
 		"Ring":
 			player.additional_spell_projectile += upgrade_value
 		"Stone":
-			print("before up add_proj %s" % str(player.additional_attack_projectile))
 			player.additional_attack_projectile += upgrade_value
-			print("after up add_proj %s" % str(player.additional_attack_projectile))
 		"Food":
 			healthComponent.health += upgrade_value
 			healthComponent.health = clamp(healthComponent.health, 0, healthComponent.MAX_HEALTH)

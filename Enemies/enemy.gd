@@ -1,6 +1,7 @@
 extends CharacterBody2D
 class_name Enemy
 
+@export_group("Base Stat")
 var movemement_speed: float = 40.0
 var health: float = 20.0
 var enemy_damage: float = 1.0
@@ -14,6 +15,14 @@ var type_resistant: String
 var type_effective: String
 var enemy_type: String
 var enemySpritePath: String
+
+@export_group("Stat Multiplicator")
+var increase_movement_speed: float = 100
+var increase_health: float = 100
+var increase_enemy_damage: float = 100
+var increase_attack_speed: float = 100
+var increase_knockback_recovery: float = 100
+var increase_armor: float = 100
 
 @onready var elemental_animation_player = $ElementalAnimationPlayer
 
