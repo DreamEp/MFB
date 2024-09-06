@@ -6,6 +6,8 @@ class_name  ItemOption
 @onready var itemLevel = $BackgroundColor/LabelItemLevel
 @onready var itemIcon = $BackgroundColor/BackgroundItemColor/ItemIcon
 @onready var backgroundColor = $BackgroundColor
+@onready var supportSkill = $BackgroundColor/BackgroundItemColor2
+@onready var skillIcon = $BackgroundColor/BackgroundItemColor2/TextureRect
 
 var item = null
 @onready var player = get_tree().get_first_node_in_group("player")
@@ -13,8 +15,9 @@ var item = null
 @onready var leveling = playerInterraction.get_node("Leveling")
 @onready var upgrade = leveling.get_node("UpgradePlayer")
 
-signal selected_upgrade(upgrade)
+signal selected_upgrade(upgrade, skill_name)
 var base_color
+var skill_name
 
 func _ready():
 	var item_level = 1
@@ -48,7 +51,9 @@ func _ready():
 					item_level = 5 
 				_:
 					pass
-		item = UpgradeDb.UPGRADES[item["item"]]
+			
+		if item.has("item"):
+			item = UpgradeDb.UPGRADES[item["item"]]
 		item["rarity"] = item_rarity
 		item["level"] = item_level
 	base_color = backgroundColor.color
@@ -56,9 +61,16 @@ func _ready():
 	itemDescription.text = item["details"]
 	itemLevel.text = "Level : " + str(item["level"])
 	itemIcon.texture = load(item["icon"])
+	if item["type"] == "support":
+		for i in UpgradeDb.UPGRADES:
+			if UpgradeDb.UPGRADES[i]["displayname"] == skill_name: 
+				skillIcon.texture = load(UpgradeDb.UPGRADES[i]["icon"])
+				break
+		supportSkill.visible = true
+		
 	
 func _on_pressed():
-	selected_upgrade.emit(item)
+	selected_upgrade.emit(item, skill_name)
 
 func _on_mouse_entered():
 	var tween = create_tween()

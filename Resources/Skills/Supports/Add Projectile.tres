@@ -4,4 +4,7 @@
 
 [resource]
 script = ExtResource("1_2frsm")
-value = 1
+value = 4
+level = 1
+quality = 0
+title = "Add Projectile"

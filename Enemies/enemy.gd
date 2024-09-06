@@ -34,6 +34,7 @@ var exp_gem: PackedScene = preload("res://Objects/experience_gem.tscn")
 @onready var experienceGem: Node2D = get_tree().get_first_node_in_group("experience")
 var chest_loot: PackedScene = preload("res://Objects/chest_loot.tscn")
 @onready var chestLoot: Node2D = get_tree().get_first_node_in_group("chest")
+var chest_support_loot: PackedScene = preload("res://Objects/support_loot.tscn")
 
 var alive := true
 var idle := true
@@ -80,6 +81,10 @@ func spawnLoot():
 			var value = [1, 2, 3, 4].pick_random() 
 			if value == 2:
 				var new_loot = chest_loot.instantiate()
+				new_loot.global_position = global_position
+				chestLoot.call_deferred('add_child', new_loot)
+			if value == 3:
+				var new_loot = chest_support_loot.instantiate()
 				new_loot.global_position = global_position
 				chestLoot.call_deferred('add_child', new_loot)
 		"boss":

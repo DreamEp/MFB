@@ -25,7 +25,7 @@ var p2 : Vector2
 var returning : bool = false
 var t : float = 0.0
 
-@onready var enemy: Enemy = get_tree().get_first_node_in_group("enemy")
+@onready var enemy = get_tree().get_first_node_in_group("enemy")
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var sprite = $Sprite2D
 @onready var timerDuration = $TimerDuration
@@ -36,50 +36,52 @@ var direction: Vector2
 var angle_rotation: float
 
 func _ready():
-	projectile_speed += player.projectile_speed * player.increase_projectile_speed / 100
-	match(projectile_physics):
-		"rain":
-			sprite.rotate(angle_rotation)
-		"rotative":
-			timerDuration.wait_time = duration + (player.spell_duration * player.increase_spell_duration / 100)
-			timerDuration.start()
-		"crescent":
-			sprite.rotate(angle_rotation)
-			set_physics_process(false)
+	if player != null:
+		projectile_speed += player.projectile_speed * player.increase_projectile_speed / 100
+		match(projectile_physics):
+			"rain":
+				sprite.rotate(angle_rotation)
+			"rotative":
+				timerDuration.wait_time = duration + (player.spell_duration * player.increase_spell_duration / 100)
+				timerDuration.start()
+			"crescent":
+				sprite.rotate(angle_rotation)
+				set_physics_process(false)
 
 func _physics_process(delta):
-	match(projectile_physics):
-		"linear_shot":
-			direction = Vector2.RIGHT.rotated(global_rotation)
-			position += direction * projectile_speed * delta
-			travalled_distance += projectile_speed * delta
-			if travalled_distance > shooting_range:
-				queue_free()
-		"rain":
-			position += projectile_speed * direction * delta
-			travalled_distance += projectile_speed * delta
-			if travalled_distance > shooting_range:
-				queue_free()
-		"rotative":
-			current_rotation += delta * projectile_speed * PI
-			var x = player.global_position.x + radius * cos(deg_to_rad(current_rotation))
-			var y = player.global_position.y + radius * sin(deg_to_rad(current_rotation))
-			position =  Vector2(x, y)
-		"crescent":
-			p0 = player.global_position
-			if not returning:
-				if t < 1.0:
-					t += (projectile_speed/100) * delta
-					if can_return and t >= 1.0:
-						returning = true
-					elif t>= 1.0:
-						queue_free()
-			else:
-				if t >= 0:
-					t -= (projectile_speed/100) * delta
-					if t <= 0.0:
-						queue_free()
-			position = position.bezier_interpolate(p0,p1,p2,t)
+	if player != null:
+		match(projectile_physics):
+			"linear_shot":
+				direction = Vector2.RIGHT.rotated(global_rotation)
+				position += direction * projectile_speed * delta
+				travalled_distance += projectile_speed * delta
+				if travalled_distance > shooting_range:
+					queue_free()
+			"rain":
+				position += projectile_speed * direction * delta
+				travalled_distance += projectile_speed * delta
+				if travalled_distance > shooting_range:
+					queue_free()
+			"rotative":
+				current_rotation += delta * projectile_speed * PI
+				var x = player.global_position.x + radius * cos(deg_to_rad(current_rotation))
+				var y = player.global_position.y + radius * sin(deg_to_rad(current_rotation))
+				position =  Vector2(x, y)
+			"crescent":
+				p0 = player.global_position
+				if not returning:
+					if t < 1.0:
+						t += (projectile_speed/100) * delta
+						if can_return and t >= 1.0:
+							returning = true
+						elif t>= 1.0:
+							queue_free()
+				else:
+					if t >= 0:
+						t -= (projectile_speed/100) * delta
+						if t <= 0.0:
+							queue_free()
+				position = position.bezier_interpolate(p0,p1,p2,t)
 
 func on_enemy_hit():
 	current_pierce_count += 1
@@ -87,7 +89,8 @@ func on_enemy_hit():
 		queue_free()
 
 func _on_body_entered(body):
-	if body is Enemy:
+	if body is Enemy or body is Boss:
+		print(body)
 		var hitbox: HitboxComponent = body.get_node("HitboxComponent")
 		
 		var attack = Attack.new()

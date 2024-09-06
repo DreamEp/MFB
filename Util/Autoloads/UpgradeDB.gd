@@ -3,6 +3,7 @@ extends Node
 const UPGRADES_PATH = "res://Art/Player/Upgrades/"
 const ATTACKS_PATH = "res://Art/Player/Skills/Attacks/"
 const SPELLS_PATH = "res://Art/Player/Skills/Spells/"
+const SUPPORTS_PATH = "res://Art/Player/Skills/Supports/"
 var UPGRADES = {
 	"AxeRotation1": {
 		"icon": SPELLS_PATH + "AxeRotation.png",
@@ -219,6 +220,66 @@ var UPGRADES = {
 		"rarity": "epic",
 		"prerequisite": ["Crescent Strike3"],
 		"type": "attack"
+	},
+	"SupportAddProjectile": {
+		"icon": SUPPORTS_PATH + "SupportAddProjectile.png",
+		"displayname": "Add Projectile",
+		"details": "Your attack or spell now spawn 1 more additional projectile",
+		"level": 1,
+		"rarity": "leg",
+		"value": 1,
+		"prerequisite": ["projectile"],
+		"type": "support"
+	},
+	"SupportElectricType": {
+		"icon": SUPPORTS_PATH + "SupportElectricType.png",
+		"displayname": "Electric Type",
+		"details": "Change spell damage to electric",
+		"level": 1,
+		"rarity": "leg",
+		"value": 1,
+		"prerequisite": ["elemental"],
+		"type": "support"
+	},
+	"SupportFireType": {
+		"icon": SUPPORTS_PATH + "SupportFireType.png",
+		"displayname": "Fire Type",
+		"details": "Change spell damage to Fire",
+		"level": 1,
+		"rarity": "leg",
+		"value": 1,
+		"prerequisite": ["elemental"],
+		"type": "support"
+	},
+	"SupportIceType": {
+		"icon": SUPPORTS_PATH + "SupportIceType.png",
+		"displayname": "Ice Type",
+		"details": "Change spell damage to Ice",
+		"level": 1,
+		"rarity": "leg",
+		"value": 1,
+		"prerequisite": ["elemental"],
+		"type": "support"
+	},
+	"SupportPhysicalType": {
+		"icon": SUPPORTS_PATH + "SupportPhysicalType.png",
+		"displayname": "Physical Type",
+		"details": "Change spell damage to Physical",
+		"level": 1,
+		"rarity": "leg",
+		"value": 1,
+		"prerequisite": ["elemental"],
+		"type": "support"
+	},
+	"SupportPoisonType": {
+		"icon": SUPPORTS_PATH + "SupportPoisonType.png",
+		"displayname": "Poison Type",
+		"details": "Change spell damage to Poison",
+		"level": 1,
+		"rarity": "leg",
+		"value": 1,
+		"prerequisite": ["elemental"],
+		"type": "support"
 	},
 	"increase_armor": {
 		"icon": UPGRADES_PATH + "Armor.png",

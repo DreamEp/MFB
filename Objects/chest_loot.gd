@@ -40,3 +40,9 @@ func _on_snd_collected_finished():
 
 #func _on_pickup_chest_song_finished():
 	#queue_free()
+
+
+func _on_area_entered(area):
+	if area is SupportLoot or area is Chest:
+		self.position.x = [-10, 10].pick_random()
+		self.position.y = [-10, 10].pick_random()

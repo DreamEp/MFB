@@ -31,9 +31,9 @@ func _physics_process(_delta):
 			#Input.warp_mouse( get_viewport_rect().position + closest_enemy.position)
 			enemy_position = closest_enemy.global_position
 			look_at(enemy_position)
-			
-	for item in items:
-		shoot_skills(enemy_position, item)
+	if player.alive:		
+		for item in items:
+			shoot_skills(enemy_position, item)
 	#for attack_or_spell in player_collected_skills:
 		#match attack_or_spell["displayname"]:
 			#"Arrow Shot":

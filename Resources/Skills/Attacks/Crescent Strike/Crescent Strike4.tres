@@ -21,3 +21,5 @@ angle = Array[float]([60.0, -60.0])
 can_return = Array[bool]([true, true])
 support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([])
 title = "Crescent Strike"
+level = 4
+tags = Array[String](["attack", "elemental", "projectile"])

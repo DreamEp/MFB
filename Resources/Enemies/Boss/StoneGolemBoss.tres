@@ -1,0 +1,20 @@
+[gd_resource type="Resource" script_class="StoneGolemBoss" load_steps=2 format=3 uid="uid://6p3afvm20qem"]
+
+[ext_resource type="Script" path="res://Enemies/Boss/StoneGolemBoss.gd" id="1_7co68"]
+
+[resource]
+script = ExtResource("1_7co68")
+movemement_speed = 200.0
+health = 1000.0
+enemy_damage = 20.0
+attack_speed = 3.0
+knockback_recovery = 3.0
+armor = 50.0
+min_experience = 150
+max_experience = 150
+elemental_type = "Physical"
+type_resistant = "Physical"
+type_effective = "Ice"
+enemy_type = "boss"
+enemySpritePath = "res://Art/Enemies/StoneGolemBoss.png"
+title = "Stone Golem Boss"

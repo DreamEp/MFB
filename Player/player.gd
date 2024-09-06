@@ -21,6 +21,7 @@ class_name Player
 @export var projectile_speed: float = 10.0
 @export_group("Defensive Values")
 @export var knockback_recovery: float = 3.0
+@export var health_regen: float = 1.0
 @export var armor: float = 100.0
 @export var evasiness: float = 0
 @export var block: float = 0
@@ -30,7 +31,7 @@ class_name Player
 @export var additional_spell_projectile: int = 0
 @export var rarity_chance: float = 1.0
 @export var player_experience: float
-@export var player_experience_level: float = 1.0
+@export var player_experience_level: int = 1
 @export var player_collected_experience: float = 0
 @export var player_collected_skills: Array = []
 @export var items: Array[Item]
@@ -38,6 +39,7 @@ class_name Player
 @export_group("Stat Multiplicator")
 var increase_movement_speed: float = 100
 var increase_health: float = 100
+var increase_health_regen: float = 100
 var increase_attack_damage: float = 100
 var increase_spell_damage: float = 100
 var increase_attack_speed: float = 100
@@ -48,6 +50,7 @@ var increase_spell_coldown: float = 100
 var increase_spell_knockback: float = 100
 var increase_spell_duration: float = 100
 var increase_crit_chance: float = 100
+var increase_crit_damage: float = 150
 var increase_projectile_speed: float = 100
 var increase_knockback_recovery: float = 100
 var increase_armor: float = 100
@@ -64,6 +67,8 @@ var collected_golds = 0
 @onready var healthLabel: Label = healthBar.get_node("HealthLabel")
 @onready var expLabel: Label = expBar.get_node("LevelLabel")
 @onready var healthComponent: HealthComponent = $HealthComponent
+@onready var playerInterraction = $PlayerInterraction
+@onready var leveling = playerInterraction.get_node("Leveling")
 
 var alive := true
 var idle := true
@@ -82,6 +87,13 @@ func _unhandled_input(event: InputEvent) -> void:
 		aim_position = (event.position - half_viewport)
 
 func _ready():
+	SaveManager.load_data()
+	var passive_tree = PassiveTreeDataContainer.loaded_data
+	print("damage : %s" % attack_damage)
+	print("increase_damage : %s" % increase_attack_damage)
+	update_player_stat(passive_tree)
+	print("damage : %s" % attack_damage)
+	print("increase_damage : %s" % increase_attack_damage)
 	set_healthbar(healthComponent.MAX_HEALTH, healthComponent.MAX_HEALTH)
 	set_expbar(player_experience, 5.0)
 
@@ -99,7 +111,10 @@ func _input(event: InputEvent) -> void:
 			apply_status_effect(Berserk.new(3))
 			
 func _process(delta):
+	healthComponent.health = min(healthComponent.health + (health_regen * increase_health_regen / 100 * delta), healthComponent.MAX_HEALTH)
 	set_healthbar(healthComponent.health, healthComponent.MAX_HEALTH)
+	
+	leveling.calculate_experience()
 	
 	for i in range(status_effects.size()):
 		var effect = status_effects[i]
@@ -137,3 +152,34 @@ func apply_status_effect(effect):
 func reset_effect():
 	for i in status_effects:
 		i.apply(self)
+		
+func update_player_stat(passive_tree: Array):
+	for passive in passive_tree:
+		var title: String = passive["title"]
+		var level: int = passive["level"]
+		match title:
+			"Armor":
+				increase_armor += 5 * level
+			"Attack Area":
+				increase_attack_area += 5 * level
+			"Attack Damage":
+				increase_attack_damage += 5 * level
+			"Attack Speed":
+				increase_attack_speed += 5 * level
+			"Spell Coldown":
+				increase_spell_coldown += 5 * level
+			"Crit Damage":
+				increase_crit_damage += 5 * level
+			"Health":
+				increase_health += 5 * level
+			"Health Regen":
+				increase_health_regen += 5 * level
+			"Moove Speed":
+				increase_movement_speed += 5 * level
+			"Projectile Speed":
+				increase_projectile_speed += 5 * level
+			"Spell Area":
+				increase_spell_area += 5 * level
+			"Spell Damage":
+				increase_spell_damage += 5 * level
+

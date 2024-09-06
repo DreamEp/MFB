@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="AxeRotation" load_steps=2 format=3 uid="uid://bxowc440lum0u"]
+[gd_resource type="Resource" script_class="AxeRotation" load_steps=3 format=3 uid="uid://bxowc440lum0u"]
 
 [ext_resource type="Script" path="res://Player/Skills/Spells/AxeRotation.gd" id="1_3aei1"]
+[ext_resource type="Resource" uid="uid://cvvgtx4fi1702" path="res://Resources/Skills/Supports/Add Projectile.tres" id="2_ni0bm"]
 
 [resource]
 script = ExtResource("1_3aei1")
@@ -13,5 +14,7 @@ coldown = 10.0
 duration = 4.0
 projectile_count = 5
 radius = 50
-support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([])
+support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([ExtResource("2_ni0bm")])
 title = "Axe Rotation"
+level = 4
+tags = Array[String](["spell", "elemental", "projectile"])

@@ -19,3 +19,5 @@ projectile_count = 30
 space_between_projectiles = 180
 support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([])
 title = "Calamity Shot"
+level = 4
+tags = Array[String](["attack", "elemental", "projectile"])

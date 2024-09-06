@@ -18,6 +18,8 @@ func _process(_delta):
 	
 func damage(attack: Attack):
 	if attack:
+		if get_parent() is Player:
+			print("health of enemy : " + str(health))
 		health -= snapped(attack.effective_damage, 0.01)
 		if health <= 0:
 			get_parent().alive = false

@@ -299,7 +299,7 @@ script = ExtResource("3_0uf37")
 script = ExtResource("4_add2d")
 
 [node name="Label" type="Label" parent="."]
-modulate = Color(0.894118, 0.803922, 0.266667, 0)
+modulate = Color(0, 0.803922, 0.266667, 0)
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -313,6 +313,7 @@ grow_vertical = 2
 pivot_offset = Vector2(20, 10)
 size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 6
+text = "Effective"
 horizontal_alignment = 1
 vertical_alignment = 1
 

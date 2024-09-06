@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_2p4om")
 value = "Physical"
+title = "Physical Type"

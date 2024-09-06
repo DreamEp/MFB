@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_iklyc")
 value = "Fire"
+title = "Fire Type"

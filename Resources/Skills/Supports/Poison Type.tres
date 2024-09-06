@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_2rg7m")
 value = "Poison"
+title = "Poison Type"

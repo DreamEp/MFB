@@ -1,0 +1,97 @@
+[gd_scene load_steps=8 format=3 uid="uid://b6pkvpmdg76kg"]
+
+[ext_resource type="Texture2D" uid="uid://bxug6vhi0i0a8" path="res://Art/Enemies/StoneGolemBoss_RangedAttack.png" id="1_a0o3q"]
+[ext_resource type="Script" path="res://Enemies/Boss/RangedAttack.gd" id="1_b1fs5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4ssp7"]
+size = Vector2(15, 4)
+
+[sub_resource type="Animation" id="Animation_frlow"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("../Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_hkmm3"]
+resource_name = "range_attack"
+length = 1.00001
+step = 0.0833333
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("..")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(1),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Sprite2D:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.166667, 0.333333, 0.5, 0.666667, 0.833333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rlutn"]
+_data = {
+"RESET": SubResource("Animation_frlow"),
+"range_attack": SubResource("Animation_hkmm3")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g82af"]
+size = Vector2(35, 12)
+
+[node name="RangedAttack" type="CharacterBody2D"]
+collision_layer = 48
+collision_mask = 4
+script = ExtResource("1_b1fs5")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(26.5, -13)
+shape = SubResource("RectangleShape2D_4ssp7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(1, 0)
+texture = ExtResource("1_a0o3q")
+hframes = 3
+vframes = 2
+region_enabled = true
+region_rect = Rect2(0, 0, 300, 200)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../RangeAttack")
+libraries = {
+"": SubResource("AnimationLibrary_rlutn")
+}
+
+[node name="RangeAttack" type="Area2D" parent="."]
+position = Vector2(100, -14)
+collision_layer = 48
+collision_mask = 12
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RangeAttack"]
+position = Vector2(-72.5, 1)
+shape = SubResource("RectangleShape2D_g82af")
+
+[connection signal="body_entered" from="RangeAttack" to="." method="_on_range_attack_body_entered"]

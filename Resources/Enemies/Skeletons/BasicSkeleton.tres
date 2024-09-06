@@ -6,7 +6,7 @@
 script = ExtResource("1_kfll0")
 movemement_speed = 40.0
 health = 100.0
-enemy_damage = 5.0
+enemy_damage = 15.0
 attack_speed = 0.8
 knockback_recovery = 3.0
 armor = 0.0

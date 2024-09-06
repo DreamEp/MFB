@@ -15,3 +15,5 @@ projectile_count = 3
 radius = 50
 support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([])
 title = "Axe Rotation"
+level = 2
+tags = Array[String](["spell", "elemental", "projectile"])

@@ -46,13 +46,13 @@ func cast(current_angle, current_radius, playerNode, tree):
 	projectile.find_child("Sprite2D").texture = texture
 	tree.root.call_deferred("add_child", projectile)
 	
-func axe_rotation(tree, coldown, current_projectile_count):
+func axe_rotation(tree, current_coldown, current_projectile_count):
 	if can_fire:
 		can_fire = false
 		for i in range(current_projectile_count):
-			var current_angle = i * (360 / current_projectile_count)
+			var current_angle = i * (360 / current_projectile_count) 
 			cast(current_angle, radius, player, tree)
-		await tree.create_timer(coldown + duration + (player.spell_duration * player.increase_spell_duration/100)).timeout
+		await tree.create_timer(current_coldown + duration + (player.spell_duration * player.increase_spell_duration/100)).timeout
 		can_fire = true
 
 func activate(_mouse_position, tree):

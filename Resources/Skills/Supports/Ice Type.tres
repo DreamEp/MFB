@@ -5,3 +5,4 @@
 [resource]
 script = ExtResource("1_lp5tp")
 value = "Ice"
+title = "Ice Type"

@@ -39,5 +39,8 @@ script = ExtResource("3_b3brl")
 stream = ExtResource("4_po6b6")
 bus = &"SFX"
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 1000.0
+
 [connection signal="area_entered" from="GrabArea" to="." method="_on_grab_area_area_entered"]
 [connection signal="area_entered" from="InterractArea" to="." method="_on_interract_area_area_entered"]

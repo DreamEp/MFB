@@ -47,7 +47,7 @@ _data = {
 
 [node name="ChestLoot" type="Area2D" groups=["chest"]]
 collision_layer = 64
-collision_mask = 4
+collision_mask = 68
 script = ExtResource("1_13ib1")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -73,3 +73,5 @@ bus = &"SFX"
 libraries = {
 "": SubResource("AnimationLibrary_kqigy")
 }
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

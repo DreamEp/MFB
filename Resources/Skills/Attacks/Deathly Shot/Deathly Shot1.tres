@@ -19,3 +19,5 @@ projectile_count = 2
 space_between_projectiles = 2
 support_skills = Array[Resource("res://Player/Skills/SupportSkill.gd")]([])
 title = "Deathly Shot"
+level = 1
+tags = Array[String](["attack", "elemental", "projectile"])
