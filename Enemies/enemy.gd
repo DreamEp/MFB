@@ -44,6 +44,16 @@ var attacking := false
 var hurt := false
 var stunned := false
 
+var knockback : Vector2
+
+func _physics_process(delta):
+	var separation = (player.position - position).length()
+	if separation >= 500 and enemy_type == "base":
+		queue_free()
+ 
+	velocity = (player.position - position).normalized() * movemement_speed
+	move_and_collide(velocity * delta)
+	
 func _ready():
 	enemySprite2D.texture = load(enemySpritePath)
 	var scaling_vector: Vector2
@@ -59,12 +69,12 @@ func _ready():
 	self.scale = scaling_vector
 	
 func _on_hitbox_component_body_entered(body):
-	if body is Player:
+	#if body is Player:
 		inrange = true
 		attacking = true
 
 func _on_hitbox_component_body_exited(body):
-	if body is Player:
+	#if body is Player:
 		inrange = false
 
 func spawnExperience():

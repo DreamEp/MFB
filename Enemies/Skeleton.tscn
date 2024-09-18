@@ -277,7 +277,7 @@ size = Vector2(46, 27)
 
 [node name="Skeleton" type="CharacterBody2D" groups=["enemy"]]
 collision_layer = 16
-collision_mask = 13
+collision_mask = 8
 motion_mode = 1
 script = ExtResource("1_2jn5f")
 
@@ -332,8 +332,8 @@ libraries = {
 [node name="HealthComponent" parent="." instance=ExtResource("5_a5fd2")]
 
 [node name="HitboxComponent" parent="." node_paths=PackedStringArray("health_component") instance=ExtResource("6_umlaw")]
-collision_layer = 16
-collision_mask = 13
+collision_layer = 32
+collision_mask = 4
 health_component = NodePath("../HealthComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent"]

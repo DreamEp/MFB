@@ -16,12 +16,15 @@ func _ready():
 	
 func _physics_process(_delta):
 	#knockback = knockback.move_toward(Vector2.ZERO, knockback_recovery)
-	if enemy.alive:
-		var velocity = enemy.velocity
-		var direction = enemy.global_position.direction_to(player.global_position)
-		velocity = direction * enemy.movemement_speed
-		#velocity += knockback
-		enemy.velocity = velocity
-		enemy.move_and_slide()
-	else:
+	#var separation = (player.position - enemy.position).length()
+	#if separation >= 500 and enemy.enemy_type == "base":
+		#enemy.queue_free()
+	#if enemy.alive:
+		#var velocity = enemy.velocity
+		#var direction = enemy.global_position.direction_to(player.global_position)
+		#velocity = direction * enemy.movemement_speed
+		##velocity += knockback
+		#enemy.velocity = velocity
+		#enemy.move_and_slide()
+	#else:
 		return

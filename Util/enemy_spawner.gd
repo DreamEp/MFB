@@ -5,7 +5,8 @@ class_name EnemySpawner
 @onready var player: Player = get_tree().get_first_node_in_group("player")
 @onready var gameTimer: Label = get_tree().get_first_node_in_group("hud").get_node("GameTimer")
 @onready var tileMap: TileMap = $"../TileMap"
-
+var distance = 500 #Spawnable distance
+var can_spawn: bool
 var time = 0.1
 @export var pass_time = 0
 
@@ -52,6 +53,10 @@ func retrieve_spawnable_tile():
 func _physics_process(delta):
 	pass_time += delta
 	change_time()
+	if self.get_child_count() < 400:
+		can_spawn = true
+	else:
+		can_spawn = false
 	#print("time : %s, pass_time : %s" % [time, pass_time])
 	
 func _ready():
@@ -61,20 +66,23 @@ func _on_timer_timeout():
 	time += 1
 	var enemy_spawns = spawns
 	for i in enemy_spawns:
-		if time >= i.time_start and time <= i.time_end + 1: 
+		if time >= i.time_start and time <= i.time_end + 1 and can_spawn: 
 			if i.spawn_delay_counter <= i.enemy_spawn_delay: 
 				i.spawn_delay_counter += 1
 			else:
 				i.spawn_delay_counter = 0.1 
 				var new_enemy = i.enemy_type 
 				var counter = 0
-				while counter < i.enemy_num: 
+				while counter < i.enemy_num and can_spawn: 
 					#var enemy_spawn: EnemyRes = new_enemy.instantiate() 
 					var spawn_pos = retrieve_spawnable_tile() #get_random_position() 
 					new_enemy.instantiate_enemy(self, spawn_pos)
 
 					#add_child(enemy_spawn) 
 					counter += 1 
+					
+func circle_pos() -> Vector2:
+	return player.position + distance * Vector2.RIGHT.rotated(randf_range(0, 2 * PI))
 
 func get_random_position():
 	var vpr = get_viewport_rect().size * randf_range(1.05, 1.40)
@@ -116,3 +124,5 @@ func change_time():
 	if s < 10:
 		s = str(0, s)
 	gameTimer.text = str(m, ":", s)
+	
+	

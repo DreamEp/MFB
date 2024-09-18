@@ -9,7 +9,7 @@ extends Area2D
 
 var items: Array[Item]
 var player_collected_skills
-var enemy_position: Vector2
+var enemy_position: Vector2 = Vector2.RIGHT
 
 func _ready():
 	pass
@@ -17,20 +17,20 @@ func _ready():
 func _physics_process(_delta):
 	items = player.items
 	player_collected_skills = player.player_collected_skills
-	var enemies_in_range = get_overlapping_bodies()
-	if(!settings_resource.auto_aim_state):
-		enemy_position = get_global_mouse_position()
-		look_at(enemy_position)
-	else:
-		if enemies_in_range.size() > 0:
-			var closest_enemy = enemies_in_range.front()
-			for current_enemy in enemies_in_range:
-				if(current_enemy.global_position.distance_to(player.global_position) < closest_enemy.global_position.distance_to(player.global_position)):
-					closest_enemy = current_enemy
-					
-			#Input.warp_mouse( get_viewport_rect().position + closest_enemy.position)
-			enemy_position = closest_enemy.global_position
-			look_at(enemy_position)
+	#var enemies_in_range = get_overlapping_bodies()
+	#if(!settings_resource.auto_aim_state):
+		#enemy_position = get_global_mouse_position()
+		#look_at(enemy_position)
+	#else:
+		#if enemies_in_range.size() > 0:
+			#var closest_enemy = enemies_in_range.front()
+			#for current_enemy in enemies_in_range:
+				#if(current_enemy.global_position.distance_to(player.global_position) < closest_enemy.global_position.distance_to(player.global_position)):
+					#closest_enemy = current_enemy
+					#
+			##Input.warp_mouse( get_viewport_rect().position + closest_enemy.position)
+			#enemy_position = closest_enemy.global_position
+			#look_at(enemy_position)
 	if player.alive:		
 		for item in items:
 			shoot_skills(enemy_position, item)

@@ -90,7 +90,6 @@ func on_enemy_hit():
 
 func _on_body_entered(body):
 	if body is Enemy or body is Boss:
-		print(body)
 		var hitbox: HitboxComponent = body.get_node("HitboxComponent")
 		
 		var attack = Attack.new()
